@@ -58,7 +58,8 @@
   width: 100%;
   top: -50px;
   justify-content: space-around;
-  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .lower-container {
@@ -71,6 +72,7 @@
   background-color: #EEE;
   display: flex;
   flex-flow: column wrap;
+  height: 220px;
   margin-right: 50px;  
 }
 
