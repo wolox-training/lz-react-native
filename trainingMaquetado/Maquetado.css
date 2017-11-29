@@ -1,22 +1,15 @@
-
-
-hr{
+hr {
 	background-color: #F5C85F;
 	width: 4px;
 	height: 300px;
 	margin: 60px;
 	border: none;
-    border-radius: 60px;
-    background: radial-gradient(#F5C85F 40%, white 60%);
+  border-radius: 60px;
+  flex-shrink: 0; 
+  background: radial-gradient(#F5C85F 40%, white 60%);
 }
 
-
-.esthetic{
-
-}
-
-
-.headline{
+.headline {
 	display: flex;
 	background-color: #F5C85F;
 	height: 4px;
@@ -30,14 +23,12 @@ hr{
 	height: 374px;
 }
 
-
 .middle-container {
-	display: flex;
+  display: flex;
 	background-color: #EEE;
 	height: 100px;
 
 }
-
 
 .lower-container {
 	display: flex;
@@ -46,3 +37,13 @@ hr{
 }
 
 
+@media (max-width: 1140px) {
+  .esthetic {
+  	display: none; 
+  }
+
+  hr { 
+      display: none;  
+  }
+
+}
