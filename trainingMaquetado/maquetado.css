@@ -1,6 +1,6 @@
 p {
   color: #999;
-  font-family: Open Sans;
+  font-family: "Open Sans";
   text-align: center;
   width: 190px;
 }
@@ -31,10 +31,13 @@ h3 {
 }
 
 .middle-container {
-  display: flex;
-  background-color: #EEE;
-  justify-content: space-around;
   align-items: center;
+  background-color: #EEE;
+  border-image-source: "photos/triangle.png";
+  border-image-repeat: repeat;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .lower-container {
@@ -47,7 +50,10 @@ h3 {
   background-color: #EEE;
   display: flex;
   flex-flow: column wrap;
-  height: 220px;  
+  height: 220px;
+  margin-bottom: 50px;
+  margin-top: 70px;
+  margin-right: 50px;  
 }
 
 @media (max-width: 1140px) {
