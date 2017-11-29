@@ -1,15 +1,48 @@
 
 
-p {
-	color: red;
+hr{
+	background-color: #F5C85F;
+	width: 4px;
+	height: 300px;
+	margin: 60px;
+	border: none;
+    border-radius: 60px;
+    background: radial-gradient(#F5C85F 40%, white 60%);
 }
 
-.container {
+
+.esthetic{
+
+}
+
+
+.headline{
+	display: flex;
+	background-color: #F5C85F;
+	height: 4px;
+}
+
+
+.upper-container {	
 	display: flex;	
-	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	height: 374px;
 }
 
-#custom_img {
-	width: 5px;
+
+.middle-container {
+	display: flex;
+	background-color: #EEE;
+	height: 100px;
+
 }
+
+
+.lower-container {
+	display: flex;
+	background-color: #F5C85F;
+	height: 100px;
+}
+
+
