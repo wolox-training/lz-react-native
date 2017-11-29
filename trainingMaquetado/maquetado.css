@@ -23,6 +23,7 @@
 } 
 
 .barrier {
+  background-color: #F5C85F;
   background: radial-gradient(#F5C85F 40%, white 60%);
   border: none;
   border-radius: 60px;
@@ -56,6 +57,8 @@
   height: 10px;
   width: 100%;
   top: -50px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .lower-container {
