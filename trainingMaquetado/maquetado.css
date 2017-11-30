@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 200px;
 }
 
 .middle-container {
@@ -26,11 +27,9 @@
 }
 
 @media (max-width: 1140px) {
-  .phone {
-    display: none; 
-  }
-
+  .phone,
   .separetor { 
-      display: none;  
+      display: none;
   }
 }
+ 
