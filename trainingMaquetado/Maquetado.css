@@ -10,7 +10,7 @@
 
 .upper-container {
   border-top: 4px solid #F5C85F;
-  display: flex;	
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -33,5 +33,4 @@
   .separetor { 
       display: none;  
   }
-
 }
