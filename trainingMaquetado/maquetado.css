@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 p {
   color: #999;
   font-family: "Open Sans";
@@ -33,11 +37,18 @@ h3 {
 .middle-container {
   align-items: center;
   background-color: #EEE;
-  border-image-source: "photos/triangle.png";
-  border-image-repeat: repeat;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.middle-container::before {
+  background: url("photos/triangle.png") repeat-x;
+  content: "";
+  position: relative;
+  height: 10px;
+  width: 100%;
+  top: -10px;
 }
 
 .lower-container {
@@ -62,3 +73,4 @@ h3 {
       display: none;
   }
 }
+
