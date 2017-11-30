@@ -7,6 +7,7 @@
 }
 
 .paragraph {
+  margin: 0;
   color: #999;
   font-size: 15px;
   font-weight: bold;
@@ -36,6 +37,10 @@
 .upper-container {
   border-top: 4px solid #F5C85F;
   display: flex;
+  height: 8px;
+}
+
+.upper-container {	
   align-items: center;
   justify-content: center;
   padding: 100px 0;
@@ -56,10 +61,7 @@
   position: relative;
   height: 10px;
   width: 100%;
-  top: -50px;
-  justify-content: space-around;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  top: -10px;
 }
 
 .lower-container {
@@ -82,3 +84,4 @@
       display: none;
   }
 }
+
