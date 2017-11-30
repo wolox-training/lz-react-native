@@ -1,0 +1,35 @@
+.barrier {
+  background: radial-gradient(#F5C85F 40%, white 60%);
+  border: none;
+  border-radius: 60px;
+  flex-shrink: 0;
+  height: 300px;
+  margin: 0 60px;
+  width: 4px; 
+}
+
+.upper-container {
+  border-top: 4px solid #F5C85F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.middle-container {
+  display: flex;
+  background-color: #EEE;
+}
+
+.lower-container {
+  display: flex;
+  background-color: #F5C85F;
+}
+
+@media (max-width: 1140px) {
+  .phone,
+  .separetor { 
+      display: none;
+  }
+}
+ 
