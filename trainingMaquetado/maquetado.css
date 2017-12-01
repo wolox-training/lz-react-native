@@ -1,19 +1,21 @@
-body {
-  margin: 0;
-}
-
-p {
+.paragraph {
   color: #999;
   font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 0;
   text-align: center;
   width: 190px;
 }
 
-h3 {
+.title {
   color: #111;
   font-family: Open Sans;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 0;
-  margin-top: 8px;  
+  margin-top: 8px;
+  padding: 10px 0;
 } 
 
 .barrier {
@@ -69,8 +71,7 @@ h3 {
 
 @media (max-width: 1140px) {
   .phone,
-  .separetor { 
+  .barrier { 
       display: none;
   }
 }
-
