@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 
-button {
+.subscribe {
   background-color: Transparent;
   border-color: white;
   border-radius: 10px;
@@ -14,12 +14,14 @@ button {
   border-width: 0.5px;
   color: white;
   font-size: 16px;
-  width: 120px; 
+  font-weight: bold;
   height: 40px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  text-align: center;
+  width: 120px;  
 }
 
-input {
+.insert {
   border-color: white;
   border-radius: 10px;
   border-style: solid;
@@ -28,7 +30,7 @@ input {
   width: 280px;
 }
 
-.paragraph{
+.paragraph {
   color: #999;
   font-size: 15px;
   font-weight: bold;
@@ -44,11 +46,11 @@ input {
   margin-bottom: 15px;
 } 
 
-h4 {
+.info {
  color: white;
- font-family: Open Sans;
- margin-bottom: 20px;
- margin-top: 30px;
+ font-size: 16px;
+ font-weight: bold;
+ margin-bottom: 30px;
  width: 200px 
 } 
 
@@ -66,10 +68,6 @@ h4 {
 .upper-container {
   border-top: 4px solid #F5C85F;
   display: flex;
-  height: 8px;
-}
-
-.upper-container {	
   align-items: center;
   justify-content: center;
   padding: 100px 0;
@@ -90,7 +88,7 @@ h4 {
   position: relative;
   height: 10px;
   width: 100%;
-  top: -10px;
+  top: -50px;
 }
 
 .lower-container {
@@ -99,7 +97,7 @@ h4 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 200px;
+  padding: 40px 0; 
   box-shadow: 0px 12px 41px;
 }
 
