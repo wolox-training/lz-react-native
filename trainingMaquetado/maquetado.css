@@ -1,3 +1,27 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.photograph {
+  margin-bottom: 20px;
+}
+
+.paragraph {
+  color: #999;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 190px;
+}
+
+.title {
+  color: #111;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+} 
+
 .barrier {
   background: radial-gradient(#F5C85F 40%, white 60%);
   border: none;
@@ -17,8 +41,21 @@
 }
 
 .middle-container {
-  display: flex;
+  align-items: baseline;
   background-color: #EEE;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 40px 0; 
+}
+
+.middle-container::before {
+  background: url("photos/triangle.png") repeat-x;
+  content: "";
+  position: relative;
+  height: 10px;
+  width: 100%;
+  top: -50px;
 }
 
 .lower-container {
@@ -26,10 +63,17 @@
   background-color: #F5C85F;
 }
 
+.item-container {
+  align-items: center;
+  background-color: #EEE;
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 50px;  
+}
+
 @media (max-width: 1140px) {
   .phone,
-  .separetor { 
+  .barrier { 
       display: none;
   }
 }
- 
