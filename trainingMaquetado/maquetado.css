@@ -8,26 +8,25 @@
 
 .subscribe {
   background-color: Transparent;
-  border-color: white;
+  border: 1px solid #FFF;
   border-radius: 10px;
-  border-style: solid;
-  border-width: 0.5px;
-  color: white;
+  color: #FFF;
   font-size: 16px;
   font-weight: bold;
-  height: 40px;
   margin-bottom: 20px;
-  width: 120px;  
+  padding: 10px 10px;  
 }
 
 .insert {
-  border-color: white;
+  border-color: #FFF;
   border-radius: 10px;
   border-style: solid;
   font-size: 16px;
   height: 30px;
+  max-width: 280px;
+  margin-bottom: 5px;
   text-align: center;
-  width: 280px;
+  width: 120%;
 }
 
 .paragraph {
@@ -47,16 +46,14 @@
 } 
 
 .info {
- color: white;
- font-size: 16px;
- font-weight: bold;
- margin-bottom: 30px;
- width: 200px 
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 30px; 
 } 
 
 .barrier {
-  background-color: #F5C85F;
-  background: radial-gradient(#F5C85F 40%, white 60%);
+  background: radial-gradient(#F5C85F 40%, #FFF 60%);
   border: none;
   border-radius: 60px;
   flex-shrink: 0;
@@ -106,8 +103,13 @@
   background-color: #EEE;
   display: flex;
   flex-flow: column wrap;
-  height: 220px;
   margin-right: 50px;  
+}
+
+.subscribe-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1140px) {
