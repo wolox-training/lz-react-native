@@ -1,22 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import data from './data.json'
-import './App.css';
+import React, { Component } from "react";
+import data from "./data.json";
+import "./App.css";
+import defaultImg from "./photos/default.png";
 
 class App extends Component {
   render() {
+    let images = data.map(dt => dt.image_url);
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="mainContainer">
+        <h1 className="title"> shut up!!! </h1>
+        <img src={images[1] ? images[3] : defaultImg} />
       </div>
     );
   }
 }
+
+class Image extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <img src={this.props.img} />;
+  }
+}
+Image.defaultProps = { img: defaultImg };
 
 export default App;
