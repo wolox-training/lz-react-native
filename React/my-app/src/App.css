@@ -11,7 +11,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  padding: 50px 150px;
+  padding: 20px 200px;
 }
 
 .main_title {
@@ -30,22 +30,37 @@
 }
 
 .selector {
-  background-color: #dbe1eb;
-  color: grey;
+  background: #f4f4f4;
+  color: #9b9b9b;
   font-size: 20px;
   font-style: italic;
-  height: 23px;
+  height: 38px;
   margin-right: 200px;
+  margin-bottom: 20px;
   text-indent: 5px;
-  width: 253px;
+  width: 238px;
 }
 
+/*.arrow {
+  height: 11px;
+  margin-right: 200px;
+  width: 15px;
+}
+
+.square {
+  width: 38px;
+  height: 38px;
+}*/
+
 .search {
-  background-color: #dbe1eb;
-  color: grey;
+  background: #f4f4f4;
+  color: #9b9b9b;
   font-size: 20px;
   font-style: italic;
   text-indent: 5px;
+  background: #f4f4f4;
+  width: 238px;
+  height: 38px;
 }
 
 .cover {

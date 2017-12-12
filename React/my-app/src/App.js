@@ -20,6 +20,7 @@ class App extends Component {
             <option value="title">Titulo</option>
             <option value="author">Autor</option>
           </select>
+          {/* <img className="arrow" src="./photos/arrow.png" /> */}
           <input
             className="search"
             type="text"
@@ -27,6 +28,7 @@ class App extends Component {
             name="fname"
             onChange={this.filterBooks}
           />
+          {/* <img className="square" src="./photos/green_square.png" /> */}
         </form>
         <div className="gallery">
           {this.state.books.map(element => <Book book={element} />)}
@@ -43,7 +45,21 @@ class App extends Component {
   filterBooks = filterWord => {
     const word = filterWord.nativeEvent.target.value;
     const type = this.state.searchType;
-    this.setState({ books: data.filter(book => book[type].includes(word)) });
+    if (type != "null") {
+      this.setState({
+        books: data.filter(book =>
+          book[type].toLowerCase().includes(word.toLowerCase())
+        )
+      });
+    } else {
+      this.setState({
+        books: data.filter(
+          book =>
+            book.title.toLowerCase().includes(word.toLowerCase()) ||
+            book.author.toLowerCase().includes(word.toLowerCase())
+        )
+      });
+    }
   };
 }
 
