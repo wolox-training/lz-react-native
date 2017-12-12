@@ -7,7 +7,7 @@
 }
 
 .gallery {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -26,20 +26,26 @@
   flex-flow: column wrap;
   margin-right: 60px;
   padding: 50px 0px;
+  max-width: 128px;
 }
 
 .selector {
-  align-items: center;
   background-color: #dbe1eb;
   color: grey;
   font-size: 20px;
+  font-style: italic;
+  height: 23px;
   margin-right: 200px;
+  text-indent: 5px;
+  width: 253px;
 }
 
 .search {
   background-color: #dbe1eb;
   color: grey;
   font-size: 20px;
+  font-style: italic;
+  text-indent: 5px;
 }
 
 .cover {
@@ -56,4 +62,6 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
+  line-height: 20px;
+  text-align: center;
 }

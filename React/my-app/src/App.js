@@ -14,11 +14,11 @@ class App extends Component {
           <select
             className="selector"
             name="select"
-            placeholder="Seleccionar filtro"
             onChange={this.setSearchType}
           >
-            <option value="Titulo">Titulo</option>
-            <option value="Autor">Autor</option>
+            <option value="null">Seleccionar filtro</option>
+            <option value="title">Titulo</option>
+            <option value="author">Autor</option>
           </select>
           <input
             className="search"
@@ -42,8 +42,8 @@ class App extends Component {
 
   filterBooks = filterWord => {
     const word = filterWord.nativeEvent.target.value;
-    //    const type = this.state.searchType;
-    this.setState({ books: data.filter(book => book.title.includes(word)) });
+    const type = this.state.searchType;
+    this.setState({ books: data.filter(book => book[type].includes(word)) });
   };
 }
 
