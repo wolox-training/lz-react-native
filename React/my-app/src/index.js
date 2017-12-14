@@ -1,10 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import './equalizer.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import HomeContainer from "./screens/home";
+import "./config/equalizer.css";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+ReactDOM.render(<HomeContainer />, document.getElementById("root"));
