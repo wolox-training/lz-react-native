@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import data from "./data.json";
 import "./App.css";
 import defaultImg from "./photos/default.png";
+import { WBOOKS, SELECCIONAR_FILTRO, TITULO, AUTOR } from "./strings.js";
 
 class App extends Component {
   state = { books: data, searchType: null };
@@ -9,18 +10,17 @@ class App extends Component {
   render() {
     return (
       <div className="mainContainer">
-        <h1 className="main_title"> wBooks </h1>
+        <h1 className="main_title">{WBOOKS} </h1>
         <form>
           <select
             className="selector"
             name="select"
             onChange={this.setSearchType}
           >
-            <option value="null">Seleccionar filtro</option>
-            <option value="title">Titulo</option>
-            <option value="author">Autor</option>
+            <option value="null">{SELECCIONAR_FILTRO}</option>
+            <option value="title">{TITULO}</option>
+            <option value="author">{AUTOR}</option>
           </select>
-          {/* <img className="arrow" src="./photos/arrow.png" /> */}
           <input
             className="search"
             type="text"
@@ -28,7 +28,6 @@ class App extends Component {
             name="fname"
             onChange={this.filterBooks}
           />
-          {/* <img className="square" src="./photos/green_square.png" /> */}
         </form>
         <div className="gallery">
           {this.state.books.map(element => <Book book={element} />)}
@@ -65,12 +64,10 @@ class App extends Component {
 
 class Book extends Component {
   render() {
-    const image = this.props.book.image_url;
-    const title = this.props.book.title;
-    const author = this.props.book.author;
+    const { image_url, title, author } = this.props.book;
     return (
       <div className="book_info">
-        <img className="cover" src={image ? image : defaultImg} />
+        <img className="cover" src={image_url ? image_url : defaultImg} />
         <h1 className="title"> {title}</h1>
         <h1 className="author"> {author}</h1>
       </div>
