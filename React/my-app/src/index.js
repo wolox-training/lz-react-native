@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./screens/home/App.js";
+import HomeContainer from "./screens/home";
 import "./config/equalizer.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<HomeContainer />, document.getElementById("root"));

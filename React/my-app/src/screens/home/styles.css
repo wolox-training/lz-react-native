@@ -20,15 +20,6 @@
   margin-bottom: 50px;
 }
 
-.book_info {
-  align-items: center;
-  display: flex;
-  flex-flow: column wrap;
-  margin-right: 60px;
-  padding: 50px 0px;
-  max-width: 128px;
-}
-
 .selector {
   background: #f4f4f4;
   color: #9b9b9b;
@@ -49,22 +40,4 @@
   text-indent: 5px;
   width: 238px;
   height: 38px;
-}
-
-.cover {
-  height: 182px;
-  margin-bottom: 10px;
-  width: 128px;
-}
-
-.author {
-  font-size: 16px;
-}
-
-.title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  line-height: 20px;
-  text-align: center;
 }
