@@ -1,0 +1,67 @@
+.mainContainer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+.back {
+  display: flex;
+  align-self: flex-start;
+}
+
+.info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.suggest {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.comments {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+}
+
+.barrier {
+  border: 1px solid #00adee;
+  height: 1px;
+  margin: 20px 0;
+  width: 799px;
+}
+
+.topic {
+  color: #a5cd39;
+  font-weight: Bold;
+  font-size: 20px;
+  line-height: 19px;
+  margin-bottom: 10px;
+}
+
+.input_comments {
+  border: 1px solid #979797;
+  width: 665px;
+  height: 73px;
+}
+
+.rent_button {
+  background: #00adee;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  height: 38px;
+  width: 192px;
+}
+
+.send_button {
+  background: #a5cd39;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  height: 38px;
+  width: 192px;
+}

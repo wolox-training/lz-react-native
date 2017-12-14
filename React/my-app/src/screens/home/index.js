@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import data from "./data.json";
+import data from "../../config/data.json";
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
 
