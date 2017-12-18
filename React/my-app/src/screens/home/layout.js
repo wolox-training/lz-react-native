@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { WBOOKS, SELECCIONAR_FILTRO, TITULO, AUTOR } from "./strings.js";
 import Book from "../../components/Book/index.js";
 import "./styles.css";
+import defaultImg from "../../assets/photos/default.png";
 
 const Home = ({ data, onSelect, onInput }) => (
   <div className="mainContainer">
@@ -23,7 +25,7 @@ const Home = ({ data, onSelect, onInput }) => (
     <div className="gallery">
       {data.map(element => (
         <Book
-          key={element.id}
+          id={element.id}
           imageUrl={element.image_url}
           title={element.title}
           author={element.author}

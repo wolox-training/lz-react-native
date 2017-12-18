@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import HomeContainer from "./screens/home";
+import { BrowserRouter } from "react-router-dom";
 import "./config/equalizer.css";
+import Router from "./components/Route/index";
 
-ReactDOM.render(<HomeContainer />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
