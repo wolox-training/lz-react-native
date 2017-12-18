@@ -26,7 +26,7 @@ const Home = ({ data, onSelect, onInput }) => (
       {data.map(element => (
         <Book
           id={element.id}
-          imageUrl={element.image_url || defaultImg}
+          imageUrl={element.image_url}
           title={element.title}
           author={element.author}
         />
