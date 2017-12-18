@@ -10,14 +10,15 @@ import {
   COMENTARIOS,
   ENVIAR,
   TEXTO,
-  AGREGAR_COMENTARIO
+  AGREGAR_COMENTARIO,
+  VOLVER
 } from "./strings.js";
 import strings from "./strings";
 
 const Book_detail = ({ image, title, author, year, genre }) => (
   <div className="mainContainer">
     <Link className="back" to="/">
-      {"<- Volver"}
+      {VOLVER}
     </Link>
     <div className="center">
       <div className="info">

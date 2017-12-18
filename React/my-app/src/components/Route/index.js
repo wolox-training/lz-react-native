@@ -9,7 +9,6 @@ class Router extends Component {
       <Switch>
         <Route exact path="/" component={HomeContainer} />
         <Route path="/books/:id" component={BookDetailContainer} />
-        {/* <Route path="/books/undefined" component={BookDetailContainer} /> */}
       </Switch>
     );
   }
