@@ -13,8 +13,4 @@ const Book = ({ id, imageUrl, title, author }) => (
   </Link>
 );
 
-Book.defaultProps = {
-  imageUrl: defaultImg
-};
-
 export default Book;
