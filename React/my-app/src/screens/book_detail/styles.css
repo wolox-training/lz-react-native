@@ -63,10 +63,11 @@
 }
 
 .comments {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-flow: column wrap;
   margin-bottom: 20px;
+  padding-left: 40px;
 }
 
 .barrier {
@@ -82,12 +83,7 @@
   font-weight: Bold;
   font-size: 20px;
   line-height: 19px;
-  margin-bottom: 10px;
-}
-
-.comment_form {
-  display: flex;
-  flex-flow: column wrap;
+  margin-bottom: 20px;
 }
 
 .tiny_books {
@@ -102,34 +98,11 @@
   flex-flow: row wrap;
   justify-content: space-around;
   margin-bottom: 20px;
-}
-
-.user_name {
-  color: #000000;
-  font-weight: Bold;
-  font-size: 14px;
-  line-height: 19px;
-  margin-bottom: 10px;
-}
-
-.input_comments {
-  border: 1px solid #979797;
-  height: 73px;
-  margin-bottom: 20px;
-  width: 665px;
+  padding-left: 40px;
 }
 
 .rent_button {
   background: #00adee;
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  height: 38px;
-  width: 192px;
-}
-
-.send_button {
-  background: #a5cd39;
   color: #fff;
   font-weight: bold;
   font-size: 20px;
