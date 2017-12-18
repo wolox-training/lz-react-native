@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./styles.css";
 import defaultImg from "../../assets/photos/default.png";
