@@ -23,7 +23,7 @@ class BookDetailContainer extends Component {
       title: book.title,
       genre: book.genre,
       year: book.year,
-      image: book.image_url ? book.image_url : defaultImg
+      image: book.image_url
     });
   }
 

@@ -22,7 +22,7 @@ const Book_detail = ({ image, title, author, year, genre }) => (
     </Link>
     <div className="center">
       <div className="info">
-        <img className="main_book" src={image} />
+        <img className="main_book" src={image || bigDefaultImg} />
         <div className="description_box">
           <h1 className="book_title">{title}</h1>
           <h1 className="other_info">{author}</h1>
