@@ -22,11 +22,9 @@ class BookDetailContainer extends Component {
       author: book.author,
       title: book.title,
       genre: book.genre,
-      year: book.year
+      year: book.year,
+      image: book.image_url
     });
-    if (book.image_url) {
-      this.setState({ image: book.image_url });
-    }
   }
 
   sameBook = element => {
