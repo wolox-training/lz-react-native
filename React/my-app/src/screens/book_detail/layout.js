@@ -14,10 +14,6 @@ import {
   COMENTARIOS,
   ENVIAR,
   TEXTO,
-<<<<<<< HEAD
-=======
-  AGREGAR_COMENTARIO,
->>>>>>> react-wbook
   VOLVER
 } from "./strings.js";
 import strings from "./strings";
