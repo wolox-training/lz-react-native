@@ -1,2 +1,30 @@
-.username {
+.login_box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 300px 0;
+}
+
+.big_title {
+  font-size: 62px;
+  letter-spacing: 0;
+}
+
+.book {
+  margin-right: 10px;
+}
+
+.enter {
+  background: #e93939;
+  border-radius: 4px;
+  width: 189px;
+  height: 44px;
+  color: #fff;
+}
+
+.logo {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 60px;
 }
