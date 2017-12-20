@@ -3,6 +3,7 @@ import Login from "./layout";
 import { Redirect } from "react-router-dom";
 import HomeContainer from "../home";
 import {
+  camposCompletos,
   validarTamanio,
   validarNumeroYLetra,
   formatoMailValido
@@ -19,30 +20,39 @@ class LoginContainer extends Component {
     event.preventDefault();
     debugger;
     if (
-      this.validarDatos(event.target.email.value, event.target.password.value)
+      this.validateData(event.target.email.value, event.target.password.value)
     ) {
       this.setState({ redirect: true });
+      window.localStorage.signIn = true;
     }
   };
 
-  validarDatos(email, password) {
+  validateData(email, password) {
     let ok = true;
-    if (!formatoMailValido(email)) {
-      this.setState({ emailError: "El formato del mail no es valido" });
-      ok = false;
-    }
-    if (!validarTamanio(password)) {
+    if (!camposCompletos(email, password)) {
       this.setState({
-        passwordError: "La contraseña debe tener entre 8 y 52 caracteres"
+        emailError: null,
+        passwordError: "Todos los campos deben estar completos"
       });
       ok = false;
     } else {
-      if (!validarNumeroYLetra(password)) {
+      if (!formatoMailValido(email)) {
+        this.setState({ emailError: "El formato del mail no es valido" });
+        ok = false;
+      }
+      if (!validarTamanio(password)) {
         this.setState({
-          passwordError:
-            "La contraseña debe tener contener un numero y una letra"
+          passwordError: "La contraseña debe tener entre 8 y 52 caracteres"
         });
         ok = false;
+      } else {
+        if (!validarNumeroYLetra(password)) {
+          this.setState({
+            passwordError:
+              "La contraseña debe tener contener un numero y una letra"
+          });
+          ok = false;
+        }
       }
     }
     return ok;

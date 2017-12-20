@@ -6,3 +6,6 @@ export const validarNumeroYLetra = password =>
 
 export const formatoMailValido = mail =>
   /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i.test(mail);
+
+export const camposCompletos = (mail, password) =>
+  mail.length && password.length;
