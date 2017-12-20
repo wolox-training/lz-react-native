@@ -6,9 +6,8 @@ import ErrorMsg from "../../components/ErrorMsg";
 import { Redirect } from "react-router-dom";
 import { WBOOKS, INGRESAR, EMAIL, PASSWORD } from "./strings";
 
-const Login = ({ redirect, onSubmit, emailError, passwordError }) => (
+const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
-    {redirect ? <Redirect to="/" /> : <h1 />}
     <div className="logo">
       <img className="book" src={wBooks} />
       <h1 className="big_title">{WBOOKS}</h1>

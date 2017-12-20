@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Login from "./layout";
+import { Redirect } from "react-router-dom";
 import HomeContainer from "../home";
 import {
   validarTamanio,
@@ -48,7 +49,9 @@ class LoginContainer extends Component {
   }
 
   render() {
-    return (
+    return this.state.redirect ? (
+      <Redirect to="/" />
+    ) : (
       <Login
         redirect={this.state.redirect}
         onSubmit={this.handleSubmit}
