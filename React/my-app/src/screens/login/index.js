@@ -3,10 +3,17 @@ import Login from "./layout";
 import { Redirect } from "react-router-dom";
 import HomeContainer from "../home";
 import {
-  camposCompletos,
-  validarTamanio,
-  validarNumeroYLetra,
-  formatoMailValido
+  MAIL_ERROR,
+  FORM_INCOMPLETE,
+  PASSWORD_SIZE_ERROR,
+  PASSWORD_TYPE_ERROR
+} from "./strings";
+
+import {
+  formComplete,
+  validateSize,
+  validateNumberAndLetter,
+  validateEmail
 } from "../../utils/validations";
 
 class LoginContainer extends Component {
@@ -29,27 +36,26 @@ class LoginContainer extends Component {
 
   validateData(email, password) {
     let ok = true;
-    if (!camposCompletos(email, password)) {
+    if (!formComplete(email, password)) {
       this.setState({
         emailError: null,
-        passwordError: "Todos los campos deben estar completos"
+        passwordError: FORM_INCOMPLETE
       });
       ok = false;
     } else {
-      if (!formatoMailValido(email)) {
-        this.setState({ emailError: "El formato del mail no es valido" });
+      if (!validateEmail(email)) {
+        this.setState({ emailError: MAIL_ERROR });
         ok = false;
       }
-      if (!validarTamanio(password)) {
+      if (!validateSize(password)) {
         this.setState({
-          passwordError: "La contraseña debe tener entre 8 y 52 caracteres"
+          passwordError: PASSWORD_SIZE_ERROR
         });
         ok = false;
       } else {
-        if (!validarNumeroYLetra(password)) {
+        if (!validateNumberAndLetter(password)) {
           this.setState({
-            passwordError:
-              "La contraseña debe tener contener un numero y una letra"
+            passwordError: PASSWORD_TYPE_ERROR
           });
           ok = false;
         }
