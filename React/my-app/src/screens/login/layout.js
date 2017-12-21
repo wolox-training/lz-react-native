@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import "./styles.css";
 import wBooks from "../../assets/photos/wBooks.png";
-import { Link } from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg";
-import { Redirect } from "react-router-dom";
-import { WBOOKS, INGRESAR, EMAIL, PASSWORD } from "./strings";
+import { Link } from "react-router-dom";
+import { WBOOKS, INGRESAR, EMAIL, PASSWORD, SIGN_UP } from "./strings";
 
 const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
@@ -23,6 +22,11 @@ const Login = ({ onSubmit, emailError, passwordError }) => (
         {INGRESAR}
       </button>
     </form>
+    <Link to="/sign_up">
+      <button className="sign_up" type="button">
+        {SIGN_UP}
+      </button>
+    </Link>
   </div>
 );
 

@@ -1,0 +1,57 @@
+.sign_up_box {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 200px 0;
+}
+
+.sign_up_form {
+  align-items: center;
+  color: #4a4a4a;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.data {
+  background: #f4f4f4;
+  font-size: 16px;
+  height: 38px;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 541px;
+}
+
+.accept {
+  background: #00adee;
+  border-radius: 4px;
+  color: #fff;
+  height: 38px;
+  width: 175px;
+}
+
+.cancel {
+  background: #cccccc;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: 50px;
+  height: 38px;
+  width: 175px;
+}
+
+.decision_box {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.sign_up {
+  align-self: center;
+  background: #5cb85c;
+  border-radius: 4px;
+  width: 189px;
+  height: 44px;
+  color: #fff;
+}
