@@ -9,8 +9,6 @@ export const validateNumberAndLetter = password =>
     password
   );
 
-///[a-zA-Z]/i.test(password) || /[0-9]/i.test(password);
-
 export const validateEmail = mail =>
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
     mail

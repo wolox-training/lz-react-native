@@ -3,6 +3,7 @@ import "./styles.css";
 import wBooks from "../../assets/photos/wBooks.png";
 import ErrorMsg from "../../components/ErrorMsg";
 import { Link } from "react-router-dom";
+import Input from "../../components/Input";
 import {
   WBOOKS,
   INGRESAR,
@@ -19,18 +20,17 @@ import {
 const Login = ({ onSubmit, nameError, emailError, passwordError }) => (
   <div className="sign_up_box">
     <form className="sign_up_form" onSubmit={onSubmit}>
-      {NOMBRE}
-      <input name="name" className="data" type="text" />
-      {APELLIDO}
-      <input name="surname" className="data" type="text" />
+      <Input title={NOMBRE} name="name" type="text" />
+      <Input title={APELLIDO} name="surname" type="text" />
       <ErrorMsg message={nameError} />
-      {EMAIL}
-      <input name="email" className="data" type="email " />
+      <Input title={EMAIL} name="email" type="email" />
       <ErrorMsg message={emailError} />
-      {PASSWORD}
-      <input name="password" className="data" type="Password" />
-      {CONFIRMAR_PASSWORD}
-      <input name="confirm_password" className="data" type="Password" />
+      <Input title={PASSWORD} name="password" type="Password" />
+      <Input
+        title={CONFIRMAR_PASSWORD}
+        name="confirm_password"
+        type="Password"
+      />
       <ErrorMsg message={passwordError} />
       <div className="decision_box">
         <Link to="/login">

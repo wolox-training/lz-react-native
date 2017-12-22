@@ -8,7 +8,6 @@ const api = axios.create({
 export const getAccount = () => {};
 
 export const postAccount = (url, body, onSucces, onFailure) => {
-  debugger;
   return api
     .post(url, body)
     .then(response => (response.status === 200 ? onSucces() : onFailure()))

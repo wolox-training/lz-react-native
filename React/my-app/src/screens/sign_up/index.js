@@ -25,21 +25,13 @@ class SignUpContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    if (
-      this.validateData(
-        event.target.name.value,
-        event.target.surname.value,
-        event.target.email.value,
-        event.target.password.value,
-        event.target.confirm_password.value
-      )
-    ) {
-      this.setState({
-        nameError: null,
-        emailError: null,
-        passwordError: null
-      });
-    }
+    this.validateData(
+      event.target.name.value,
+      event.target.surname.value,
+      event.target.email.value,
+      event.target.password.value,
+      event.target.confirm_password.value
+    );
   };
 
   validateData(name, surname, email, password, confirm_password) {
@@ -54,10 +46,14 @@ class SignUpContainer extends Component {
       if (!validateOnlyLetters([name, surname])) {
         this.setState({ nameError: NAME_ERROR });
         ok = false;
+      } else {
+        this.setState({ nameError: null });
       }
       if (!validateEmail(email)) {
         this.setState({ emailError: MAIL_ERROR });
         ok = false;
+      } else {
+        this.setState({ emailError: null });
       }
       if (!validateSize(password)) {
         this.setState({
@@ -70,6 +66,8 @@ class SignUpContainer extends Component {
             passwordError: PASSWORD_TYPE_ERROR
           });
           ok = false;
+        } else {
+          this.setState({ passwordError: null });
         }
       }
     }

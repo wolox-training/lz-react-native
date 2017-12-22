@@ -51,7 +51,6 @@ class LoginContainer extends Component {
   };
 
   userFailure = () => {
-    debugger;
     this.setState({
       emailError: null,
       passwordError: "Invalid User"
