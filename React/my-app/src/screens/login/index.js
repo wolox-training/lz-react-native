@@ -6,7 +6,7 @@ import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
-  PASSWORD_TYPE_ERROR
+  PASSWORD_NUMBER_AND_LETTER_ERROR
 } from "./strings";
 
 import {
@@ -25,11 +25,14 @@ class LoginContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    debugger;
     if (
       this.validateData(event.target.email.value, event.target.password.value)
     ) {
-      this.setState({ redirect: true });
+      this.setState({
+        emailError: null,
+        passwordError: null,
+        redirect: true
+      });
       window.localStorage.signIn = true;
     }
   };
@@ -55,7 +58,7 @@ class LoginContainer extends Component {
       } else {
         if (!validateNumberAndLetter(password)) {
           this.setState({
-            passwordError: PASSWORD_TYPE_ERROR
+            passwordError: PASSWORD_NUMBER_AND_LETTER_ERROR
           });
           ok = false;
         }
