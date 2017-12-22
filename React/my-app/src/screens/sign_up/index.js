@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import SignUp from "./layout.js";
+import { Redirect } from "react-router-dom";
+import { postAccount } from "../../service/accounts";
 import {
   formComplete,
   validateSize,
@@ -12,7 +14,9 @@ import {
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
   PASSWORD_TYPE_ERROR,
-  NAME_ERROR
+  NAME_ERROR,
+  MAIL_IN_USE,
+  DIFFERENT_PASSWORD
 } from "./strings";
 
 class SignUpContainer extends Component {
@@ -69,13 +73,49 @@ class SignUpContainer extends Component {
         } else {
           this.setState({ passwordError: null });
         }
+        if (password != confirm_password) {
+          this.setState({ passwordError: DIFFERENT_PASSWORD });
+          ok = false;
+        } else {
+          this.setState({ passwordError: null });
+        }
       }
     }
-    return ok;
+    if (ok) {
+      this.addNewUser(name, surname, email, password, confirm_password);
+    }
   }
 
+  addNewUser(name, surname, email, password, confirm_password) {
+    postAccount(
+      "/users",
+      {
+        user: {
+          email: email,
+          password: password,
+          confirm_password: confirm_password,
+          first_name: name,
+          last_name: surname,
+          locale: "en"
+        }
+      },
+      this.onSuccess,
+      this.onFailure
+    );
+  }
+
+  onSuccess = () => {
+    this.setState({ redirect: true });
+  };
+
+  onFailure = () => {
+    this.setState({ emailError: MAIL_IN_USE });
+  };
+
   render() {
-    return (
+    return this.state.redirect ? (
+      <Redirect to="/login" />
+    ) : (
       <SignUp
         onSubmit={this.handleSubmit}
         nameError={this.state.nameError}

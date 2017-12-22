@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
-import HomeContainer from "../home";
 import { postAccount } from "../../service/accounts";
 import {
   MAIL_ERROR,
@@ -92,7 +91,6 @@ class LoginContainer extends Component {
       <Redirect to="/" />
     ) : (
       <Login
-        redirect={this.state.redirect}
         onSubmit={this.handleSubmit}
         emailError={this.state.emailError}
         passwordError={this.state.passwordError}
