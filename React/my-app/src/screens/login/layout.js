@@ -5,13 +5,11 @@ import Input from "../../components/Input";
 import ErrorMsg from "../../components/ErrorMsg";
 import { Link } from "react-router-dom";
 import { WBOOKS, INGRESAR, EMAIL, PASSWORD, SIGN_UP } from "./strings";
+import Logo from "../../components/Logo";
 
 const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
-    <div className="logo">
-      <img className="book" src={wBooks} />
-      <h1 className="big_title">{WBOOKS}</h1>
-    </div>
+    <Logo picture={wBooks} text={WBOOKS} />
     <form className="login_form" onSubmit={onSubmit}>
       <Input title={EMAIL} name="email" type="email" />
       <ErrorMsg message={emailError} />
