@@ -1,19 +1,16 @@
-//import axios from "axios";
-import { create } from "apisauce";
+import axios from "axios";
 
-const api = create({
+const api = axios.create({
   baseURL: "https://wbooks-api-stage.herokuapp.com/api/v1/",
   timeout: 15000
 });
 
-// const api = axios.create({
-//   baseURL: "https://wbooks-api-stage.herokuapp.com/api/v1/"
-// });
-
 export const getAccount = () => {};
 
 export const postAccount = (url, body, onSucces, onFailure) => {
+  debugger;
   return api
     .post(url, body)
-    .then(response => (response.ok ? onSucces() : onFailure()));
+    .then(response => (response.status === 200 ? onSucces() : onFailure()))
+    .catch(e => onFailure());
 };

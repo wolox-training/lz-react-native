@@ -43,10 +43,15 @@ class LoginContainer extends Component {
 
   userSucces = () => {
     window.localStorage.signIn = true;
-    this.setState({ redirect: true });
+    this.setState({
+      emailError: null,
+      passwordError: null,
+      redirect: true
+    });
   };
 
   userFailure = () => {
+    debugger;
     this.setState({
       emailError: null,
       passwordError: "Invalid User"
