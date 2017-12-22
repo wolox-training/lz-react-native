@@ -1,0 +1,12 @@
+.nav_box {
+  align-items: baseline;
+  align-self: flex-start;
+  box-shadow: 0px 10px 10px -10px;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 10px;
+}
+
+.profile {
+  align-self: flex-end;
+}

@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { WBOOKS, SELECCIONAR_FILTRO, TITULO, AUTOR } from "./strings.js";
 import Book from "../../components/Book/index.js";
+import Logo from "../../components/Logo";
+import wBooks from "../../assets/photos/wBooks.png";
 import "./styles.css";
 import defaultImg from "../../assets/photos/default.png";
+import NavBar from "../../components/NavBar";
 
 const Home = ({ data, onSelect, onInput }) => (
-  <div className="mainContainer">
-    <h1 className="main_title">{WBOOKS} </h1>
+  <div className="home_container">
+    <NavBar />
+    <Logo picture={wBooks} text={WBOOKS} />
     <form>
       <select className="selector" name="select" onChange={onSelect}>
         <option value="null">{SELECCIONAR_FILTRO}</option>
