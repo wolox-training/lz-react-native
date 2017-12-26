@@ -1,0 +1,47 @@
+.login_box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 200px 0;
+}
+
+.big_title {
+  font-size: 62px;
+}
+
+.book {
+  margin-right: 10px;
+}
+
+.login_form {
+  align-items: baseline;
+  color: #4a4a4a;
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+}
+
+.data {
+  background: #f4f4f4;
+  font-size: 16px;
+  height: 38px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 541px;
+}
+
+.enter {
+  align-self: center;
+  background: #e93939;
+  border-radius: 4px;
+  width: 189px;
+  height: 44px;
+  color: #fff;
+}
+
+.logo {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 60px;
+}
