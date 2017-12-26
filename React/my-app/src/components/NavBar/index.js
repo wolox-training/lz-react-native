@@ -11,11 +11,10 @@ class NavBarContainer extends Component {
   };
 
   render() {
-    return (
-      <NavBar
-        onPictureClick={this.handleOnClick}
-        show={this.state.showDropdown}
-      />
+    return this.state.showDropdown ? (
+      <NavBar onPictureClick={this.handleOnClick} show="show" />
+    ) : (
+      <NavBar onPictureClick={this.handleOnClick} show="unshow" />
     );
   }
 }

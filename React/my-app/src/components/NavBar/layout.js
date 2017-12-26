@@ -7,7 +7,7 @@ import newBook from "../../assets/photos/newBook.png";
 import notificationBell from "../../assets/photos/notificationBell.png";
 import { WBOOKS, LOGO_SIZE } from "./strings";
 import Logo from "../Logo";
-import Dropdown from "../Dropdown";
+import DropdownContainer from "../Dropdown";
 
 const NavBar = ({ onPictureClick, show }) => (
   <div className="nav_box">
@@ -24,7 +24,7 @@ const NavBar = ({ onPictureClick, show }) => (
         src={profilePicture}
         onClick={onPictureClick}
       />
-      {/* <Dropdown show={show} /> */}
+      <DropdownContainer show={show} />
     </div>
   </div>
 );
