@@ -24,10 +24,13 @@
 
 .sign_up {
   align-self: center;
-  text-align: center;
   background: #5cb85c;
   border-radius: 4px;
-  width: 189px;
-  height: 44px;
   color: #fff;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  height: 44px;
+  text-align: center;
+  width: 189px;
 }

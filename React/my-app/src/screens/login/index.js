@@ -24,10 +24,9 @@ class LoginContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    if (
-      this.validateData(event.target.email.value, event.target.password.value)
-    ) {
-      this.validateUser(event.target.email.value, event.target.password.value);
+    const { email, password } = event.target;
+    if (this.validateData(email.value, password.value)) {
+      this.validateUser(email.value, password.value);
     }
   };
 

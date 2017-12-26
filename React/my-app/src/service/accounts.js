@@ -1,7 +1,8 @@
 import axios from "axios";
+import { base_url } from "../config/enviorment";
 
 const api = axios.create({
-  baseURL: "https://wbooks-api-stage.herokuapp.com/api/v1/",
+  baseURL: base_url,
   timeout: 15000
 });
 

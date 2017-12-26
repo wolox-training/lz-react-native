@@ -29,12 +29,13 @@ class SignUpContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { name, surname, email, password, confirm_password } = event.target;
     this.validateData(
-      event.target.name.value,
-      event.target.surname.value,
-      event.target.email.value,
-      event.target.password.value,
-      event.target.confirm_password.value
+      name.value,
+      surname.value,
+      email.value,
+      password.value,
+      confirm_password.value
     );
   };
 

@@ -33,10 +33,8 @@ const Login = ({ onSubmit, nameError, emailError, passwordError }) => (
         error={passwordError}
       />
       <div className="decision_box">
-        <Link to="/login">
-          <button className="cancel" type="button">
-            {CANCELAR}
-          </button>
+        <Link className="cancel" to="/login">
+          {CANCELAR}
         </Link>
         <button className="accept" type="submit">
           {ACEPTAR}

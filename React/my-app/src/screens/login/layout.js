@@ -22,10 +22,8 @@ const Login = ({ onSubmit, emailError, passwordError }) => (
         {INGRESAR}
       </button>
     </form>
-    <Link to="/sign_up">
-      <button className="sign_up" type="button">
-        {SIGN_UP}
-      </button>
+    <Link className="sign_up" to="/sign_up">
+      {SIGN_UP}
     </Link>
   </div>
 );
