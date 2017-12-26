@@ -6,6 +6,7 @@ export const PASSWORD = "Password";
 export const CONFIRMAR_PASSWORD = "Confirmar Password";
 export const ACEPTAR = "Aceptar";
 export const CANCELAR = "Cancelar";
+export const LOGO_SIZE = "big";
 export const MAIL_ERROR = "El formato del mail no es valido";
 export const MAIL_IN_USE = "Este mail ya esta en uso";
 export const FORM_INCOMPLETE = "Todos los campos deben estar completos";

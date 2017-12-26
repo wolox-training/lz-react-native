@@ -15,12 +15,13 @@ import {
   NOMBRE,
   APELLIDO,
   ACEPTAR,
+  LOGO_SIZE,
   CANCELAR
 } from "./strings";
 
 const Login = ({ onSubmit, nameError, emailError, passwordError }) => (
   <div className="sign_up_box">
-    <Logo picture={wBooks} text={WBOOKS} />
+    <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form className="sign_up_form" onSubmit={onSubmit}>
       <Input title={NOMBRE} name="name" type="text" />
       <Input title={APELLIDO} name="surname" type="text" />

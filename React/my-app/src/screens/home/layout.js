@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { WBOOKS, SELECCIONAR_FILTRO, TITULO, AUTOR } from "./strings.js";
+import {
+  WBOOKS,
+  SELECCIONAR_FILTRO,
+  TITULO,
+  AUTOR,
+  LOGO_SIZE
+} from "./strings.js";
 import Book from "../../components/Book/index.js";
 import Logo from "../../components/Logo";
 import wBooks from "../../assets/photos/wBooks.png";
@@ -11,7 +17,7 @@ import NavBar from "../../components/NavBar";
 const Home = ({ data, onSelect, onInput }) => (
   <div className="home_container">
     <NavBar />
-    <Logo picture={wBooks} text={WBOOKS} />
+    <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form>
       <select className="selector" name="select" onChange={onSelect}>
         <option value="null">{SELECCIONAR_FILTRO}</option>
