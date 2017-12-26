@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SignUp from "./layout.js";
 import { Redirect } from "react-router-dom";
-import { postAccount } from "../../service/accounts";
+import { postAccount, newUser } from "../../service/accounts";
 import {
   formComplete,
   validateSize,
@@ -87,8 +87,7 @@ class SignUpContainer extends Component {
   }
 
   addNewUser(name, surname, email, password, confirm_password) {
-    postAccount(
-      "/users",
+    newUser(
       {
         user: {
           email: email,

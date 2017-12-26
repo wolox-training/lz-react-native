@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
-import { postAccount } from "../../service/accounts";
+import { postAccount, checkUser } from "../../service/accounts";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
@@ -32,8 +32,7 @@ class LoginContainer extends Component {
   };
 
   validateUser(email, password) {
-    postAccount(
-      "/users/sessions",
+    checkUser(
       { email: email, password: password },
       this.userSucces,
       this.userFailure

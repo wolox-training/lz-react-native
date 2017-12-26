@@ -16,3 +16,11 @@ export const postAccount = (url, body, onSuccess, onFailure) => {
     )
     .catch(e => onFailure());
 };
+
+export const checkUser = (body, onSuccess, onFailure) => {
+  return postAccount("/users/sessions", body, onSuccess, onFailure);
+};
+
+export const newUser = (body, onSuccess, onFailure) => {
+  return postAccount("/users", body, onSuccess, onFailure);
+};

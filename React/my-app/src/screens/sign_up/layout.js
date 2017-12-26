@@ -23,17 +23,15 @@ const Login = ({ onSubmit, nameError, emailError, passwordError }) => (
     <Logo picture={wBooks} text={WBOOKS} />
     <form className="sign_up_form" onSubmit={onSubmit}>
       <Input title={NOMBRE} name="name" type="text" />
-      <Input title={APELLIDO} name="surname" type="text" />
-      <ErrorMsg message={nameError} />
-      <Input title={EMAIL} name="email" type="email" />
-      <ErrorMsg message={emailError} />
+      <Input title={APELLIDO} name="surname" type="text" error={nameError} />
+      <Input title={EMAIL} name="email" type="email" error={emailError} />
       <Input title={PASSWORD} name="password" type="Password" />
       <Input
         title={CONFIRMAR_PASSWORD}
         name="confirm_password"
         type="Password"
+        error={passwordError}
       />
-      <ErrorMsg message={passwordError} />
       <div className="decision_box">
         <Link to="/login">
           <button className="cancel" type="button">

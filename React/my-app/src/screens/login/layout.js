@@ -11,10 +11,13 @@ const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
     <Logo picture={wBooks} text={WBOOKS} />
     <form className="login_form" onSubmit={onSubmit}>
-      <Input title={EMAIL} name="email" type="email" />
-      <ErrorMsg message={emailError} />
-      <Input title={PASSWORD} name="password" type="Password" />
-      <ErrorMsg message={passwordError} />
+      <Input title={EMAIL} name="email" type="email" error={emailError} />
+      <Input
+        title={PASSWORD}
+        name="password"
+        type="Password"
+        error={passwordError}
+      />
       <button className="enter" type="submit">
         {INGRESAR}
       </button>
