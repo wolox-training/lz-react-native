@@ -6,7 +6,7 @@ import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
-  PASSWORD_TYPE_ERROR
+  PASSWORD_NUMBER_AND_LETTER_ERROR
 } from "./strings";
 import {
   formComplete,
@@ -77,7 +77,7 @@ class LoginContainer extends Component {
       } else {
         if (!validateNumberAndLetter(password)) {
           this.setState({
-            passwordError: PASSWORD_TYPE_ERROR
+            passwordError: PASSWORD_NUMBER_AND_LETTER_ERROR
           });
           ok = false;
         }
