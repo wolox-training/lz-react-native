@@ -12,11 +12,11 @@ import Logo from "../../components/Logo";
 import wBooks from "../../assets/photos/wBooks.png";
 import "./styles.css";
 import defaultImg from "../../assets/photos/default.png";
-import NavBar from "../../components/NavBar";
+import NavBarContainer from "../../components/NavBar";
 
 const Home = ({ data, onSelect, onInput }) => (
   <div className="home_container">
-    <NavBar />
+    <NavBarContainer />
     <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form>
       <select className="selector" name="select" onChange={onSelect}>

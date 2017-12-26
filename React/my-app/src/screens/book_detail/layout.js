@@ -8,7 +8,7 @@ import Comment from "../../components/Comment";
 import NewComment from "../../components/New_Comment";
 import bigDefaultImg from "../../assets/photos/bigDefault.png";
 import profilePicture from "../../assets/photos/profilePicture.png";
-import NavBar from "../../components/NavBar";
+import NavBarContainer from "../../components/NavBar";
 import {
   ALQUILAR,
   SUGERENCIAS,
@@ -21,7 +21,7 @@ import strings from "./strings";
 
 const Book_detail = ({ image, title, author, year, genre }) => (
   <div className="mainContainer">
-    <NavBar />
+    <NavBarContainer />
     <Link className="back" to="/">
       {VOLVER}
     </Link>
