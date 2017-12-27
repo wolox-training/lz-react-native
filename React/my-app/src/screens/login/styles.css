@@ -5,29 +5,12 @@
   padding: 200px 0;
 }
 
-.big_title {
-  font-size: 62px;
-}
-
-.book {
-  margin-right: 10px;
-}
-
 .login_form {
   align-items: baseline;
   color: #4a4a4a;
   display: flex;
   flex-flow: column wrap;
   margin-bottom: 20px;
-}
-
-.data {
-  background: #f4f4f4;
-  font-size: 16px;
-  height: 38px;
-  margin-bottom: 20px;
-  text-align: center;
-  width: 541px;
 }
 
 .enter {
@@ -39,9 +22,15 @@
   color: #fff;
 }
 
-.logo {
-  align-items: baseline;
+.sign_up {
+  align-self: center;
+  background: #5cb85c;
+  border-radius: 4px;
+  color: #fff;
   display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 60px;
+  flex-flow: column wrap;
+  justify-content: center;
+  height: 44px;
+  text-align: center;
+  width: 189px;
 }

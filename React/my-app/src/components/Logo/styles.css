@@ -1,0 +1,14 @@
+.book {
+  margin-right: 10px;
+}
+
+.logo {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 60px;
+}
+
+.big_title {
+  font-size: 62px;
+}
