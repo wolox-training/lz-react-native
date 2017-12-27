@@ -8,8 +8,14 @@ import notificationBell from "../../assets/photos/notificationBell.png";
 import { WBOOKS, LOGO_SIZE } from "./strings";
 import Logo from "../Logo";
 import DropdownContainer from "../Dropdown";
+import Notification from "../Notification";
 
-const NavBar = ({ onPictureClick, show }) => (
+const NavBar = ({
+  onPictureClick,
+  showDropdown,
+  showNotification,
+  onNotificationClick
+}) => (
   <div className="nav_box">
     <div className="logo_box">
       <Link to="/">
@@ -17,14 +23,19 @@ const NavBar = ({ onPictureClick, show }) => (
       </Link>
     </div>
     <div className="images_box">
-      <img className="nav_image" src={notificationBell} />
+      <img
+        className="nav_image"
+        src={notificationBell}
+        onClick={onNotificationClick}
+      />
+      <Notification show={showNotification ? "show" : "unshow"} />
       <img className="nav_image" src={newBook} />
       <img
         className="nav_image"
         src={profilePicture}
         onClick={onPictureClick}
       />
-      <DropdownContainer show={show} />
+      <DropdownContainer show={showDropdown ? "show" : "unshow"} />
     </div>
   </div>
 );

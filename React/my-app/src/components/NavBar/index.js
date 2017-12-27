@@ -4,17 +4,37 @@ import { Link } from "react-router-dom";
 import NavBar from "./layout";
 
 class NavBarContainer extends Component {
-  state = { showDropdown: false };
+  state = { showDropdown: false, showNotification: false };
 
   handleOnClick = () => {
-    this.setState({ showDropdown: !this.state.showDropdown });
+    this.setState({
+      showDropdown: !this.state.showDropdown,
+      showNotification: false
+    });
+  };
+
+  handleOnNotification = () => {
+    this.setState({
+      showNotification: !this.state.showNotification,
+      showDropdown: false
+    });
+  };
+
+  handleUnshow = () => {
+    this.setState({
+      showNotification: false,
+      showDropdown: false
+    });
   };
 
   render() {
-    return this.state.showDropdown ? (
-      <NavBar onPictureClick={this.handleOnClick} show="show" />
-    ) : (
-      <NavBar onPictureClick={this.handleOnClick} show="unshow" />
+    return (
+      <NavBar
+        onPictureClick={this.handleOnClick}
+        onNotificationClick={this.handleOnNotification}
+        showDropdown={this.state.showDropdown}
+        showNotification={this.state.showNotification}
+      />
     );
   }
 }

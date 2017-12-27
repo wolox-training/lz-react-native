@@ -4,8 +4,10 @@ import { PERFIL, CERRAR_SESION } from "./strings";
 
 const Dropdown = ({ show, logOut }) => (
   <div className={`${show}_dropdown`}>
-    <a>{PERFIL}</a>
-    <a onClick={logOut}>{CERRAR_SESION}</a>
+    <a className="item">{PERFIL}</a>
+    <a className="item" onClick={logOut}>
+      {CERRAR_SESION}
+    </a>
   </div>
 );
 
