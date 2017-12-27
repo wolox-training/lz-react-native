@@ -1,10 +1,4 @@
-import axios from "axios";
-import { base_url } from "../config/enviorment";
-
-const api = axios.create({
-  baseURL: base_url,
-  timeout: 15000
-});
+import { api } from "../config/api";
 
 export const postAccount = (url, body, onSuccess, onFailure) => {
   return api
