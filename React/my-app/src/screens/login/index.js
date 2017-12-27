@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
-import HomeContainer from "../home";
+import { postAccount, checkUser } from "../../service/accounts";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
   PASSWORD_NUMBER_AND_LETTER_ERROR
 } from "./strings";
-
 import {
   formComplete,
   validateSize,
@@ -25,21 +24,39 @@ class LoginContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    if (
-      this.validateData(event.target.email.value, event.target.password.value)
-    ) {
-      this.setState({
-        emailError: null,
-        passwordError: null,
-        redirect: true
-      });
-      window.localStorage.signIn = true;
+    const { email, password } = event.target;
+    if (this.validateData(email.value, password.value)) {
+      this.validateUser(email.value, password.value);
     }
+  };
+
+  validateUser(email, password) {
+    checkUser(
+      { email: email, password: password },
+      this.userSucces,
+      this.userFailure
+    );
+  }
+
+  userSucces = () => {
+    window.localStorage.signIn = true;
+    this.setState({
+      emailError: null,
+      passwordError: null,
+      redirect: true
+    });
+  };
+
+  userFailure = () => {
+    this.setState({
+      emailError: null,
+      passwordError: "Invalid User"
+    });
   };
 
   validateData(email, password) {
     let ok = true;
-    if (!formComplete(email, password)) {
+    if (!formComplete([email, password])) {
       this.setState({
         emailError: null,
         passwordError: FORM_INCOMPLETE
@@ -72,7 +89,6 @@ class LoginContainer extends Component {
       <Redirect to="/" />
     ) : (
       <Login
-        redirect={this.state.redirect}
         onSubmit={this.handleSubmit}
         emailError={this.state.emailError}
         passwordError={this.state.passwordError}
