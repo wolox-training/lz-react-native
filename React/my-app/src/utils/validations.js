@@ -3,7 +3,7 @@ export const validateSize = password =>
 
 export const validateOnlyLetters = field => !/[0-9]/i.test(field);
 
-export const validateNumberAndLetter = password => /^[a-zA-Z]$/i.test(password);
+export const validateNumberAndLetter = password => true; // /^[a-zA-Z]$/i.test(password);
 
 export const validateEmail = mail =>
   /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i.test(mail);

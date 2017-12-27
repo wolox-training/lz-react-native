@@ -1,12 +1,13 @@
 import { api } from "../config/api";
 
 export const postAccount = (url, body, onSuccess, onFailure) => {
+  debugger;
   return api
     .post(url, body)
     .then(
       response =>
         response.status >= 200 && response.status < 300
-          ? onSuccess()
+          ? onSuccess(response)
           : onFailure()
     )
     .catch(e => onFailure());
