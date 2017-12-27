@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
-import { postAccount } from "../../service/accounts";
+import { postAccount, checkUser } from "../../service/accounts";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
-  PASSWORD_TYPE_ERROR
+  PASSWORD_NUMBER_AND_LETTER_ERROR
 } from "./strings";
 import {
   formComplete,
@@ -24,16 +24,14 @@ class LoginContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    if (
-      this.validateData(event.target.email.value, event.target.password.value)
-    ) {
-      this.validateUser(event.target.email.value, event.target.password.value);
+    const { email, password } = event.target;
+    if (this.validateData(email.value, password.value)) {
+      this.validateUser(email.value, password.value);
     }
   };
 
   validateUser(email, password) {
-    postAccount(
-      "/users/sessions",
+    checkUser(
       { email: email, password: password },
       this.userSucces,
       this.userFailure
@@ -77,7 +75,7 @@ class LoginContainer extends Component {
       } else {
         if (!validateNumberAndLetter(password)) {
           this.setState({
-            passwordError: PASSWORD_TYPE_ERROR
+            passwordError: PASSWORD_NUMBER_AND_LETTER_ERROR
           });
           ok = false;
         }

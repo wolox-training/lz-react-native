@@ -18,18 +18,19 @@ const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
     <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form className="login_form" onSubmit={onSubmit}>
-      <Input title={EMAIL} name="email" type="email" />
-      <ErrorMsg message={emailError} />
-      <Input title={PASSWORD} name="password" type="Password" />
-      <ErrorMsg message={passwordError} />
+      <Input title={EMAIL} name="email" type="email" error={emailError} />
+      <Input
+        title={PASSWORD}
+        name="password"
+        type="Password"
+        error={passwordError}
+      />
       <button className="enter" type="submit">
         {INGRESAR}
       </button>
     </form>
-    <Link to="/sign_up">
-      <button className="sign_up" type="button">
-        {SIGN_UP}
-      </button>
+    <Link className="sign_up" to="/sign_up">
+      {SIGN_UP}
     </Link>
   </div>
 );

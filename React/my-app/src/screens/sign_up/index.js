@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SignUp from "./layout.js";
 import { Redirect } from "react-router-dom";
-import { postAccount } from "../../service/accounts";
+import { postAccount, newUser } from "../../service/accounts";
 import {
   formComplete,
   validateSize,
@@ -29,12 +29,13 @@ class SignUpContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { name, surname, email, password, confirm_password } = event.target;
     this.validateData(
-      event.target.name.value,
-      event.target.surname.value,
-      event.target.email.value,
-      event.target.password.value,
-      event.target.confirm_password.value
+      name.value,
+      surname.value,
+      email.value,
+      password.value,
+      confirm_password.value
     );
   };
 
@@ -87,8 +88,7 @@ class SignUpContainer extends Component {
   }
 
   addNewUser(name, surname, email, password, confirm_password) {
-    postAccount(
-      "/users",
+    newUser(
       {
         user: {
           email: email,
