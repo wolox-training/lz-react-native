@@ -1,8 +1,7 @@
 export const validateSize = password =>
   7 < password.length && password.length < 53;
 
-export const validateOnlyLetters = fields =>
-  fields.every(field => !/[0-9]/i.test(field));
+export const validateOnlyLetters = field => !/[0-9]/i.test(field);
 
 export const validateNumberAndLetter = password => /^[a-zA-Z]$/i.test(password);
 

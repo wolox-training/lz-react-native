@@ -8,10 +8,25 @@
   border: 1px solid #f2f2f2;
   padding: 10px;
   position: absolute;
-  top: 200px;
+  top: 100px;
+  right: 50px;
+}
+
+.portrait {
+  margin-right: 20px;
 }
 
 .item {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 20px;
+}
+
+.notification {
+  align-items: baseline;
+  display: flex;
+  flex-flow: column wrap;
 }
 
 .unshow_notification {

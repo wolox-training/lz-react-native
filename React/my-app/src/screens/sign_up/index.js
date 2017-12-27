@@ -15,6 +15,7 @@ import {
   PASSWORD_SIZE_ERROR,
   PASSWORD_TYPE_ERROR,
   NAME_ERROR,
+  SURNAME_ERROR,
   MAIL_IN_USE,
   DIFFERENT_PASSWORD
 } from "./strings";
@@ -22,6 +23,7 @@ import {
 class SignUpContainer extends Component {
   state = {
     nameError: null,
+    surnameError: null,
     emailError: null,
     passwordError: null,
     redirect: false
@@ -48,11 +50,17 @@ class SignUpContainer extends Component {
       });
       ok = false;
     } else {
-      if (!validateOnlyLetters([name, surname])) {
+      if (!validateOnlyLetters(name)) {
         this.setState({ nameError: NAME_ERROR });
         ok = false;
       } else {
         this.setState({ nameError: null });
+      }
+      if (!validateOnlyLetters(surname)) {
+        this.setState({ surnameError: SURNAME_ERROR });
+        ok = false;
+      } else {
+        this.setState({ surnameError: null });
       }
       if (!validateEmail(email)) {
         this.setState({ emailError: MAIL_ERROR });
@@ -119,6 +127,7 @@ class SignUpContainer extends Component {
       <SignUp
         onSubmit={this.handleSubmit}
         nameError={this.state.nameError}
+        surnameError={this.state.surnameError}
         emailError={this.state.emailError}
         passwordError={this.state.passwordError}
       />

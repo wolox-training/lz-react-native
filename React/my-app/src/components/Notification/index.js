@@ -7,16 +7,16 @@ import { TIEMPO, TITULO, AUTOR, DISPONIBILIDAD, FECHA } from "./strings";
 const Notification = ({ show }) => (
   <div className={`${show}_notification`}>
     <a className="item">
-      <div>
-        <img src={defaultImg} />
+      <img src={defaultImg} className="portrait" />
+      <div className="notification">
         <h1>{DISPONIBILIDAD}</h1>
         <h1>{TITULO}</h1>
         <h1>{AUTOR}</h1>
       </div>
     </a>
     <a className="item">
-      <div>
-        <img src={defaultImg} />
+      <img src={defaultImg} className="portrait" />
+      <div className="notification">
         <h1>{TIEMPO}</h1>
         <h1>{TITULO}</h1>
         <h1>{AUTOR}</h1>

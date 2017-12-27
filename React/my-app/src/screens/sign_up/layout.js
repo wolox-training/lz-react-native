@@ -19,14 +19,25 @@ import {
   CANCELAR
 } from "./strings";
 
-const Login = ({ onSubmit, nameError, emailError, passwordError }) => (
+const Login = ({
+  onSubmit,
+  nameError,
+  surnameError,
+  emailError,
+  passwordError
+}) => (
   <div className="sign_up_box">
     <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form className="sign_up_form" onSubmit={onSubmit}>
-      <Input title={NOMBRE} name="name" type="text" />
-      <Input title={APELLIDO} name="surname" type="text" error={nameError} />
+      <Input title={NOMBRE} name="name" type="text" error={nameError} />
+      <Input title={APELLIDO} name="surname" type="text" error={surnameError} />
       <Input title={EMAIL} name="email" type="email" error={emailError} />
-      <Input title={PASSWORD} name="password" type="Password" />
+      <Input
+        title={PASSWORD}
+        name="password"
+        type="Password"
+        error={passwordError}
+      />
       <Input
         title={CONFIRMAR_PASSWORD}
         name="confirm_password"
