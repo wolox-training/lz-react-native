@@ -4,12 +4,19 @@ import wBooks from "../../assets/photos/wBooks.png";
 import Input from "../../components/Input";
 import ErrorMsg from "../../components/ErrorMsg";
 import { Link } from "react-router-dom";
-import { WBOOKS, INGRESAR, EMAIL, PASSWORD, SIGN_UP } from "./strings";
+import {
+  WBOOKS,
+  INGRESAR,
+  EMAIL,
+  PASSWORD,
+  SIGN_UP,
+  LOGO_SIZE
+} from "./strings";
 import Logo from "../../components/Logo";
 
 const Login = ({ onSubmit, emailError, passwordError }) => (
   <div className="login_box">
-    <Logo picture={wBooks} text={WBOOKS} />
+    <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
     <form className="login_form" onSubmit={onSubmit}>
       <Input title={EMAIL} name="email" type="email" error={emailError} />
       <Input
