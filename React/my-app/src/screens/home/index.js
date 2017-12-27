@@ -11,15 +11,11 @@ class HomeContainer extends Component {
   }
 
   getBooks = () => {
-    getBookGallery(this.loadBooks, this.failure);
+    getBookGallery(this.loadBooks);
   };
 
   loadBooks = response => {
     this.setState({ books: response.data, gallery: response.data });
-  };
-
-  failure = () => {
-    console.log("Request Failed");
   };
 
   setSearchType = search => {

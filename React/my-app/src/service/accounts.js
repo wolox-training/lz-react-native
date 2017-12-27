@@ -1,7 +1,6 @@
 import { api } from "../config/api";
 
 export const postAccount = (url, body, onSuccess, onFailure) => {
-  debugger;
   return api
     .post(url, body)
     .then(

@@ -17,11 +17,10 @@ class BookDetailContainer extends Component {
   }
 
   getBook() {
-    getBookInfo(this.selectBook, this.failure, this.props.match.params.id);
+    getBookInfo(this.props.match.params.id, this.selectBook);
   }
 
   selectBook = response => {
-    console.log(response);
     const book = response.data;
     this.setState({
       author: book.author,
@@ -30,10 +29,6 @@ class BookDetailContainer extends Component {
       year: book.year,
       image: book.image_url
     });
-  };
-
-  failure = () => {
-    console.log("Book missing");
   };
 
   render() {
