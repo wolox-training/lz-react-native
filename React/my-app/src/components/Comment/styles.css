@@ -1,0 +1,20 @@
+.user_name {
+  color: #000000;
+  font-weight: Bold;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 10px;
+}
+
+.comment_box {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.comment_text {
+  line-height: 19px;
+  margin-bottom: 20px;
+  max-width: 679px;
+  font-size: 14px;
+  color: #999999;
+}

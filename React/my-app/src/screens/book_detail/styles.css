@@ -1,0 +1,111 @@
+.mainContainer {
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  padding: 70px 0;
+}
+
+.back {
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 50px;
+}
+
+.center {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column wrap;
+}
+
+.main_book {
+  align-self: flex-start;
+  display: flex;
+  margin-right: 21px;
+  height: 272px;
+  width: 191px;
+}
+
+.book_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.other_info {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.description {
+  line-height: 19px;
+  color: #999999;
+  margin-bottom: 41px;
+  max-width: 563px;
+}
+
+.description_box {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.info {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 20px;
+}
+
+.suggest {
+  align-items: flex-start;
+  display: row flex;
+  margin-bottom: 20px;
+}
+
+.comments {
+  align-items: baseline;
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+.barrier {
+  border: 1px solid #00adee;
+  height: 1px;
+  margin-bottom: 20px;
+  width: 799px;
+}
+
+.topic {
+  align-self: flex-start;
+  color: #a5cd39;
+  font-weight: Bold;
+  font-size: 20px;
+  line-height: 19px;
+  margin-bottom: 20px;
+}
+
+.tiny_books {
+  display: flex;
+  margin-right: 54px;
+  width: 87px;
+  height: 124px;
+}
+
+.suggest_gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+.rent_button {
+  background: #00adee;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  height: 38px;
+  width: 192px;
+}

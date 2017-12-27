@@ -1,0 +1,36 @@
+.login_box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 200px 0;
+}
+
+.login_form {
+  align-items: baseline;
+  color: #4a4a4a;
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+}
+
+.enter {
+  align-self: center;
+  background: #e93939;
+  border-radius: 4px;
+  width: 189px;
+  height: 44px;
+  color: #fff;
+}
+
+.sign_up {
+  align-self: center;
+  background: #5cb85c;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  height: 44px;
+  text-align: center;
+  width: 189px;
+}

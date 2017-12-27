@@ -1,0 +1,32 @@
+.big_book {
+  margin-right: 10px;
+}
+
+.big_logo {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 60px;
+}
+
+.big_title {
+  font-size: 62px;
+}
+
+.small_logo {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.small_book {
+  height: 42px;
+  margin-right: 10px;
+  width: 50px;
+}
+
+.small_title {
+  font-size: 35px;
+  height: 42px;
+  width: 123px;
+}
