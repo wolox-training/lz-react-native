@@ -6,7 +6,7 @@ export const postAccount = (url, body, onSuccess, onFailure) => {
     .then(
       response =>
         response.status >= 200 && response.status < 300
-          ? onSuccess()
+          ? onSuccess(response)
           : onFailure()
     )
     .catch(e => onFailure());
