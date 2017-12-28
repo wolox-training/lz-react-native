@@ -1,10 +1,22 @@
 import React, { Component } from "react";
-import data from "../../config/data.json";
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
+import { getBookGallery, getBookInfo } from "../../service/books";
 
 class HomeContainer extends Component {
-  state = { books: data, searchType: null };
+  state = { books: [], gallery: [], searchType: null };
+
+  componentDidMount() {
+    this.getBooks();
+  }
+
+  getBooks = () => {
+    getBookGallery(this.loadBooks);
+  };
+
+  loadBooks = response => {
+    this.setState({ books: response.data, gallery: response.data });
+  };
 
   setSearchType = search => {
     const newSearchType = search.target.value;
@@ -12,17 +24,18 @@ class HomeContainer extends Component {
   };
 
   filterBooks = filterWord => {
+    const data = this.state.books;
     const word = filterWord.nativeEvent.target.value;
     const type = this.state.searchType;
     if (type != "null") {
       this.setState({
-        books: data.filter(book =>
+        gallery: data.filter(book =>
           book[type].toLowerCase().includes(word.toLowerCase())
         )
       });
     } else {
       this.setState({
-        books: data.filter(
+        gallery: data.filter(
           book =>
             book.title.toLowerCase().includes(word.toLowerCase()) ||
             book.author.toLowerCase().includes(word.toLowerCase())
@@ -34,7 +47,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <Home
-        data={this.state.books}
+        data={this.state.gallery}
         onSelect={this.setSearchType}
         onInput={this.filterBooks}
       />

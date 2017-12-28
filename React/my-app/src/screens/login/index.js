@@ -38,8 +38,8 @@ class LoginContainer extends Component {
     );
   }
 
-  userSucces = () => {
-    window.localStorage.signIn = true;
+  userSucces = response => {
+    window.localStorage.token = response.data.access_token;
     this.setState({
       emailError: null,
       passwordError: null,

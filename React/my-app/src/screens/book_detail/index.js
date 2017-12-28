@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import defaultImg from "../../assets/photos/bigDefault.png";
 import Book_detail from "./layout.js";
-import data from "../../config/data.json";
+import { getBookInfo } from "../../service/books";
 
 class BookDetailContainer extends Component {
   state = {
@@ -13,11 +13,15 @@ class BookDetailContainer extends Component {
   };
 
   componentDidMount() {
-    this.selectBook();
+    this.getBook();
   }
 
-  selectBook() {
-    const book = data.find(this.sameBook);
+  getBook() {
+    getBookInfo(this.props.match.params.id, this.selectBook);
+  }
+
+  selectBook = response => {
+    const book = response.data;
     this.setState({
       author: book.author,
       title: book.title,
@@ -25,10 +29,6 @@ class BookDetailContainer extends Component {
       year: book.year,
       image: book.image_url
     });
-  }
-
-  sameBook = element => {
-    return element.id === parseInt(this.props.match.params.id);
   };
 
   render() {
