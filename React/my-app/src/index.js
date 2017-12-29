@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./config/equalizer.css";
 import Router from "./components/Route/index";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Router />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

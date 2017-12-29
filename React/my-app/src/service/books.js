@@ -4,17 +4,21 @@ const failure = () => {
   console.log("Request Failed");
 };
 
+// export const getBooks = (url, onSuccess, onFailure) => {
+//   api
+//     .get(url)
+//     .then(
+//       response =>
+//         response.status >= 200 && response.status < 300
+//           ? onSuccess(response)
+//           : onFailure()
+//     )
+//     .catch(e => onFailure());
+//   delete api.defaults.headers.common["authorization"];
+// };
+
 export const getBooks = (url, onSuccess, onFailure) => {
-  api
-    .get(url)
-    .then(
-      response =>
-        response.status >= 200 && response.status < 300
-          ? onSuccess(response)
-          : onFailure()
-    )
-    .catch(e => onFailure());
-  delete api.defaults.headers.common["authorization"];
+  return api.get(url);
 };
 
 export const getBookGallery = (onSuccess, onFailure = failure) => {

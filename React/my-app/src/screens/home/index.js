@@ -1,22 +1,21 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
 import { getBookGallery, getBookInfo } from "../../service/books";
+import { getBooks } from "../../redux/book/actions";
 
 class HomeContainer extends Component {
-  state = { books: [], gallery: [], searchType: null };
+  state = { bookList: [], gallery: [], searchType: null };
 
-  componentDidMount() {
-    this.getBooks();
+  componentWillMount() {
+    this.props.dispatch(getBooks());
   }
 
-  getBooks = () => {
-    getBookGallery(this.loadBooks);
-  };
-
-  loadBooks = response => {
-    this.setState({ books: response.data, gallery: response.data });
-  };
+  // loadBooks = response => {
+  //   this.setState({ bookList: response.data, gallery: response.data });
+  // };
 
   setSearchType = search => {
     const newSearchType = search.target.value;
@@ -47,7 +46,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <Home
-        data={this.state.gallery}
+        data={this.state.bookList}
         onSelect={this.setSearchType}
         onInput={this.filterBooks}
       />
@@ -55,4 +54,8 @@ class HomeContainer extends Component {
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = store => ({
+  bookList: store.book.bookList
+});
+
+export default connect(mapStateToProps)(HomeContainer);
