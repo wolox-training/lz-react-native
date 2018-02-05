@@ -7,15 +7,18 @@ import { getBookGallery, getBookInfo } from "../../service/books";
 import { getBooks } from "../../redux/book/actions";
 
 class HomeContainer extends Component {
-  state = { bookList: [], gallery: [], searchType: null };
+  state = { gallery: [], searchType: null };
 
   componentWillMount() {
     this.props.dispatch(getBooks());
   }
 
-  // loadBooks = response => {
-  //   this.setState({ bookList: response.data, gallery: response.data });
-  // };
+  componentWillReceiveProps(newProps) {
+    debugger;
+    this.setState({
+      gallery: newProps.bookList
+    });
+  }
 
   setSearchType = search => {
     const newSearchType = search.target.value;
@@ -23,9 +26,10 @@ class HomeContainer extends Component {
   };
 
   filterBooks = filterWord => {
-    const data = this.state.books;
+    const data = this.props.bookList;
     const word = filterWord.nativeEvent.target.value;
     const type = this.state.searchType;
+
     if (type != "null") {
       this.setState({
         gallery: data.filter(book =>
@@ -46,7 +50,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <Home
-        data={this.state.bookList}
+        data={this.state.gallery}
         onSelect={this.setSearchType}
         onInput={this.filterBooks}
       />
