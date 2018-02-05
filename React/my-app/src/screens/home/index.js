@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
-import { getBookGallery, getBookInfo } from "../../service/books";
-import { getBooks } from "../../redux/book/actions";
+import { getBookList } from "../../redux/book/actions";
 
 class HomeContainer extends Component {
   state = { gallery: [], searchType: null };
 
   componentWillMount() {
-    this.props.dispatch(getBooks());
+    this.props.dispatch(getBookList());
   }
 
   componentWillReceiveProps(newProps) {
-    debugger;
     this.setState({
       gallery: newProps.bookList
     });

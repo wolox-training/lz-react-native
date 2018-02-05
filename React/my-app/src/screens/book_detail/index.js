@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import defaultImg from "../../assets/photos/bigDefault.png";
 import Book_detail from "./layout.js";
-import { getBookInfo } from "../../service/books";
+import { getBook } from "../../redux/book/actions";
 
 class BookDetailContainer extends Component {
   state = {
@@ -12,24 +13,19 @@ class BookDetailContainer extends Component {
     image: defaultImg
   };
 
-  componentDidMount() {
-    this.getBook();
+  componentWillMount() {
+    this.props.dispatch(getBook(this.props.match.params.id));
   }
 
-  getBook() {
-    getBookInfo(this.props.match.params.id, this.selectBook);
-  }
-
-  selectBook = response => {
-    const book = response.data;
+  componentWillReceiveProps(newProps) {
     this.setState({
-      author: book.author,
-      title: book.title,
-      genre: book.genre,
-      year: book.year,
-      image: book.image_url
+      author: newProps.bookInfo.author,
+      title: newProps.bookInfo.title,
+      genre: newProps.bookInfo.genre,
+      year: newProps.bookInfo.year,
+      image: newProps.bookInfo.image_url
     });
-  };
+  }
 
   render() {
     return (
@@ -44,4 +40,8 @@ class BookDetailContainer extends Component {
   }
 }
 
-export default BookDetailContainer;
+const mapStateToProps = store => ({
+  bookInfo: store.book.bookInfo
+});
+
+export default connect(mapStateToProps)(BookDetailContainer);
