@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
-import { getBookList } from "../../redux/book/actions";
+import {
+  getBookList,
+  getFilterGallery,
+  resetGalleryView
+} from "../../redux/book/actions";
 
 class HomeContainer extends Component {
   state = { gallery: [], searchType: null };
@@ -11,10 +15,8 @@ class HomeContainer extends Component {
     this.props.dispatch(getBookList());
   }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      gallery: newProps.bookList
-    });
+  componentWillUnmount() {
+    this.props.dispatch(resetGalleryView());
   }
 
   setSearchType = search => {
@@ -23,40 +25,31 @@ class HomeContainer extends Component {
   };
 
   filterBooks = filterWord => {
-    const data = this.props.bookList;
-    const word = filterWord.nativeEvent.target.value;
-    const type = this.state.searchType;
-
-    if (type != "null") {
-      this.setState({
-        gallery: data.filter(book =>
-          book[type].toLowerCase().includes(word.toLowerCase())
-        )
-      });
-    } else {
-      this.setState({
-        gallery: data.filter(
-          book =>
-            book.title.toLowerCase().includes(word.toLowerCase()) ||
-            book.author.toLowerCase().includes(word.toLowerCase())
-        )
-      });
-    }
+    this.props.dispatch(
+      getFilterGallery(
+        this.props.bookList,
+        filterWord.nativeEvent.target.value,
+        this.state.searchType
+      )
+    );
   };
 
   render() {
     return (
       <Home
-        data={this.state.gallery}
+        data={this.props.gallery}
         onSelect={this.setSearchType}
         onInput={this.filterBooks}
+        loading={this.props.loading}
       />
     );
   }
 }
 
 const mapStateToProps = store => ({
-  bookList: store.book.bookList
+  bookList: store.book.bookList,
+  gallery: store.book.gallery,
+  loading: store.book.loadingGallery
 });
 
 export default connect(mapStateToProps)(HomeContainer);

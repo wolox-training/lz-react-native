@@ -31,7 +31,7 @@ const Book_detail = ({ book, loading }) =>
       </Link>
       <div className="center">
         <div className="info">
-          <img className="main_book" src={book.image || bigDefaultImg} />
+          <img className="main_book" src={book.image_url || bigDefaultImg} />
           <div className="description_box">
             <h1 className="book_title">{book.title}</h1>
             <h1 className="other_info">{book.author}</h1>
