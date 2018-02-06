@@ -5,7 +5,18 @@ export const actions = {
   GET_BOOKS_FAILURE: "GET_BOOKS_FAILURE",
   GET_BOOK_INFO_SUCCESS: "GET_BOOK_INFO_SUCCESS",
   GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
-  GET_FILTER_GALLERY: "GET_FILTER_GALLERY"
+  GET_FILTER_GALLERY: "GET_FILTER_GALLERY",
+  LOADING: "LOADING",
+  RESET_BOOK_VIEW: "RESET_BOOK_VIEW"
+};
+
+export const loading = status => {
+  return dispatch => {
+    dispatch({
+      type: actions.LOADING,
+      payload: { loading: status }
+    });
+  };
 };
 
 export const getBookList = () => {
@@ -22,6 +33,11 @@ export const getBookList = () => {
   };
 };
 
+export const resetBookView = () => {
+  return {
+    type: actions.RESET_BOOK_VIEW
+  };
+};
 export const getBook = id => {
   return async dispatch => {
     const response = await getBookInfo(id);
@@ -36,6 +52,7 @@ export const getBook = id => {
         payload: { err: response }
       });
     }
+    dispatch(loading(false));
   };
 };
 
