@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import SignUp from "./layout.js";
 import { Redirect } from "react-router-dom";
-import { postAccount, newUser } from "../../service/accounts";
+import { connect } from "react-redux";
+import { registerNewUser } from "../../redux/accounts/actions";
 import {
   formComplete,
   validateSize,
@@ -96,8 +97,8 @@ class SignUpContainer extends Component {
   }
 
   addNewUser(name, surname, email, password, confirm_password) {
-    newUser(
-      {
+    this.props.dispatch(
+      registerNewUser({
         user: {
           email: email,
           password: password,
@@ -106,10 +107,16 @@ class SignUpContainer extends Component {
           last_name: surname,
           locale: "en"
         }
-      },
-      this.onSuccess,
-      this.onFailure
+      })
     );
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.error) {
+      this.onFailure();
+    } else {
+      this.onSuccess();
+    }
   }
 
   onSuccess = () => {
@@ -135,4 +142,8 @@ class SignUpContainer extends Component {
   }
 }
 
-export default SignUpContainer;
+const mapStateToProps = store => ({
+  error: store.account.error
+});
+
+export default connect(mapStateToProps)(SignUpContainer);

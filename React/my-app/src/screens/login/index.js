@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { verifyUser } from "../../redux/login/actions";
+import { verifyUser } from "../../redux/accounts/actions";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
@@ -95,8 +95,8 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = store => ({
-  token: store.login.token,
-  error: store.login.error
+  token: store.account.token,
+  error: store.account.error
 });
 
 export default connect(mapStateToProps)(LoginContainer);

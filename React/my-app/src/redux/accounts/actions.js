@@ -25,3 +25,22 @@ export const verifyUser = body => {
     }
   };
 };
+
+export const registerNewUser = body => {
+  return async dispatch => {
+    try {
+      const response = await newUser(body);
+      if (response.status >= 200 && response.status < 300) {
+        dispatch({
+          type: actions.NEW_USER_SUCCESS,
+          payload: { error: 0 }
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.NEW_USER_FAILURE,
+        payload: { error: 1 }
+      });
+    }
+  };
+};

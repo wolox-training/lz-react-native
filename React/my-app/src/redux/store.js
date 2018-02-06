@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import book from "./book/reducer";
-import login from "./login/reducer";
+import account from "./accounts/reducer";
 
 const reducers = combineReducers({
   book,
-  login
+  account
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));

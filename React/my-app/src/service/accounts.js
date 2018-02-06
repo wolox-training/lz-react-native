@@ -12,6 +12,6 @@ export const checkUser = body => {
   return postAccount("/users/sessions", body);
 };
 
-export const newUser = (body, onSuccess, onFailure) => {
-  return postAccount("/users", body, onSuccess, onFailure);
+export const newUser = body => {
+  return postAccount("/users", body);
 };
