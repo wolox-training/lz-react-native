@@ -4,7 +4,8 @@ export const actions = {
   GET_BOOKS_SUCCESS: "GET_BOOKS_SUCCESS",
   GET_BOOKS_FAILURE: "GET_BOOKS_FAILURE",
   GET_BOOK_INFO_SUCCESS: "GET_BOOK_INFO_SUCCESS",
-  GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE"
+  GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
+  GET_FILTER_GALLERY: "GET_FILTER_GALLERY"
 };
 
 export const getBookList = () => {
@@ -35,5 +36,26 @@ export const getBook = id => {
         payload: { err: response }
       });
     }
+  };
+};
+
+export const getFilterGallery = (data, word, type) => {
+  return async dispatch => {
+    let gallery;
+    if (type != "null") {
+      gallery = data.filter(book =>
+        book[type].toLowerCase().includes(word.toLowerCase())
+      );
+    } else {
+      gallery = data.filter(
+        book =>
+          book.title.toLowerCase().includes(word.toLowerCase()) ||
+          book.author.toLowerCase().includes(word.toLowerCase())
+      );
+    }
+    dispatch({
+      type: actions.GET_FILTER_GALLERY,
+      payload: { gallery: gallery }
+    });
   };
 };
