@@ -4,16 +4,21 @@ const failure = () => {
   console.log("Request Failed");
 };
 
-export const getBooks = (url, onSuccess, onFailure) => {
+export const getBooks = url => {
   return api.get(url);
 };
 
-export const getBookGallery = (onSuccess, onFailure = failure) => {
+export const getBookGallery = () => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks("/books", onSuccess, onFailure);
+  return getBooks("/books");
 };
 
-export const getBookInfo = (id, onSuccess, onFailure = failure) => {
+export const getBookInfo = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks(`/books/${id}`, onSuccess, onFailure);
+  return getBooks(`/books/${id}`);
+};
+
+export const getRents = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return getBooks(`/books/${id}/rents`);
 };

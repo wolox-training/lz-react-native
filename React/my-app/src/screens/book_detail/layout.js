@@ -12,6 +12,12 @@ import profilePicture from "../../assets/photos/profilePicture.png";
 import NavBarContainer from "../../components/NavBar";
 import {
   ALQUILAR,
+  DISPONIBLE,
+  ALQUILADO,
+  USUARIO,
+  DEVOLVER_ANTES,
+  NO_SE_ENCUENTRA,
+  WISHLIST,
   SUGERENCIAS,
   COMENTARIOS,
   ENVIAR,
@@ -20,7 +26,7 @@ import {
 } from "./strings.js";
 import strings from "./strings";
 
-const Book_detail = ({ book, loading }) =>
+const Book_detail = ({ book, bookStatus, text, loading }) =>
   loading ? (
     <RingLoader />
   ) : (
@@ -38,7 +44,8 @@ const Book_detail = ({ book, loading }) =>
             <h1 className="other_info">{book.year}</h1>
             <h1 className="other_info">{book.genre}</h1>
             <p className="description">{TEXTO}</p>
-            <button className="rent_button" type="button">
+            <h1 className="unavailable_text">{text}</h1>
+            <button className={bookStatus} type="button">
               {ALQUILAR}
             </button>
           </div>
