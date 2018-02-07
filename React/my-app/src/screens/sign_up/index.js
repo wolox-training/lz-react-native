@@ -112,20 +112,10 @@ class SignUpContainer extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.error) {
-      this.onFailure();
-    } else {
-      this.onSuccess();
-    }
+    newProps.error
+      ? this.setState({ emailError: MAIL_IN_USE })
+      : this.setState({ redirect: true });
   }
-
-  onSuccess = () => {
-    this.setState({ redirect: true });
-  };
-
-  onFailure = () => {
-    this.setState({ emailError: MAIL_IN_USE });
-  };
 
   render() {
     return this.state.redirect ? (

@@ -10,15 +10,11 @@ import NewComment from "../../components/New_Comment";
 import bigDefaultImg from "../../assets/photos/bigDefault.png";
 import profilePicture from "../../assets/photos/profilePicture.png";
 import NavBarContainer from "../../components/NavBar";
-import {
-  ALQUILAR,
-  SUGERENCIAS,
-  COMENTARIOS,
-  ENVIAR,
-  TEXTO,
-  VOLVER
-} from "./strings.js";
+import DescriptionBox from "../../components/Description_Box";
+import CommentBox from "../../components/Comment_Box";
+import { SUGERENCIAS, COMENTARIOS, ENVIAR, VOLVER } from "./strings.js";
 import strings from "./strings";
+import Suggest from "../../components/Suggest";
 
 const Book_detail = ({ book, loading }) =>
   loading ? (
@@ -32,39 +28,14 @@ const Book_detail = ({ book, loading }) =>
       <div className="center">
         <div className="info">
           <img className="main_book" src={book.image_url || bigDefaultImg} />
-          <div className="description_box">
-            <h1 className="book_title">{book.title}</h1>
-            <h1 className="other_info">{book.author}</h1>
-            <h1 className="other_info">{book.year}</h1>
-            <h1 className="other_info">{book.genre}</h1>
-            <p className="description">{TEXTO}</p>
-            <button className="rent_button" type="button">
-              {ALQUILAR}
-            </button>
-          </div>
+          <DescriptionBox book={book} />
         </div>
         <hr class="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
-        <div className="suggest">
-          <div className="suggest_gallery">
-            {sugerencias.map(element => (
-              <img className="tiny_books" src={element.image_url} />
-            ))}
-          </div>
-        </div>
+        <Suggest />
         <hr class="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
-        <div className="comments">
-          <NewComment profileImage={profilePicture} />
-          {ArrayComments.map(comment => (
-            <Comment
-              profileImage={comment.profile_image_url}
-              profileName={comment.name}
-              date={comment.date}
-              comment={comment.text}
-            />
-          ))}
-        </div>
+        <CommentBox />
       </div>
     </div>
   );

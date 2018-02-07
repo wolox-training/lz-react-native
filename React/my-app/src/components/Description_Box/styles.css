@@ -1,0 +1,31 @@
+.description_box {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.book_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.other_info {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.description {
+  line-height: 19px;
+  color: #999999;
+  margin-bottom: 41px;
+  max-width: 563px;
+}
+
+.rent_button {
+  background: #00adee;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  height: 38px;
+  width: 192px;
+}

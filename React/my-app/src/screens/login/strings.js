@@ -1,5 +1,6 @@
 export const WBOOKS = "WBooks";
 export const INGRESAR = "INGRESAR CON GOOGLE";
+export const INVALID_USER = "Invalid User";
 export const EMAIL = "EMail";
 export const PASSWORD = "Password";
 export const LOGO_SIZE = "big";

@@ -1,9 +1,5 @@
 import { api } from "../config/api";
 
-const failure = () => {
-  console.log("Request Failed");
-};
-
 export const postAccount = (url, body) => {
   return api.post(url, body);
 };

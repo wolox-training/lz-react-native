@@ -7,6 +7,9 @@ export const actions = {
   CHECK_USER_FAILURE: "CHECK_USER_FAILURE"
 };
 
+const INVALID_USER = "Invalid User";
+const MAIL_IN_USE = "Mail already in use";
+
 export const verifyUser = body => {
   return async dispatch => {
     try {
@@ -16,11 +19,13 @@ export const verifyUser = body => {
           type: actions.CHECK_USER_SUCCESS,
           payload: { token: response.data.access_token }
         });
+      } else {
+        throw INVALID_USER;
       }
     } catch (e) {
       dispatch({
         type: actions.CHECK_USER_FAILURE,
-        payload: { error: 1 }
+        payload: { error: e }
       });
     }
   };
@@ -35,11 +40,13 @@ export const registerNewUser = body => {
           type: actions.NEW_USER_SUCCESS,
           payload: { error: 0 }
         });
+      } else {
+        throw MAIL_IN_USE;
       }
     } catch (e) {
       dispatch({
         type: actions.NEW_USER_FAILURE,
-        payload: { error: 1 }
+        payload: { error: e }
       });
     }
   };
