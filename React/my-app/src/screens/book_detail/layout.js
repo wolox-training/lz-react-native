@@ -24,7 +24,10 @@ import {
   TEXTO,
   VOLVER
 } from "./strings.js";
+import DescriptionBox from "./components/Description_Box";
+import CommentBox from "./components/Comment_Box";
 import strings from "./strings";
+import Suggest from "../../components/Suggest";
 
 const Book_detail = ({ book, bookStatus, text, loading }) =>
   loading ? (
@@ -38,40 +41,14 @@ const Book_detail = ({ book, bookStatus, text, loading }) =>
       <div className="center">
         <div className="info">
           <img className="main_book" src={book.image_url || bigDefaultImg} />
-          <div className="description_box">
-            <h1 className="book_title">{book.title}</h1>
-            <h1 className="other_info">{book.author}</h1>
-            <h1 className="other_info">{book.year}</h1>
-            <h1 className="other_info">{book.genre}</h1>
-            <p className="description">{TEXTO}</p>
-            <h1 className="unavailable_text">{text}</h1>
-            <button className={bookStatus} type="button">
-              {ALQUILAR}
-            </button>
-          </div>
+          <DescriptionBox book={book} />
         </div>
         <hr class="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
-        <div className="suggest">
-          <div className="suggest_gallery">
-            {sugerencias.map(element => (
-              <img className="tiny_books" src={element.image_url} />
-            ))}
-          </div>
-        </div>
+        <Suggest />
         <hr class="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
-        <div className="comments">
-          <NewComment profileImage={profilePicture} />
-          {ArrayComments.map(comment => (
-            <Comment
-              profileImage={comment.profile_image_url}
-              profileName={comment.name}
-              date={comment.date}
-              comment={comment.text}
-            />
-          ))}
-        </div>
+        <CommentBox />
       </div>
     </div>
   );

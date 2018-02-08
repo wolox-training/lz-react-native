@@ -7,6 +7,9 @@ export const actions = {
   CHECK_USER_FAILURE: "CHECK_USER_FAILURE"
 };
 
+const INVALID_USER = "Invalid User";
+const MAIL_IN_USE = "Mail already in use";
+
 export const verifyUser = body => {
   return async dispatch => {
     try {
@@ -16,11 +19,13 @@ export const verifyUser = body => {
           type: actions.CHECK_USER_SUCCESS,
           payload: { token: response.data.access_token }
         });
+      } else {
+        throw new Error(INVALID_USER);
       }
     } catch (e) {
       dispatch({
         type: actions.CHECK_USER_FAILURE,
-        payload: { error: 1 }
+        payload: { error: e }
       });
     }
   };
@@ -32,14 +37,15 @@ export const registerNewUser = body => {
       const response = await newUser(body);
       if (response.status >= 200 && response.status < 300) {
         dispatch({
-          type: actions.NEW_USER_SUCCESS,
-          payload: { error: 0 }
+          type: actions.NEW_USER_SUCCESS
         });
+      } else {
+        throw new Error(MAIL_IN_USE);
       }
     } catch (e) {
       dispatch({
         type: actions.NEW_USER_FAILURE,
-        payload: { error: 1 }
+        payload: { error: e }
       });
     }
   };

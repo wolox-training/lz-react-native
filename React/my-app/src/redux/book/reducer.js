@@ -10,9 +10,8 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.GET_FILTER_GALLERY:
+    case actions.FILTER_GALLERY:
       return { ...state, gallery: action.payload.gallery };
-      break;
     case actions.GET_BOOKS_SUCCESS:
       return {
         ...state,

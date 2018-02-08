@@ -4,7 +4,7 @@ import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
 import {
   getBookList,
-  getFilterGallery,
+  filterGallery,
   resetGalleryView
 } from "../../redux/book/actions";
 
@@ -26,7 +26,7 @@ class HomeContainer extends Component {
 
   filterBooks = filterWord => {
     this.props.dispatch(
-      getFilterGallery(
+      filterGallery(
         this.props.bookList,
         filterWord.nativeEvent.target.value,
         this.state.searchType

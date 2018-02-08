@@ -7,7 +7,8 @@ import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
-  PASSWORD_NUMBER_AND_LETTER_ERROR
+  PASSWORD_NUMBER_AND_LETTER_ERROR,
+  INVALID_USER
 } from "./strings";
 import {
   formComplete,
@@ -39,7 +40,7 @@ class LoginContainer extends Component {
     if (newProps.error) {
       this.setState({
         emailError: null,
-        passwordError: "Invalid User"
+        passwordError: INVALID_USER
       });
     } else {
       window.localStorage.token = newProps.token;
