@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import defaultProfile from "../../../../assets/photos/default-avatar.png";
+import MultiStateButton from "../../../../components/MultiStateButton";
 
 import { ALQUILAR, TEXTO } from "./strings.js";
 
@@ -11,9 +12,6 @@ const DescriptionBox = ({ book }) => (
     <h1 className="other_info">{book.year}</h1>
     <h1 className="other_info">{book.genre}</h1>
     <p className="description">{TEXTO}</p>
-    <button className="rent_button" type="button">
-      {ALQUILAR}
-    </button>
   </div>
 );
 

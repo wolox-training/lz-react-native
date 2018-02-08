@@ -10,7 +10,7 @@ class BookDetailContainer extends Component {
 
   componentWillMount() {
     this.props.dispatch(getBook(this.props.match.params.id));
-    //    this.props.dispatch(getBookStatus(this.props.match.params.id));
+    this.props.dispatch(getBookStatus(this.props.match.params.id));
   }
 
   componentWillUnmount() {
@@ -21,9 +21,10 @@ class BookDetailContainer extends Component {
     return (
       <Book_detail
         book={this.props.bookInfo}
-        bookStatus={"unavailable"}
-        loading={this.props.loading}
-        text={"ff"}
+        loading={this.props.loading && this.props.loadingBookStatus}
+        bookAvailable={this.props.bookAvailable}
+        disabled={this.props.disabled}
+        text={"hello"}
       />
     );
   }
@@ -31,8 +32,10 @@ class BookDetailContainer extends Component {
 
 const mapStateToProps = store => ({
   bookInfo: store.book.bookInfo,
-  loading: store.book.loading
-  // bookStatus:
+  loading: store.book.loading,
+  bookAvailable: store.rents.bookAvailable,
+  disabled: store.rents.disabled,
+  loadingBookStatus: store.rents.loadingBookStatus
 });
 
 export default connect(mapStateToProps)(BookDetailContainer);

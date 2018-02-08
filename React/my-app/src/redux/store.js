@@ -6,8 +6,8 @@ import rents from "./rents/reducer";
 
 const reducers = combineReducers({
   book,
-  account
-  //  rents
+  account,
+  rents
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));

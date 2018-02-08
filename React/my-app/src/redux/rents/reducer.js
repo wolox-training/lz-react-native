@@ -1,23 +1,27 @@
-// import { actions } from "./actions";
-//
-// const initialState = {
-//   loading: true
-// };
-//
-// function reducer(state = initialState, action) {
-//   switch (action.type) {
-//     case actions.GET_BOOKS_RENTS:
-//       return { ...state, gallery: action.payload.gallery };
-//       break;
-//     case actions.GET_WISHLIST:
-//       return { ...state, gallery: action.payload.gallery };
-//       break;
-//     case actions.CREATE_WISHLIST:
-//       return { ...state, gallery: action.payload.gallery };
-//       break;
-//     default:
-//       return state;
-//   }
-// }
-//
-// export default reducer;
+import { actions } from "./actions";
+
+const initialState = {
+  loadingBookStatus: true,
+  bookAvailable: true,
+  disabled: false
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case actions.BOOK_AVAILABLE:
+      return { ...state, bookAvailable: true, disabled: false };
+      break;
+    case actions.BOOK_UNAVAILABLE:
+      return { ...state, bookAvailable: false, disabled: false };
+      break;
+    case actions.BOOK_IN_USE:
+      return { ...state, bookAvailable: false, disabled: true };
+      break;
+    case actions.LOADING:
+      return { ...state, loadingBookStatus: action.payload.loading };
+    default:
+      return state;
+  }
+}
+
+export default reducer;

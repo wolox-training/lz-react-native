@@ -16,8 +16,9 @@ export const newUser = body => {
   return postAccount("/users", body);
 };
 
-export const getUser = body => {
-  return postAccount("/users", body);
+export const getUser = () => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return getAccount("/users/me");
 };
 
 export const getWishlist = id => {

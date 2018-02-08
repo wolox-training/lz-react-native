@@ -11,37 +11,40 @@ import bigDefaultImg from "../../assets/photos/bigDefault.png";
 import profilePicture from "../../assets/photos/profilePicture.png";
 import NavBarContainer from "../../components/NavBar";
 import {
-  ALQUILAR,
   DISPONIBLE,
   ALQUILADO,
   USUARIO,
-  DEVOLVER_ANTES,
-  NO_SE_ENCUENTRA,
-  WISHLIST,
   SUGERENCIAS,
   COMENTARIOS,
   ENVIAR,
-  TEXTO,
   VOLVER
 } from "./strings.js";
 import DescriptionBox from "./components/Description_Box";
 import CommentBox from "./components/Comment_Box";
+import MultiStateButton from "../../components/MultiStateButton";
 import strings from "./strings";
 import Suggest from "../../components/Suggest";
 
-const Book_detail = ({ book, bookStatus, text, loading }) =>
-  loading ? (
-    <RingLoader />
-  ) : (
-    <div className="mainContainer">
-      <NavBarContainer />
-      <Link className="back" to="/">
-        {VOLVER}
-      </Link>
+const Book_detail = ({ book, bookAvailable, loading, disabled, text }) => (
+  <div className="mainContainer">
+    <NavBarContainer />
+    <Link className="back" to="/">
+      {VOLVER}
+    </Link>
+    {loading ? (
+      <RingLoader />
+    ) : (
       <div className="center">
         <div className="info">
           <img className="main_book" src={book.image_url || bigDefaultImg} />
-          <DescriptionBox book={book} />
+          <div className="status_box">
+            <DescriptionBox book={book} />
+            <MultiStateButton
+              available={bookAvailable}
+              disabled={disabled}
+              text={text}
+            />
+          </div>
         </div>
         <hr class="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
@@ -50,7 +53,8 @@ const Book_detail = ({ book, bookStatus, text, loading }) =>
         <h1 className="topic">{COMENTARIOS}</h1>
         <CommentBox />
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
 
 export default Book_detail;
