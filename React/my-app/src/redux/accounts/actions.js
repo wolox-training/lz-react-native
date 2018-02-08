@@ -20,7 +20,7 @@ export const verifyUser = body => {
           payload: { token: response.data.access_token }
         });
       } else {
-        throw INVALID_USER;
+        throw new Error(INVALID_USER);
       }
     } catch (e) {
       dispatch({
@@ -37,11 +37,10 @@ export const registerNewUser = body => {
       const response = await newUser(body);
       if (response.status >= 200 && response.status < 300) {
         dispatch({
-          type: actions.NEW_USER_SUCCESS,
-          payload: { error: 0 }
+          type: actions.NEW_USER_SUCCESS
         });
       } else {
-        throw MAIL_IN_USE;
+        throw new Error(MAIL_IN_USE);
       }
     } catch (e) {
       dispatch({

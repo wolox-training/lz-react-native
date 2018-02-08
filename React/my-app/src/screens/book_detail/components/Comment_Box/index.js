@@ -1,10 +1,9 @@
 import React from "react";
 import "./styles.css";
-import defaultProfile from "../../assets/photos/default-avatar.png";
-import profilePicture from "../../assets/photos/profilePicture.png";
-import { ArrayComments } from "../../config/comments";
-import NewComment from "../New_Comment";
-import Comment from "../Comment";
+import profilePicture from "../../../../assets/photos/profilePicture.png";
+import { ArrayComments } from "../../../../config/comments";
+import NewComment from "../../../../components/New_Comment";
+import Comment from '../../../../components/Comment'
 
 const CommentBox = () => (
   <div className="comments">

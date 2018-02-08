@@ -5,7 +5,7 @@ export const actions = {
   GET_BOOKS_FAILURE: "GET_BOOKS_FAILURE",
   GET_BOOK_INFO_SUCCESS: "GET_BOOK_INFO_SUCCESS",
   GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
-  GET_FILTER_GALLERY: "GET_FILTER_GALLERY",
+  FILTER_GALLERY: "FILTER_GALLERY",
   LOADING: "LOADING",
   RESET_BOOK_VIEW: "RESET_BOOK_VIEW",
   RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW",
@@ -107,7 +107,7 @@ export const filterGallery = (data, word, type) => {
       );
     }
     dispatch({
-      type: actions.GET_FILTER_GALLERY,
+      type: actions.FILTER_GALLERY,
       payload: { gallery: gallery }
     });
   };
