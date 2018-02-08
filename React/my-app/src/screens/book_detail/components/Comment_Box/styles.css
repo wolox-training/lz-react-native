@@ -1,0 +1,7 @@
+.comments {
+  align-items: baseline;
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}

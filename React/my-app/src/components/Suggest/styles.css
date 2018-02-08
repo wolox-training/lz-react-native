@@ -1,0 +1,20 @@
+.suggest {
+  align-items: flex-start;
+  display: row flex;
+  margin-bottom: 20px;
+}
+
+.suggest_gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+.tiny_books {
+  display: flex;
+  margin-right: 54px;
+  width: 87px;
+  height: 124px;
+}

@@ -1,22 +1,23 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
-import { getBookGallery, getBookInfo } from "../../service/books";
+import {
+  getBookList,
+  filterGallery,
+  resetGalleryView
+} from "../../redux/book/actions";
 
 class HomeContainer extends Component {
-  state = { books: [], gallery: [], searchType: null };
+  state = { gallery: [], searchType: null };
 
-  componentDidMount() {
-    this.getBooks();
+  componentWillMount() {
+    this.props.dispatch(getBookList());
   }
 
-  getBooks = () => {
-    getBookGallery(this.loadBooks);
-  };
-
-  loadBooks = response => {
-    this.setState({ books: response.data, gallery: response.data });
-  };
+  componentWillUnmount() {
+    this.props.dispatch(resetGalleryView());
+  }
 
   setSearchType = search => {
     const newSearchType = search.target.value;
@@ -24,35 +25,31 @@ class HomeContainer extends Component {
   };
 
   filterBooks = filterWord => {
-    const data = this.state.books;
-    const word = filterWord.nativeEvent.target.value;
-    const type = this.state.searchType;
-    if (type != "null") {
-      this.setState({
-        gallery: data.filter(book =>
-          book[type].toLowerCase().includes(word.toLowerCase())
-        )
-      });
-    } else {
-      this.setState({
-        gallery: data.filter(
-          book =>
-            book.title.toLowerCase().includes(word.toLowerCase()) ||
-            book.author.toLowerCase().includes(word.toLowerCase())
-        )
-      });
-    }
+    this.props.dispatch(
+      filterGallery(
+        this.props.bookList,
+        filterWord.nativeEvent.target.value,
+        this.state.searchType
+      )
+    );
   };
 
   render() {
     return (
       <Home
-        data={this.state.gallery}
+        data={this.props.gallery}
         onSelect={this.setSearchType}
         onInput={this.filterBooks}
+        loading={this.props.loading}
       />
     );
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = store => ({
+  bookList: store.book.bookList,
+  gallery: store.book.gallery,
+  loading: store.book.loadingGallery
+});
+
+export default connect(mapStateToProps)(HomeContainer);

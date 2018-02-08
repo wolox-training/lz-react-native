@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
-import { postAccount, checkUser } from "../../service/accounts";
+import { connect } from "react-redux";
+import { verifyUser } from "../../redux/accounts/actions";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
   PASSWORD_SIZE_ERROR,
-  PASSWORD_NUMBER_AND_LETTER_ERROR
+  PASSWORD_NUMBER_AND_LETTER_ERROR,
+  INVALID_USER
 } from "./strings";
 import {
   formComplete,
@@ -31,28 +33,24 @@ class LoginContainer extends Component {
   };
 
   validateUser(email, password) {
-    checkUser(
-      { email: email, password: password },
-      this.userSucces,
-      this.userFailure
-    );
+    this.props.dispatch(verifyUser({ email: email, password: password }));
   }
 
-  userSucces = response => {
-    window.localStorage.token = response.data.access_token;
-    this.setState({
-      emailError: null,
-      passwordError: null,
-      redirect: true
-    });
-  };
-
-  userFailure = () => {
-    this.setState({
-      emailError: null,
-      passwordError: "Invalid User"
-    });
-  };
+  componentWillReceiveProps(newProps) {
+    if (newProps.error) {
+      this.setState({
+        emailError: null,
+        passwordError: INVALID_USER
+      });
+    } else {
+      window.localStorage.token = newProps.token;
+      this.setState({
+        emailError: null,
+        passwordError: null,
+        redirect: true
+      });
+    }
+  }
 
   validateData(email, password) {
     let ok = true;
@@ -97,4 +95,9 @@ class LoginContainer extends Component {
   }
 }
 
-export default LoginContainer;
+const mapStateToProps = store => ({
+  token: store.account.token,
+  error: store.account.error
+});
+
+export default connect(mapStateToProps)(LoginContainer);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ScaleLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import {
   WBOOKS,
@@ -14,7 +15,7 @@ import "./styles.css";
 import defaultImg from "../../assets/photos/default.png";
 import NavBarContainer from "../../components/NavBar";
 
-const Home = ({ data, onSelect, onInput }) => (
+const Home = ({ data, onSelect, onInput, loading }) => (
   <div className="home_container">
     <NavBarContainer />
     <Logo picture={wBooks} text={WBOOKS} size={LOGO_SIZE} />
@@ -32,16 +33,20 @@ const Home = ({ data, onSelect, onInput }) => (
         onChange={onInput}
       />
     </form>
-    <div className="gallery">
-      {data.map(element => (
-        <Book
-          id={element.id}
-          imageUrl={element.image_url}
-          title={element.title}
-          author={element.author}
-        />
-      ))}
-    </div>
+    {loading ? (
+      <ScaleLoader />
+    ) : (
+      <div className="gallery">
+        {data.map(element => (
+          <Book
+            id={element.id}
+            imageUrl={element.image_url}
+            title={element.title}
+            author={element.author}
+          />
+        ))}
+      </div>
+    )}
   </div>
 );
 

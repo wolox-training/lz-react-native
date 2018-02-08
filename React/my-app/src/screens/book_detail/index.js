@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import defaultImg from "../../assets/photos/bigDefault.png";
 import Book_detail from "./layout.js";
-import { getBookInfo } from "../../service/books";
+import { getBook, loadBook, resetBookView } from "../../redux/book/actions";
 
 class BookDetailContainer extends Component {
   state = {
@@ -12,36 +13,24 @@ class BookDetailContainer extends Component {
     image: defaultImg
   };
 
-  componentDidMount() {
-    this.getBook();
+  componentWillMount() {
+    this.props.dispatch(getBook(this.props.match.params.id));
   }
 
-  getBook() {
-    getBookInfo(this.props.match.params.id, this.selectBook);
+  componentWillUnmount() {
+    this.props.dispatch(resetBookView());
   }
-
-  selectBook = response => {
-    const book = response.data;
-    this.setState({
-      author: book.author,
-      title: book.title,
-      genre: book.genre,
-      year: book.year,
-      image: book.image_url
-    });
-  };
 
   render() {
     return (
-      <Book_detail
-        author={this.state.author}
-        title={this.state.title}
-        genre={this.state.genre}
-        year={this.state.year}
-        image={this.state.image}
-      />
+      <Book_detail book={this.props.bookInfo} loading={this.props.loading} />
     );
   }
 }
 
-export default BookDetailContainer;
+const mapStateToProps = store => ({
+  bookInfo: store.book.bookInfo,
+  loading: store.book.loading
+});
+
+export default connect(mapStateToProps)(BookDetailContainer);
