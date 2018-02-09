@@ -16,17 +16,17 @@ export const newUser = body => {
   return postAccount("/users", body);
 };
 
-export const getUser = () => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
+export const getUser = token => {
+  api.defaults.headers.common["authorization"] = token;
   return getAccount("/users/me");
 };
 
-export const getWishlist = id => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getAccount(`/users/${id}/wishes`);
-};
+// export const getWishlist = id => {
+//   api.defaults.headers.common["authorization"] = window.localStorage.token;
+//   return getAccount(`/users/${window.localStorage.userId,}/wishes`);
+// };
 
-export const createWishlist = (id, body) => {
+export const addNewItemToWishlist = body => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return postAccount(`/users/${id}/wishes`, body);
+  return postAccount(`/users/${window.localStorage.userId}/wishes`, body);
 };

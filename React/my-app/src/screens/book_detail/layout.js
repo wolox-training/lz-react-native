@@ -25,7 +25,14 @@ import MultiStateButton from "../../components/MultiStateButton";
 import strings from "./strings";
 import Suggest from "../../components/Suggest";
 
-const Book_detail = ({ book, bookAvailable, loading, disabled, text }) => (
+const Book_detail = ({
+  book,
+  bookAvailable,
+  loading,
+  disabled,
+  text,
+  onClick
+}) => (
   <div className="mainContainer">
     <NavBarContainer />
     <Link className="back" to="/">
@@ -43,6 +50,7 @@ const Book_detail = ({ book, bookAvailable, loading, disabled, text }) => (
               available={bookAvailable}
               disabled={disabled}
               text={text}
+              onClick={onClick}
             />
           </div>
         </div>

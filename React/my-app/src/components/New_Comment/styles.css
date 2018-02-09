@@ -30,7 +30,9 @@
 .input_comments {
   border: 1px solid #979797;
   height: 73px;
+  line-height: 25px;
   margin-bottom: 20px;
+  text-indent: 10px;
   width: 665px;
 }
 
