@@ -2,13 +2,11 @@ import { getRents } from "../../service/books";
 import { getUser, getWishlist, createWishlist } from "../../service/accounts";
 
 export const actions = {
-  GET_BOOKS_RENTS: "GET_BOOKS_RENTS",
-  GET_WISHLIST: "GET_WISHLIST",
-  CREATE_WISHLIST: "CREATE_WISHLIST",
   BOOK_AVAILABLE: "BOOK_AVAILABLE",
   BOOK_IN_USE: "BOOK_IN_USE",
   BOOK_UNAVAILABLE: "BOOK_UNAVAILABLE",
-  CONNECTION_FAILURE: "CONNECTION_FAILURE"
+  CONNECTION_FAILURE: "CONNECTION_FAILURE",
+  LOADING: "LOADING"
 };
 
 export const loading = status => {
@@ -25,17 +23,21 @@ export const getBookStatus = bookId => {
     try {
       const userResponse = await getUser();
       const bookResponse = await getRents(bookId);
+      debugger;
       if (responseOK(userResponse, bookResponse)) {
         if (bookAvailable(bookResponse.data)) {
+          debugger;
           dispatch({
             type: actions.BOOK_AVAILABLE
           });
         } else {
           if (userHasTheBook(userResponse.data, bookResponse.data)) {
+            debugger;
             dispatch({
               type: actions.BOOK_IN_USE
             });
           } else {
+            debugger;
             dispatch({
               type: actions.BOOK_UNAVAILABLE
             });
@@ -55,11 +57,11 @@ export const getBookStatus = bookId => {
 };
 
 const bookAvailable = books => {
-  books.all(book => book.returned_at);
+  return books.every(book => book.returned_at);
 };
 
 const userHasTheBook = (user, books) => {
-  books.any(book => book.user === user);
+  return books.some(book => book.user === user);
 };
 
 const responseOK = (userResponse, bookResponse) => {

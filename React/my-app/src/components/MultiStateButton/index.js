@@ -7,12 +7,12 @@ import {
   NO_SE_ENCUENTRA
 } from "./strings.js";
 
-const MultiStateButton = ({ available, not = !available, text, disabled }) => {
+const MultiStateButton = ({ available, text, disabled }) => {
   return (
     <div className="button_box">
-      <h1 className="unavailable_text">{available ? "" : text}</h1>
+      <h1 className="unavailable_text">{text}</h1>
       <button
-        className={`button ${not && "wishlist-button"}`}
+        className={`button ${!available && "wishlist-button"}`}
         disabled={disabled}
       >
         {available ? ALQUILAR : WISHLIST}
