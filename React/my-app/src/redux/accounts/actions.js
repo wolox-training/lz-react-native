@@ -1,5 +1,6 @@
 import { checkUser, newUser, getUser } from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
+import { INVALID_USER, MAIL_IN_USE, CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
   NEW_USER_SUCCESS: "NEW_USER_SUCCESS",
@@ -9,10 +10,6 @@ export const actions = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
   CONNECTION_FAILURE: "CONNECTION_FAILURE"
 };
-
-const INVALID_USER = "Invalid User";
-const MAIL_IN_USE = "Mail already in use";
-const CONNECTION_FAILURE = "CONNECTION_FAILURE";
 
 export const registerUser = token => {
   return async dispatch => {

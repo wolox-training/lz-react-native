@@ -23,3 +23,7 @@ export const getComments = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
   return getBooks(`/books/${id}/comments`);
 };
+
+export const postComment = (id, body) => {
+  return api.post(`/books/${id}/comments`, body);
+};

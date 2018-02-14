@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import defaultImg from "../../assets/photos/bigDefault.png";
 import Book_detail from "./layout.js";
-import { getBook, resetBookView } from "../../redux/book/actions";
+import {
+  getBook,
+  resetBookView,
+  createNewComment
+} from "../../redux/book/actions";
 import { bookAvailable, userHasTheBook } from "../../utils/arrayUtils";
+import { validateCommentSize, notEmpty } from "../../utils/validations";
 import {
   getBookStatus,
   getWishlist,
@@ -50,6 +55,15 @@ class BookDetailContainer extends Component {
 
   newComment = event => {
     event.preventDefault();
+    this.props.dispatch(
+      createNewComment({
+        book_id: this.props.match.params.id,
+        user_id: window.localStorage.userId,
+        content: event.target.comment.value
+      })
+    );
+    // }
+
     console.log(event.target.comment.value);
   };
 
@@ -81,7 +95,8 @@ const mapStateToProps = store => ({
   comments: store.book.commentList,
   loading: store.book.loading,
   loadingBookStatus: store.rents.loadingBookStatus,
-  processing: store.rents.processing
+  processing: store.rents.processing,
+  uploadingComment: store.book.processing
 });
 
 export default connect(mapStateToProps)(BookDetailContainer);

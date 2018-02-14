@@ -1,16 +1,25 @@
-import { getBookGallery, getBookInfo, getComments } from "../../service/books";
+import {
+  getBookGallery,
+  getBookInfo,
+  getComments,
+  postComment
+} from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
+import { validateComment } from "../../utils/validations";
+import { CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
+  COMMENT_FORMAT_INVALID: "COMMENT_FORMAT_INVALID",
+  CONNECTION_FAILURE: "CONNECTION_FAILURE",
+  FILTER_GALLERY: "FILTER_GALLERY",
   GET_BOOKS_SUCCESS: "GET_BOOKS_SUCCESS",
   GET_BOOKS_FAILURE: "GET_BOOKS_FAILURE",
   GET_BOOK_INFO_SUCCESS: "GET_BOOK_INFO_SUCCESS",
   GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
-  FILTER_GALLERY: "FILTER_GALLERY",
   LOADING: "LOADING",
+  LOADING_GALLERY: "LOADING_GALLERY",
   RESET_BOOK_VIEW: "RESET_BOOK_VIEW",
-  RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW",
-  LOADING_GALLERY: "LOADING_GALLERY"
+  RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW"
 };
 
 export const loading = status => {
@@ -56,6 +65,15 @@ export const getBookList = () => {
   };
 };
 
+export const processing = status => {
+  return dispatch => {
+    dispatch({
+      type: actions.PROCESSING,
+      payload: { processing: status }
+    });
+  };
+};
+
 export const resetBookView = () => {
   return {
     type: actions.RESET_BOOK_VIEW
@@ -65,6 +83,32 @@ export const resetBookView = () => {
 export const resetGalleryView = () => {
   return {
     type: actions.RESET_GALLERY_VIEW
+  };
+};
+
+export const createNewComment = body => {
+  return async dispatch => {
+    if (validateComment(body.comment)) {
+      try {
+        const response = await postComment(body.book_id, body);
+        if (responseOK(response)) {
+          dispatch({
+            type: actions.NEW_COMMENT_SUCCESS
+          });
+        } else {
+          throw new Error(CONNECTION_FAILURE);
+        }
+      } catch (e) {
+        dispatch({
+          type: actions.CONNECTION_FAILURE,
+          payload: { error: e }
+        });
+      }
+    } else {
+      dispatch({
+        type: actions.COMMENT_FORMAT_INVALID
+      });
+    }
   };
 };
 

@@ -31,6 +31,8 @@ function reducer(state = initialState, action) {
       return { ...state, bookList: [], gallery: [], loadingGallery: true };
     case actions.LOADING:
       return { ...state, loading: action.payload.loading };
+    case actions.PROCESSING:
+      return { ...state, processing: action.payload.processing };
     case actions.LOADING_GALLERY:
       return { ...state, loadingGallery: action.payload.loadingGallery };
     default:
