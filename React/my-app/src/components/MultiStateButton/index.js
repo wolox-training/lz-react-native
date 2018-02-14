@@ -1,11 +1,6 @@
 import React from "react";
 import "./styles.css";
-import {
-  WISHLIST,
-  ALQUILAR,
-  DEVOLVER_ANTES,
-  NO_SE_ENCUENTRA
-} from "./strings.js";
+import { WISHLIST, ALQUILAR } from "./strings.js";
 
 const MultiStateButton = ({ available, text, disabled, onClick }) => {
   return (
