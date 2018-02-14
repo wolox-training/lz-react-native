@@ -3,11 +3,11 @@ import "./styles.css";
 import profilePicture from "../../../../assets/photos/profilePicture.png";
 import { ArrayComments } from "../../../../config/comments";
 import NewComment from "../../../../components/New_Comment";
-import Comment from '../../../../components/Comment'
+import Comment from "../../../../components/Comment";
 
-const CommentBox = () => (
+const CommentBox = ({ onSubmit }) => (
   <div className="comments">
-    <NewComment profileImage={profilePicture} />
+    <NewComment profileImage={profilePicture} onSubmit={onSubmit} />
     {ArrayComments.map(comment => (
       <Comment
         profileImage={comment.profile_image_url}

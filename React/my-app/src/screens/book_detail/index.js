@@ -48,6 +48,11 @@ class BookDetailContainer extends Component {
     }
   }
 
+  newComment = event => {
+    event.preventDefault();
+    console.log(event.target.comment.value);
+  };
+
   addToWishlist = () => {
     this.props.dispatch(newIntemWishlist(this.props.match.params.id));
   };
@@ -63,6 +68,7 @@ class BookDetailContainer extends Component {
         disabled={this.state.disabled || this.props.processing}
         text={this.state.text}
         onClick={this.state.bookAvailable ? this.rent : this.addToWishlist}
+        onSubmit={this.newComment}
       />
     );
   }
