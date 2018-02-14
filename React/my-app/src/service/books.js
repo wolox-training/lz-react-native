@@ -1,20 +1,16 @@
 import { api } from "../config/api";
 
-export const getBooks = url => {
-  return api.get(url);
-};
-
 export const getBookGallery = () => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks("/books");
+  return api.get("/books");
 };
 
 export const getBookInfo = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks(`/books/${id}`);
+  return api.get(`/books/${id}`);
 };
 
 export const getRents = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks(`/books/${id}/rents`);
+  return api.get(`/books/${id}/rents`);
 };

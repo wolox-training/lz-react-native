@@ -21,7 +21,7 @@ import {
 } from "./strings.js";
 import DescriptionBox from "./components/Description_Box";
 import CommentBox from "./components/Comment_Box";
-import MultiStateButton from "../../components/MultiStateButton";
+import RentButton from "./components/RentButton";
 import strings from "./strings";
 import Suggest from "../../components/Suggest";
 
@@ -46,7 +46,7 @@ const Book_detail = ({
           <img className="main_book" src={book.image_url || bigDefaultImg} />
           <div className="status_box">
             <DescriptionBox book={book} />
-            <MultiStateButton
+            <RentButton
               available={bookAvailable}
               disabled={disabled}
               text={text}
