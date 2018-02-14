@@ -1,4 +1,4 @@
-import { getBookGallery, getBookInfo } from "../../service/books";
+import { getBookGallery, getBookInfo, getComments } from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
 
 export const actions = {
@@ -71,22 +71,26 @@ export const resetGalleryView = () => {
 export const getBook = id => {
   return async dispatch => {
     try {
-      const response = await getBookInfo(id);
-      if (responseOK(response)) {
+      const bookResponse = await getBookInfo(id);
+      const commentResponse = await getComments(id);
+      if (responseOK(bookResponse) && responseOK(commentResponse)) {
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
-          payload: { bookInfo: response.data }
+          payload: {
+            bookInfo: bookResponse.data,
+            commentList: commentResponse.data
+          }
         });
       } else {
         dispatch({
           type: actions.GET_BOOK_INFO_FAILURE,
-          payload: { err: response }
+          payload: { err1: bookResponse, err2: commentResponse }
         });
       }
     } catch (e) {
       dispatch({
         type: actions.GET_BOOK_INFO_FAILURE,
-        payload: { error: e }
+        payload: { err1: e }
       });
     }
     dispatch(loading(false));

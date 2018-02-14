@@ -69,6 +69,7 @@ class BookDetailContainer extends Component {
         text={this.state.text}
         onClick={this.state.bookAvailable ? this.rent : this.addToWishlist}
         onSubmit={this.newComment}
+        comments={this.props.comments}
       />
     );
   }
@@ -77,6 +78,7 @@ class BookDetailContainer extends Component {
 const mapStateToProps = store => ({
   bookStatus: store.rents.bookStatus,
   bookInfo: store.book.bookInfo,
+  comments: store.book.commentList,
   loading: store.book.loading,
   loadingBookStatus: store.rents.loadingBookStatus,
   processing: store.rents.processing

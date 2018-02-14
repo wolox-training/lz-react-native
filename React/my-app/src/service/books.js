@@ -18,3 +18,8 @@ export const getRents = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
   return getBooks(`/books/${id}/rents`);
 };
+
+export const getComments = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return getBooks(`/books/${id}/comments`);
+};

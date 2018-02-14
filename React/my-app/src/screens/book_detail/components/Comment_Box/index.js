@@ -5,17 +5,19 @@ import { ArrayComments } from "../../../../config/comments";
 import NewComment from "../../../../components/New_Comment";
 import Comment from "../../../../components/Comment";
 
-const CommentBox = ({ onSubmit }) => (
+const CommentBox = ({ onSubmit, comments }) => (
   <div className="comments">
     <NewComment profileImage={profilePicture} onSubmit={onSubmit} />
-    {ArrayComments.map(comment => (
-      <Comment
-        profileImage={comment.profile_image_url}
-        profileName={comment.name}
-        date={comment.date}
-        comment={comment.text}
-      />
-    ))}
+    {comments
+      .slice(0, 4)
+      .map(comment => (
+        <Comment
+          profileImage={comment.user.image_url}
+          profileName={`${comment.user.first_name} ${comment.user.last_name}`}
+          date={comment.created_at}
+          comment={comment.content}
+        />
+      ))}
   </div>
 );
 
