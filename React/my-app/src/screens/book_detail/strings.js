@@ -1,3 +1,6 @@
+export const NOTHING = "";
+export const DEVOLVER_ANTES = "*Devolver antes de";
+export const NO_SE_ENCUENTRA = "*No se encuentra disponible";
 export const SUGERENCIAS = "Sugerencias";
 export const COMENTARIOS = "Comentarios";
 export const DISPONIBLE = "DISPONIBLE";

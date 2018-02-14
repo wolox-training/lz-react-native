@@ -4,12 +4,11 @@ import {
   getWishlist,
   addNewItemToWishlist
 } from "../../service/accounts";
+import { responseOK } from "../../utils/requestUtils";
 
 export const actions = {
   ADD_WISHLIST_SUCCESS: "ADD_WISHLIST_SUCCESS",
-  BOOK_AVAILABLE: "BOOK_AVAILABLE",
-  BOOK_IN_USE: "BOOK_IN_USE",
-  BOOK_UNAVAILABLE: "BOOK_UNAVAILABLE",
+  BOOK_STATUS_SUCCESS: "BOOK_STATUS_SUCCESS",
   CONNECTION_FAILURE: "CONNECTION_FAILURE",
   LOADING: "LOADING",
   PROCESSING: "PROCESSING"
@@ -39,7 +38,6 @@ export const newIntemWishlist = bookId => {
   return async dispatch => {
     try {
       dispatch(processing(true));
-      console.log(window.localStorage.userId);
       const response = await addNewItemToWishlist({
         wish: { book_id: bookId, user_id: window.localStorage.userId }
       });
@@ -64,23 +62,11 @@ export const getBookStatus = bookId => {
   return async dispatch => {
     try {
       const bookResponse = await getRents(bookId);
-      console.log(window.localStorage.userId);
       if (responseOK(bookResponse)) {
-        if (bookAvailable(bookResponse.data)) {
-          dispatch({
-            type: actions.BOOK_AVAILABLE
-          });
-        } else {
-          if (userHasTheBook(bookResponse.data)) {
-            dispatch({
-              type: actions.BOOK_IN_USE
-            });
-          } else {
-            dispatch({
-              type: actions.BOOK_UNAVAILABLE
-            });
-          }
-        }
+        dispatch({
+          type: actions.BOOK_STATUS_SUCCESS,
+          payload: { bookStatus: bookResponse.data }
+        });
       } else {
         throw new Error(FAILED);
       }
@@ -90,18 +76,6 @@ export const getBookStatus = bookId => {
         payload: { err: e }
       });
     }
-    dispatch(loading(false));
+    dispatch(processing(false));
   };
-};
-
-const bookAvailable = books => {
-  return books.every(book => book.returned_at);
-};
-
-const userHasTheBook = books => {
-  return books.some(book => book.user.id === window.localStorage.userId);
-};
-
-const responseOK = bookResponse => {
-  return bookResponse.status >= 200 && bookResponse.status < 300;
 };

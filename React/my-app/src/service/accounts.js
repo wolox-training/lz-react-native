@@ -21,11 +21,6 @@ export const getUser = token => {
   return getAccount("/users/me");
 };
 
-// export const getWishlist = id => {
-//   api.defaults.headers.common["authorization"] = window.localStorage.token;
-//   return getAccount(`/users/${window.localStorage.userId,}/wishes`);
-// };
-
 export const addNewItemToWishlist = body => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
   return postAccount(`/users/${window.localStorage.userId}/wishes`, body);

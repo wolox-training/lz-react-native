@@ -1,4 +1,5 @@
 import { checkUser, newUser, getUser } from "../../service/accounts";
+import { responseOK } from "../../utils/requestUtils";
 
 export const actions = {
   NEW_USER_SUCCESS: "NEW_USER_SUCCESS",
@@ -11,20 +12,19 @@ export const actions = {
 
 const INVALID_USER = "Invalid User";
 const MAIL_IN_USE = "Mail already in use";
+const CONNECTION_FAILURE = "CONNECTION_FAILURE";
 
 export const registerUser = token => {
   return async dispatch => {
     try {
       const response = await getUser(token);
-      if (response.status >= 200 && response.status < 300) {
+      if (responseOK(response)) {
         window.localStorage.userId = response.data.id;
         dispatch({
           type: actions.REGISTER_SUCCESS
         });
       } else {
-        dispatch({
-          type: actions.CONNECTION_FAILURE
-        });
+        throw new Error(CONNECTION_FAILURE);
       }
     } catch (e) {
       dispatch({
@@ -39,7 +39,7 @@ export const verifyUser = body => {
   return async dispatch => {
     try {
       const response = await checkUser(body);
-      if (response.status >= 200 && response.status < 300) {
+      if (responseOK(response)) {
         dispatch({
           type: actions.CHECK_USER_SUCCESS,
           payload: { token: response.data.access_token }
@@ -60,7 +60,7 @@ export const registerNewUser = body => {
   return async dispatch => {
     try {
       const response = await newUser(body);
-      if (response.status >= 200 && response.status < 300) {
+      if (responseOK(response)) {
         dispatch({
           type: actions.NEW_USER_SUCCESS
         });
