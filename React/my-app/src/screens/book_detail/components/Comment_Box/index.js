@@ -12,16 +12,7 @@ const CommentBox = ({ onSubmit, comments, disabledComments }) => (
       onSubmit={onSubmit}
       disabledComments={disabledComments}
     />
-    {comments
-      .slice(0, 4)
-      .map(comment => (
-        <Comment
-          profileImage={comment.user.image_url}
-          profileName={`${comment.user.first_name} ${comment.user.last_name}`}
-          date={comment.created_at}
-          comment={comment.content}
-        />
-      ))}
+    {comments.slice(0, 4).map(comment => <Comment comment={comment} />)}
   </div>
 );
 

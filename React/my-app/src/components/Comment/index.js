@@ -1,16 +1,27 @@
 import React from "react";
 import "./styles.css";
+import Link from "react-router-dom/Link";
 import defaultProfile from "../../assets/photos/default-avatar.png";
 
-const Comment = ({ profileImage, profileName, date, comment }) => (
+const Comment = ({ comment }) => (
   <div className="comment_box">
-    <img className="profile" src={profileImage || defaultProfile} />
+    <Link to={`/profile/${comment.user.id}`}>
+      <img className="profile" src={comment.user.image_url || defaultProfile} />
+    </Link>
     <form className="comment_form">
-      <h1 className="user_name">{profileName}</h1>
-      <h1 className="comment_text">{date}</h1>
-      <h1 className="comment_text">{comment}</h1>
+      <h1 className="user_name">{`${comment.user.first_name} ${
+        comment.user.last_name
+      }`}</h1>
+      <h1 className="comment_text">{comment.created_at}</h1>
+      <h1 className="comment_text">{comment.content}</h1>
     </form>
   </div>
 );
+
+// profileImage={comment.user.image_url}
+// profileName={`${comment.user.first_name} ${comment.user.last_name}`}
+// date={comment.created_at}
+// comment={comment.content}
+// user={comment.user.id}
 
 export default Comment;

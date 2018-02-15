@@ -4,6 +4,7 @@ import HomeContainer from "../../screens/home/index";
 import BookDetailContainer from "../../screens/book_detail/index";
 import LoginContainer from "../../screens/login";
 import SignUpContainer from "../../screens/sign_up";
+import ProfileContainer from "../../screens/profile";
 import PrivateRoute from "../PrivateRoute";
 import { registerUser } from "../../redux/accounts/actions";
 
@@ -12,6 +13,7 @@ class Router extends Component {
     return (
       <Switch>
         <PrivateRoute exact path="/" component={HomeContainer} />
+        <PrivateRoute exact path="/profile/:id" component={ProfileContainer} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/sign_up" component={SignUpContainer} />
         <PrivateRoute path="/books/:id" component={BookDetailContainer} />
