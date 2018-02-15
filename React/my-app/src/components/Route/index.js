@@ -5,6 +5,7 @@ import BookDetailContainer from "../../screens/book_detail/index";
 import LoginContainer from "../../screens/login";
 import SignUpContainer from "../../screens/sign_up";
 import PrivateRoute from "../PrivateRoute";
+import { registerUser } from "../../redux/accounts/actions";
 
 class Router extends Component {
   render() {

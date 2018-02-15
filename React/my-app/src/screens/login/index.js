@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Login from "./layout";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { verifyUser } from "../../redux/accounts/actions";
+import { registerUser, verifyUser } from "../../redux/accounts/actions";
 import {
   MAIL_ERROR,
   FORM_INCOMPLETE,
@@ -44,6 +44,7 @@ class LoginContainer extends Component {
       });
     } else {
       window.localStorage.token = newProps.token;
+      this.props.dispatch(registerUser(newProps.token));
       this.setState({
         emailError: null,
         passwordError: null,

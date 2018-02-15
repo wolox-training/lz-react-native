@@ -1,19 +1,16 @@
 import { api } from "../config/api";
 
-const failure = () => {
-  console.log("Request Failed");
-};
-
-export const getBooks = (url, onSuccess, onFailure) => {
-  return api.get(url);
-};
-
-export const getBookGallery = (onSuccess, onFailure = failure) => {
+export const getBookGallery = () => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks("/books", onSuccess, onFailure);
+  return api.get("/books");
 };
 
-export const getBookInfo = (id, onSuccess, onFailure = failure) => {
+export const getBookInfo = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks(`/books/${id}`, onSuccess, onFailure);
+  return api.get(`/books/${id}`);
+};
+
+export const getRents = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return api.get(`/books/${id}/rents`);
 };

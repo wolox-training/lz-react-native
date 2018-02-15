@@ -1,4 +1,5 @@
 import { getBookGallery, getBookInfo } from "../../service/books";
+import { responseOK } from "../../utils/requestUtils";
 
 export const actions = {
   GET_BOOKS_SUCCESS: "GET_BOOKS_SUCCESS",
@@ -34,7 +35,7 @@ export const getBookList = () => {
   return async dispatch => {
     try {
       const response = await getBookGallery();
-      if (response.status >= 200 && response.status < 300) {
+      if (responseOK(response)) {
         dispatch({
           type: actions.GET_BOOKS_SUCCESS,
           payload: { bookList: response.data }
@@ -71,7 +72,7 @@ export const getBook = id => {
   return async dispatch => {
     try {
       const response = await getBookInfo(id);
-      if (response.status >= 200 && response.status < 300) {
+      if (responseOK(response)) {
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
           payload: { bookInfo: response.data }

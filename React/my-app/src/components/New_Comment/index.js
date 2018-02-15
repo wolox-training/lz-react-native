@@ -8,7 +8,7 @@ const NewComment = ({ profileImage }) => (
     <img className="profile" src={profileImage || defaultProfile} />
     <form className="comment_form">
       <h1 className="user_name">{AGREGAR_COMENTARIO}</h1>
-      <input type="text" className="input_comments" />
+      <textarea type="text" className="input_comments" />
       <button className="send_button" type="button">
         {ENVIAR}
       </button>
