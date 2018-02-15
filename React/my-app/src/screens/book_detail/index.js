@@ -7,7 +7,6 @@ import {
   resetBookView,
   createNewComment
 } from "../../redux/book/actions";
-import { bookAvailable, userHasTheBook } from "../../utils/arrayUtils";
 import { validateCommentSize, notEmpty } from "../../utils/validations";
 import {
   getBookStatus,
@@ -55,16 +54,21 @@ class BookDetailContainer extends Component {
 
   newComment = event => {
     event.preventDefault();
-    this.props.dispatch(
-      createNewComment({
-        book_id: this.props.match.params.id,
-        user_id: window.localStorage.userId,
-        content: event.target.comment.value
-      })
-    );
-    // }
-
-    console.log(event.target.comment.value);
+    debugger;
+    const commentText = event.target.comment.value;
+    const bookId = this.props.match.params.id;
+    if (commentText.length) {
+      this.props.dispatch(
+        createNewComment(bookId, {
+          comment: {
+            book_id: bookId,
+            user_id: window.localStorage.userId,
+            content: commentText
+          }
+        })
+      );
+    }
+    console.log(commentText);
   };
 
   addToWishlist = () => {
@@ -91,6 +95,7 @@ class BookDetailContainer extends Component {
         onSubmit={this.newComment}
         comments={this.props.comments}
         disabled={bookStatus.disabled || this.props.processing}
+        disabledComments={this.props.uploadingComment}
         bookAvailable={bookStatus.bookAvailable}
         text={bookStatus.text}
       />
@@ -105,7 +110,7 @@ const mapStateToProps = store => ({
   loading: store.book.loading,
   loadingBookStatus: store.rents.loadingBookStatus,
   processing: store.rents.processing,
-  uploadingComment: store.book.processing
+  uploadingComment: store.book.uploadingComment
 });
 
 export default connect(mapStateToProps)(BookDetailContainer);

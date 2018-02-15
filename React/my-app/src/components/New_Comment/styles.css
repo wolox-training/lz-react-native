@@ -44,3 +44,7 @@
   height: 38px;
   width: 192px;
 }
+
+.send_button:disabled {
+  background: #e6e6e6;
+}

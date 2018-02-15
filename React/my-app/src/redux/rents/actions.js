@@ -24,7 +24,7 @@ export const loading = status => {
   };
 };
 
-export const processing = status => {
+const processing = status => {
   return dispatch => {
     dispatch({
       type: actions.PROCESSING,

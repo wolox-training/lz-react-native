@@ -17,9 +17,10 @@ export const getRents = id => {
 
 export const getComments = id => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
-  return getBooks(`/books/${id}/comments`);
+  return api.get(`/books/${id}/comments`);
 };
 
 export const postComment = (id, body) => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.post(`/books/${id}/comments`, body);
 };

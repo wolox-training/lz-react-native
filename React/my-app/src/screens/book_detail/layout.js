@@ -33,7 +33,8 @@ const Book_detail = ({
   text,
   onClick,
   onSubmit,
-  comments
+  comments,
+  disabledComments
 }) => (
   <div className="mainContainer">
     <NavBarContainer />
@@ -61,7 +62,11 @@ const Book_detail = ({
         <Suggest />
         <hr class="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
-        <CommentBox onSubmit={onSubmit} comments={comments} />
+        <CommentBox
+          onSubmit={onSubmit}
+          comments={comments}
+          disabledComments={disabledComments}
+        />
       </div>
     )}
   </div>

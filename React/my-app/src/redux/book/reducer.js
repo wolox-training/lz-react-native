@@ -6,7 +6,8 @@ const initialState = {
   bookInfo: null,
   loading: true,
   loadingGallery: true,
-  commentList: []
+  commentList: [],
+  uploadingComment: false
 };
 
 function reducer(state = initialState, action) {
@@ -31,8 +32,10 @@ function reducer(state = initialState, action) {
       return { ...state, bookList: [], gallery: [], loadingGallery: true };
     case actions.LOADING:
       return { ...state, loading: action.payload.loading };
-    case actions.PROCESSING:
-      return { ...state, processing: action.payload.processing };
+    case actions.UPLOADING_COMMENT:
+      return { ...state, uploadingComment: action.payload.uploadingComment };
+    case actions.NEW_COMMENT_SUCCESS:
+      return state;
     case actions.LOADING_GALLERY:
       return { ...state, loadingGallery: action.payload.loadingGallery };
     default:

@@ -18,8 +18,10 @@ export const actions = {
   GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
   LOADING: "LOADING",
   LOADING_GALLERY: "LOADING_GALLERY",
+  NEW_COMMENT_SUCCESS: "NEW_COMMENT_SUCCESS",
   RESET_BOOK_VIEW: "RESET_BOOK_VIEW",
-  RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW"
+  RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW",
+  UPLOADING_COMMENT: "UPLOADING_COMMENT"
 };
 
 export const loading = status => {
@@ -65,11 +67,11 @@ export const getBookList = () => {
   };
 };
 
-export const processing = status => {
+export const uploadingComment = status => {
   return dispatch => {
     dispatch({
-      type: actions.PROCESSING,
-      payload: { processing: status }
+      type: actions.UPLOADING_COMMENT,
+      payload: { uploadingComment: status }
     });
   };
 };
@@ -86,29 +88,26 @@ export const resetGalleryView = () => {
   };
 };
 
-export const createNewComment = body => {
+export const createNewComment = (bookId, body) => {
   return async dispatch => {
-    if (validateComment(body.comment)) {
-      try {
-        const response = await postComment(body.book_id, body);
-        if (responseOK(response)) {
-          dispatch({
-            type: actions.NEW_COMMENT_SUCCESS
-          });
-        } else {
-          throw new Error(CONNECTION_FAILURE);
-        }
-      } catch (e) {
+    try {
+      debugger;
+      dispatch(uploadingComment(true));
+      const response = await postComment(bookId, body);
+      if (responseOK(response)) {
         dispatch({
-          type: actions.CONNECTION_FAILURE,
-          payload: { error: e }
+          type: actions.NEW_COMMENT_SUCCESS
         });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
       }
-    } else {
+    } catch (e) {
       dispatch({
-        type: actions.COMMENT_FORMAT_INVALID
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
       });
     }
+    dispatch(uploadingComment(false));
   };
 };
 
