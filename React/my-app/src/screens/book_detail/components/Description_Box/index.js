@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.css";
 import defaultProfile from "../../../../assets/photos/default-avatar.png";
-import MultiStateButton from "../../../../components/MultiStateButton";
 
 import { ALQUILAR, TEXTO } from "./strings.js";
 

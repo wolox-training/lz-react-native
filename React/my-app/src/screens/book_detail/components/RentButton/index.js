@@ -2,14 +2,13 @@ import React from "react";
 import "./styles.css";
 import { WISHLIST, ALQUILAR } from "./strings.js";
 
-const MultiStateButton = ({ available, text, disabled, onClick }) => {
+const RentButton = ({ available, text, ...buttonProps }) => {
   return (
     <div className="button_box">
       <h1 className="unavailable_text">{text}</h1>
       <button
         className={`button ${!available && "wishlist-button"}`}
-        disabled={disabled}
-        onClick={onClick}
+        {...buttonProps}
       >
         {available ? ALQUILAR : WISHLIST}
       </button>
@@ -17,4 +16,4 @@ const MultiStateButton = ({ available, text, disabled, onClick }) => {
   );
 };
 
-export default MultiStateButton;
+export default RentButton;
