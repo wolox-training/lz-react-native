@@ -1,14 +1,23 @@
-import { checkUser, newUser, getUser } from "../../service/accounts";
+import {
+  checkUser,
+  newUser,
+  getUser,
+  getUserRents,
+  getUserComments,
+  getUserWishlist
+} from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
 import { INVALID_USER, MAIL_IN_USE, CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
+  CHECK_USER_FAILURE: "CHECK_USER_FAILURE",
+  CHECK_USER_SUCCESS: "CHECK_USER_SUCCESS",
+  CONNECTION_FAILURE: "CONNECTION_FAILURE",
+  GET_INFO_SUCCESS: "GET_INFO_SUCCESS",
+  LOADING: "LOADING",
   NEW_USER_SUCCESS: "NEW_USER_SUCCESS",
   NEW_USER_FAILURE: "NEW_USER_FAILURE",
-  CHECK_USER_SUCCESS: "CHECK_USER_SUCCESS",
-  CHECK_USER_FAILURE: "CHECK_USER_FAILURE",
-  REGISTER_SUCCESS: "REGISTER_SUCCESS",
-  CONNECTION_FAILURE: "CONNECTION_FAILURE"
+  REGISTER_SUCCESS: "REGISTER_SUCCESS"
 };
 
 export const registerUser = token => {
@@ -32,6 +41,15 @@ export const registerUser = token => {
   };
 };
 
+export const loading = status => {
+  return dispatch => {
+    dispatch({
+      type: actions.LOADING,
+      payload: { loading: status }
+    });
+  };
+};
+
 export const verifyUser = body => {
   return async dispatch => {
     try {
@@ -50,6 +68,34 @@ export const verifyUser = body => {
         payload: { error: e }
       });
     }
+  };
+};
+
+export const getUserInfo = id => {
+  return async dispatch => {
+    try {
+      const rents = await getUserRents(id);
+      const wishes = await getUserWishlist(id);
+      const comments = await getUserComments(id);
+      if (responseOK(rents) && responseOK(wishes) && responseOK(comments)) {
+        dispatch({
+          type: actions.GET_INFO_SUCCESS,
+          payload: {
+            rents: rents.data,
+            wishlist: wishes.data,
+            comments: comments.data
+          }
+        });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
+      });
+    }
+    dispatch(loading(false));
   };
 };
 

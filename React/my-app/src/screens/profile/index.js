@@ -2,20 +2,7 @@ import React, { Component } from "react";
 import Profile from "./layout";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { registerUser, verifyUser } from "../../redux/accounts/actions";
-import {
-  MAIL_ERROR,
-  FORM_INCOMPLETE,
-  PASSWORD_SIZE_ERROR,
-  PASSWORD_NUMBER_AND_LETTER_ERROR,
-  INVALID_USER
-} from "./strings";
-import {
-  formComplete,
-  validateSize,
-  validateNumberAndLetter,
-  validateEmail
-} from "../../utils/validations";
+import { getUserInfo } from "../../redux/accounts/actions";
 
 class ProfileContainer extends Component {
   state = {
@@ -24,14 +11,36 @@ class ProfileContainer extends Component {
     redirect: false
   };
 
+  componentWillMount() {
+    const userId = this.props.match.params.id;
+    this.props.dispatch(getUserInfo(userId));
+    // this.props.dispatch(getWishlist(userId));
+    // this.props.dispatch(getComments(userId));
+  }
+
+  componentWillUnmount() {
+    // this.props.dispatch(resetGalleryView());
+  }
+
   render() {
-    return <Profile />;
+    debugger;
+    console.log(this.props.wishlist);
+    return (
+      <Profile
+        loading={this.props.loading}
+        rents={this.props.rents}
+        wishList={this.props.wishlist}
+        comments={this.props.comments}
+      />
+    );
   }
 }
 
 const mapStateToProps = store => ({
-  token: store.account.token,
-  error: store.account.error
+  loading: store.account.loading,
+  rents: store.account.rents,
+  wishlist: store.account.wishlist,
+  comments: store.account.comments
 });
 
 export default connect(mapStateToProps)(ProfileContainer);

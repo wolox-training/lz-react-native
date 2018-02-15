@@ -1,8 +1,10 @@
 import { actions } from "./actions";
 
 const initialState = {
-  token: null,
-  error: null
+  rents: [],
+  wishlist: [],
+  comments: [],
+  loading: true
 };
 
 function reducer(state = initialState, action) {
@@ -15,6 +17,15 @@ function reducer(state = initialState, action) {
       return { ...state, error: action.payload.error };
     case actions.REGISTER_SUCCESS:
       return state;
+    case actions.GET_INFO_SUCCESS:
+      return {
+        ...state,
+        rents: action.payload.books,
+        wishlist: action.payload.wishlist,
+        comments: action.payload.comments
+      };
+    case actions.LOADING:
+      return { ...state, loading: action.payload.loading };
     default:
       return state;
   }

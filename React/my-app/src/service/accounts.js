@@ -13,6 +13,21 @@ export const getUser = token => {
   return api.get("/users/me");
 };
 
+export const getUserRents = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return api.get(`/users/${id}/rents`);
+};
+
+export const getUserComments = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return api.get(`/users/${id}/comments`);
+};
+
+export const getUserWishlist = id => {
+  api.defaults.headers.common["authorization"] = window.localStorage.token;
+  return api.get(`/users/${id}/wishes`);
+};
+
 export const addNewItemToWishlist = body => {
   api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.post(`/users/${window.localStorage.userId}/wishes`, body);

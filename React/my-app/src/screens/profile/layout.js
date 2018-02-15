@@ -1,16 +1,36 @@
 import React, { Component } from "react";
 import "./styles.css";
-import wBooks from "../../assets/photos/wBooks.png";
-import Input from "../../components/Input";
-import ErrorMsg from "../../components/ErrorMsg";
 import NavBarContainer from "../../components/NavBar";
+import bigProfile from "../../assets/photos/bigProfile.png";
+import { HashLoader } from "react-spinners";
 import { Link } from "react-router-dom";
+import Gallery from "../../components/Gallery";
+// import sugerencias from "../../config/sugerencias.json";
 import {} from "./strings";
 
-const Profile = ({ onSubmit, emailError, passwordError }) => (
-  <div className="login_box">
+const Profile = ({ rents, wishList, comments, loading }) => (
+  <div className="profile_box">
     <NavBarContainer />
-    <h1>Hello!! I'm Profile</h1>
+    {loading ? (
+      <HashLoader />
+    ) : (
+      <div>
+        <div className="user_box">
+          <img className="profile_picture" src={bigProfile} />
+          <div className="profile_info">
+            <h1 className="profile_name"> Hi, Im Becky</h1>
+            <h1 className="profile_email"> HiIm@Becky</h1>
+          </div>
+        </div>
+        <hr class="barrier" />
+        <h1 className="topic">LEIDOS</h1>
+        <Gallery bookList={rents} />
+        <h1 className="topic">WISHLIST</h1>
+        <Gallery bookList={wishList} />
+        <hr class="barrier" />
+        <h1 className="topic">COMENTARIOS</h1>
+      </div>
+    )}
   </div>
 );
 

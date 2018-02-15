@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { RingLoader } from "react-spinners";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import sugerencias from "../../config/sugerencias.json";
 import { ArrayComments } from "../../config/comments";
 import Book from "../../components/Book";
 import Comment from "../../components/Comment";
 import NewComment from "../../components/New_Comment";
 import bigDefaultImg from "../../assets/photos/bigDefault.png";
 import profilePicture from "../../assets/photos/profilePicture.png";
+import suggests from "../../config/sugerencias.json";
 import NavBarContainer from "../../components/NavBar";
 import {
   DISPONIBLE,
@@ -23,7 +23,7 @@ import DescriptionBox from "./components/Description_Box";
 import CommentBox from "./components/Comment_Box";
 import RentButton from "./components/RentButton";
 import strings from "./strings";
-import Suggest from "../../components/Suggest";
+import Gallery from "../../components/Gallery";
 
 const Book_detail = ({
   book,
@@ -59,7 +59,7 @@ const Book_detail = ({
         </div>
         <hr class="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
-        <Suggest />
+        <Gallery bookList={suggests} />
         <hr class="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
         <CommentBox
