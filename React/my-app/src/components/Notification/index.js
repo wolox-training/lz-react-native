@@ -1,13 +1,12 @@
 import React from "react";
-import stylesCss from "./styles.css";
-import { PERFIL, CERRAR_SESION } from "./strings";
+import "./styles.css";
 import defaultImg from "../../assets/photos/default.png";
 import { TIEMPO, TITULO, AUTOR, DISPONIBILIDAD, FECHA } from "./strings";
 
 const Notification = ({ show }) => (
   <div className={`${show}_notification`}>
     <a className="item">
-      <img src={defaultImg} className="portrait" />
+      <img alt="" src={defaultImg} className="portrait" />
       <div className="notification">
         <h1>{DISPONIBILIDAD}</h1>
         <h1>{TITULO}</h1>
@@ -15,7 +14,7 @@ const Notification = ({ show }) => (
       </div>
     </a>
     <a className="item">
-      <img src={defaultImg} className="portrait" />
+      <img alt="" src={defaultImg} className="portrait" />
       <div className="notification">
         <h1>{TIEMPO}</h1>
         <h1>{TITULO}</h1>

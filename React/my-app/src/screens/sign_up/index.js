@@ -83,7 +83,7 @@ class SignUpContainer extends Component {
         } else {
           this.setState({ passwordError: null });
         }
-        if (password != confirm_password) {
+        if (password !== confirm_password) {
           this.setState({ passwordError: DIFFERENT_PASSWORD });
           ok = false;
         } else {

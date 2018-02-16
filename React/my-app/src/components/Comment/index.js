@@ -6,7 +6,11 @@ import defaultProfile from "../../assets/photos/default-avatar.png";
 const Comment = ({ comment }) => (
   <div className="comment_box">
     <Link to={`/profile/${comment.user.id}`}>
-      <img className="profile" src={comment.user.image_url || defaultProfile} />
+      <img
+        alt=""
+        className="profile"
+        src={comment.user.image_url || defaultProfile}
+      />
     </Link>
     <form className="comment_form">
       <h1 className="user_name">{`${comment.user.first_name} ${

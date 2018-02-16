@@ -6,7 +6,6 @@ import LoginContainer from "../../screens/login";
 import SignUpContainer from "../../screens/sign_up";
 import ProfileContainer from "../../screens/profile";
 import PrivateRoute from "../PrivateRoute";
-import { registerUser } from "../../redux/accounts/actions";
 
 class Router extends Component {
   render() {

@@ -5,7 +5,6 @@ import {
   postComment
 } from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
-import { validateComment } from "../../utils/validations";
 import { CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
@@ -91,7 +90,6 @@ export const resetGalleryView = () => {
 export const createNewComment = (bookId, body) => {
   return async dispatch => {
     try {
-      debugger;
       dispatch(uploadingComment(true));
       const response = await postComment(bookId, body);
       if (responseOK(response)) {
@@ -143,7 +141,7 @@ export const getBook = id => {
 export const filterGallery = (data, word, type) => {
   return async dispatch => {
     let gallery;
-    if (type != "null") {
+    if (type !== "null") {
       gallery = data.filter(book =>
         book[type].toLowerCase().includes(word.toLowerCase())
       );

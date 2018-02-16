@@ -29,6 +29,5 @@ export const getUserWishlist = id => {
 };
 
 export const addNewItemToWishlist = body => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.post(`/users/${window.localStorage.userId}/wishes`, body);
 };

@@ -1,9 +1,5 @@
 import { getRents } from "../../service/books";
-import {
-  getUser,
-  getWishlist,
-  addNewItemToWishlist
-} from "../../service/accounts";
+import { addNewItemToWishlist } from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
 import { CONNECTION_FAILURE } from "../stringErrors";
 
