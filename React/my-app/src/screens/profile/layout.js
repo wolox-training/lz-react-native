@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import NavBarContainer from "../../components/NavBar";
 import bigProfile from "../../assets/photos/bigProfile.png";
 import { HashLoader } from "react-spinners";
-import { Link } from "react-router-dom";
 import Gallery from "../../components/Gallery";
 // import sugerencias from "../../config/sugerencias.json";
 import {} from "./strings";
@@ -16,7 +15,7 @@ const Profile = ({ rents, wishList, comments, loading }) => (
     ) : (
       <div>
         <div className="user_box">
-          <img className="profile_picture" src={bigProfile} />
+          <img alt="profile" className="profile_picture" src={bigProfile} />
           <div className="profile_info">
             <h1 className="profile_name"> Hi, Im Becky</h1>
             <h1 className="profile_email"> HiIm@Becky</h1>

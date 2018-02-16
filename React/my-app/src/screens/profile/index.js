@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Profile from "./layout";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserInfo } from "../../redux/accounts/actions";
 
