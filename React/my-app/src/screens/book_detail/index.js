@@ -47,7 +47,6 @@ class BookDetailContainer extends Component {
 
   newComment = event => {
     event.preventDefault();
-    debugger;
     const commentText = event.target.comment.value;
     const bookId = this.props.match.params.id;
     if (commentText.length) {
@@ -61,7 +60,6 @@ class BookDetailContainer extends Component {
         })
       );
     }
-    console.log(commentText);
   };
 
   addToWishlist = () => {

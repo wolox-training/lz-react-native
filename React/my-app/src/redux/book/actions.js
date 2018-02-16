@@ -90,7 +90,6 @@ export const resetGalleryView = () => {
 export const createNewComment = (bookId, body) => {
   return async dispatch => {
     try {
-      debugger;
       dispatch(uploadingComment(true));
       const response = await postComment(bookId, body);
       if (responseOK(response)) {
