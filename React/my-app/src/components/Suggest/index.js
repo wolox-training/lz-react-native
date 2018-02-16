@@ -6,7 +6,12 @@ const Suggest = () => (
   <div className="suggest">
     <div className="suggest_gallery">
       {suggest.map(element => (
-        <img className="tiny_books" src={element.image_url} />
+        <img
+          key={element.id}
+          alt={element.id}
+          className="tiny_books"
+          src={element.image_url}
+        />
       ))}
     </div>
   </div>

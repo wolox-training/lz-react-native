@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import defaultImg from "../../assets/photos/default.png";
 import Home from "./layout.js";
 import {
   getBookList,

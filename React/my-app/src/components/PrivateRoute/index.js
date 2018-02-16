@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import LoginContainer from "../../screens/login";
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
 const PrivateRouter = ({ path, component }) =>
   window.localStorage.token ? (

@@ -1,31 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { RingLoader } from "react-spinners";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import sugerencias from "../../config/sugerencias.json";
-import { ArrayComments } from "../../config/comments";
-import Book from "../../components/Book";
-import Comment from "../../components/Comment";
-import NewComment from "../../components/New_Comment";
 import bigDefaultImg from "../../assets/photos/bigDefault.png";
-import profilePicture from "../../assets/photos/profilePicture.png";
 import NavBarContainer from "../../components/NavBar";
-import {
-  DISPONIBLE,
-  ALQUILADO,
-  USUARIO,
-  SUGERENCIAS,
-  COMENTARIOS,
-  ENVIAR,
-  VOLVER
-} from "./strings.js";
+import { SUGERENCIAS, COMENTARIOS, VOLVER } from "./strings.js";
 import DescriptionBox from "./components/Description_Box";
 import CommentBox from "./components/Comment_Box";
 import RentButton from "./components/RentButton";
-import strings from "./strings";
 import Suggest from "../../components/Suggest";
 
-const Book_detail = ({
+const BookDetail = ({
   book,
   bookAvailable,
   loading,
@@ -46,7 +31,11 @@ const Book_detail = ({
     ) : (
       <div className="center">
         <div className="info">
-          <img className="main_book" src={book.image_url || bigDefaultImg} />
+          <img
+            alt={book.id}
+            className="main_book"
+            src={book.image_url || bigDefaultImg}
+          />
           <div className="status_box">
             <DescriptionBox book={book} />
             <RentButton
@@ -57,10 +46,10 @@ const Book_detail = ({
             />
           </div>
         </div>
-        <hr class="barrier" />
+        <hr className="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
         <Suggest />
-        <hr class="barrier" />
+        <hr className="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
         <CommentBox
           onSubmit={onSubmit}
@@ -72,4 +61,4 @@ const Book_detail = ({
   </div>
 );
 
-export default Book_detail;
+export default BookDetail;

@@ -1,17 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import wBooks from "../../assets/photos/wBooks.png";
-import ErrorMsg from "../../components/ErrorMsg";
 import { Link } from "react-router-dom";
 import Input from "../../components/Input";
 import Logo from "../../components/Logo";
 import {
   WBOOKS,
-  INGRESAR,
   EMAIL,
   PASSWORD,
   CONFIRMAR_PASSWORD,
-  SIGN_UP,
   NOMBRE,
   APELLIDO,
   ACEPTAR,

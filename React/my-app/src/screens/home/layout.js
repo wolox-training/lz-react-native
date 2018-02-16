@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { ScaleLoader } from "react-spinners";
-import { Link } from "react-router-dom";
 import {
   WBOOKS,
   SELECCIONAR_FILTRO,
@@ -12,7 +11,6 @@ import Book from "../../components/Book/index.js";
 import Logo from "../../components/Logo";
 import wBooks from "../../assets/photos/wBooks.png";
 import "./styles.css";
-import defaultImg from "../../assets/photos/default.png";
 import NavBarContainer from "../../components/NavBar";
 
 const Home = ({ data, onSelect, onInput, loading }) => (
@@ -39,6 +37,7 @@ const Home = ({ data, onSelect, onInput, loading }) => (
       <div className="gallery">
         {data.map(element => (
           <Book
+            key={element.id}
             id={element.id}
             imageUrl={element.image_url}
             title={element.title}

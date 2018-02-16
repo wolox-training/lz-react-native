@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import wBooks from "../../assets/photos/wBooks.png";
 import Input from "../../components/Input";
-import ErrorMsg from "../../components/ErrorMsg";
 import { Link } from "react-router-dom";
 import {
   WBOOKS,

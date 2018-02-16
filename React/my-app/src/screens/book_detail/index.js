@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import defaultImg from "../../assets/photos/bigDefault.png";
-import Book_detail from "./layout.js";
+import BookDetail from "./layout.js";
 import {
   getBook,
   resetBookView,
   createNewComment
 } from "../../redux/book/actions";
-import { validateCommentSize, notEmpty } from "../../utils/validations";
-import {
-  getBookStatus,
-  getWishlist,
-  newIntemWishlist,
-  loading
-} from "../../redux/rents/actions";
+import { getBookStatus, newIntemWishlist } from "../../redux/rents/actions";
 import { NOTHING, NO_SE_ENCUENTRA, DEVOLVER_ANTES } from "./strings";
 
 class BookDetailContainer extends Component {
@@ -88,7 +81,7 @@ class BookDetailContainer extends Component {
   render() {
     const bookStatus = this.bookStatus();
     return (
-      <Book_detail
+      <BookDetail
         book={this.props.bookInfo}
         loading={this.props.loading || this.props.loadingBookStatus}
         onClick={this.state.bookAvailable ? this.rent : this.addToWishlist}
