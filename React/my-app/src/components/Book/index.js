@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Book = ({ id, imageUrl, title, author }) => (
   <Link to={`/books/${id}`}>
     <div className="book_info">
-      <img alt={id} className="cover" src={imageUrl || defaultImg} />
+      <img alt={title} className="cover" src={imageUrl || defaultImg} />
       <h1 className="title">{title}</h1>
       <h1 className="author">{author}</h1>
     </div>

@@ -32,7 +32,7 @@ const NavBar = ({
       <Notification show={showNotification ? "show" : "unshow"} />
       <img alt="" className="nav_image" src={newBook} />
       <img
-        alt=""
+        alt="notifications"
         className="nav_image"
         src={profilePicture}
         onClick={onPictureClick}

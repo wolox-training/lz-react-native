@@ -8,7 +8,7 @@ const Suggest = () => (
       {suggest.map(element => (
         <img
           key={element.id}
-          alt={element.id}
+          alt={element.title}
           className="tiny_books"
           src={element.image_url}
         />
