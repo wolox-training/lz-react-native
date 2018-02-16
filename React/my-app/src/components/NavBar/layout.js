@@ -24,7 +24,7 @@ const NavBar = ({
     </div>
     <div className="images_box">
       <img
-        alt=""
+        alt="Notification bell"
         className="nav_image"
         src={notificationBell}
         onClick={onNotificationClick}
@@ -32,7 +32,7 @@ const NavBar = ({
       <Notification show={showNotification ? "show" : "unshow"} />
       <img alt="" className="nav_image" src={newBook} />
       <img
-        alt="notifications"
+        alt="profile"
         className="nav_image"
         src={profilePicture}
         onClick={onPictureClick}
