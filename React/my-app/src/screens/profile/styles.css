@@ -6,10 +6,11 @@
 }
 
 .user_box {
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
 .profile_picture {

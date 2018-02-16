@@ -22,10 +22,4 @@ const Comment = ({ comment }) => (
   </div>
 );
 
-// profileImage={comment.user.image_url}
-// profileName={`${comment.user.first_name} ${comment.user.last_name}`}
-// date={comment.created_at}
-// comment={comment.content}
-// user={comment.user.id}
-
 export default Comment;

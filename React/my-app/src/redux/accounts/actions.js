@@ -14,10 +14,11 @@ export const actions = {
   CHECK_USER_SUCCESS: "CHECK_USER_SUCCESS",
   CONNECTION_FAILURE: "CONNECTION_FAILURE",
   GET_INFO_SUCCESS: "GET_INFO_SUCCESS",
-  LOADING: "LOADING",
+  LOADING_USER: "LOADING_USER",
   NEW_USER_SUCCESS: "NEW_USER_SUCCESS",
   NEW_USER_FAILURE: "NEW_USER_FAILURE",
-  REGISTER_SUCCESS: "REGISTER_SUCCESS"
+  REGISTER_SUCCESS: "REGISTER_SUCCESS",
+  RESET_PROFILE_VIEW: "RESET_PROFILE_VIEW"
 };
 
 export const registerUser = token => {
@@ -44,7 +45,7 @@ export const registerUser = token => {
 export const loading = status => {
   return dispatch => {
     dispatch({
-      type: actions.LOADING,
+      type: actions.LOADING_USER,
       payload: { loading: status }
     });
   };
@@ -96,6 +97,12 @@ export const getUserInfo = id => {
       });
     }
     dispatch(loading(false));
+  };
+};
+
+export const resetProfileView = () => {
+  return {
+    type: actions.RESET_PROFILE_VIEW
   };
 };
 

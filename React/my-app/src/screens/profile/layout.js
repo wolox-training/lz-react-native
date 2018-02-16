@@ -5,6 +5,7 @@ import bigProfile from "../../assets/photos/bigProfile.png";
 import { HashLoader } from "react-spinners";
 import Gallery from "../../components/Gallery";
 // import sugerencias from "../../config/sugerencias.json";
+import Comment from "../../components/Comment";
 import {} from "./strings";
 
 const Profile = ({ rents, wishList, comments, loading }) => (
@@ -21,13 +22,18 @@ const Profile = ({ rents, wishList, comments, loading }) => (
             <h1 className="profile_email"> HiIm@Becky</h1>
           </div>
         </div>
-        <hr class="barrier" />
+        <hr className="barrier" />
         <h1 className="topic">LEIDOS</h1>
         <Gallery bookList={rents} />
         <h1 className="topic">WISHLIST</h1>
         <Gallery bookList={wishList} />
-        <hr class="barrier" />
+        <hr className="barrier" />
         <h1 className="topic">COMENTARIOS</h1>
+        <div className="comments">
+          {comments
+            .slice(0, 4)
+            .map(comment => <Comment key={comment.id} comment={comment} />)}
+        </div>
       </div>
     )}
   </div>

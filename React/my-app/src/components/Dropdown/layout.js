@@ -6,7 +6,7 @@ import { PERFIL, CERRAR_SESION } from "./strings";
 const Dropdown = ({ show, logOut }) => (
   <div className={`${show}_dropdown`}>
     <Link to={`/profile/${window.localStorage.userId}`}>
-      <a className="item">{PERFIL}</a>
+      <h1 className="item">{PERFIL}</h1>
     </Link>
     <a className="item" onClick={logOut}>
       {CERRAR_SESION}

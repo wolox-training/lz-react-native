@@ -14,17 +14,14 @@ export const getUser = token => {
 };
 
 export const getUserRents = id => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.get(`/users/${id}/rents`);
 };
 
 export const getUserComments = id => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.get(`/users/${id}/comments`);
 };
 
 export const getUserWishlist = id => {
-  api.defaults.headers.common["authorization"] = window.localStorage.token;
   return api.get(`/users/${id}/wishes`);
 };
 

@@ -18,3 +18,11 @@
   width: 87px;
   height: 124px;
 }
+
+.info_sign {
+  font-family: serif;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: bold;
+  font-style: italic;
+}

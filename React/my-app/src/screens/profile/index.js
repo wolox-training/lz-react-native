@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Profile from "./layout";
 import { connect } from "react-redux";
-import { getUserInfo } from "../../redux/accounts/actions";
+import { getUserInfo, resetProfileView } from "../../redux/accounts/actions";
 
 class ProfileContainer extends Component {
   state = {
@@ -13,17 +13,13 @@ class ProfileContainer extends Component {
   componentWillMount() {
     const userId = this.props.match.params.id;
     this.props.dispatch(getUserInfo(userId));
-    // this.props.dispatch(getWishlist(userId));
-    // this.props.dispatch(getComments(userId));
   }
 
   componentWillUnmount() {
-    // this.props.dispatch(resetGalleryView());
+    this.props.dispatch(resetProfileView());
   }
 
   render() {
-    debugger;
-    console.log(this.props.wishlist);
     return (
       <Profile
         loading={this.props.loading}
