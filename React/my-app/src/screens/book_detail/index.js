@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import defaultImg from "../../assets/photos/bigDefault.png";
-import Book_detail from "./layout.js";
-import { getBook, resetBookView } from "../../redux/book/actions";
+import BookDetail from "./layout.js";
 import {
-  getBookStatus,
-  getWishlist,
-  newIntemWishlist,
-  loading
-} from "../../redux/rents/actions";
+  getBook,
+  resetBookView,
+  createNewComment
+} from "../../redux/book/actions";
+import { getBookStatus, newIntemWishlist } from "../../redux/rents/actions";
 import { NOTHING, NO_SE_ENCUENTRA, DEVOLVER_ANTES } from "./strings";
 
 class BookDetailContainer extends Component {
@@ -47,6 +45,23 @@ class BookDetailContainer extends Component {
     }
   }
 
+  newComment = event => {
+    event.preventDefault();
+    const commentText = event.target.comment.value;
+    const bookId = this.props.match.params.id;
+    if (commentText.length) {
+      this.props.dispatch(
+        createNewComment(bookId, {
+          comment: {
+            book_id: bookId,
+            user_id: window.localStorage.userId,
+            content: commentText
+          }
+        })
+      );
+    }
+  };
+
   addToWishlist = () => {
     this.props.dispatch(newIntemWishlist(this.props.match.params.id));
   };
@@ -64,11 +79,14 @@ class BookDetailContainer extends Component {
   render() {
     const bookStatus = this.bookStatus();
     return (
-      <Book_detail
+      <BookDetail
         book={this.props.bookInfo}
         loading={this.props.loading || this.props.loadingBookStatus}
         onClick={this.state.bookAvailable ? this.rent : this.addToWishlist}
+        onSubmit={this.newComment}
+        comments={this.props.comments}
         disabled={bookStatus.disabled || this.props.processing}
+        disabledComments={this.props.uploadingComment}
         bookAvailable={bookStatus.bookAvailable}
         text={bookStatus.text}
       />
@@ -79,9 +97,11 @@ class BookDetailContainer extends Component {
 const mapStateToProps = store => ({
   bookStatus: store.rents.bookStatus,
   bookInfo: store.book.bookInfo,
+  comments: store.book.commentList,
   loading: store.book.loading,
   loadingBookStatus: store.rents.loadingBookStatus,
-  processing: store.rents.processing
+  processing: store.rents.processing,
+  uploadingComment: store.book.uploadingComment
 });
 
 export default connect(mapStateToProps)(BookDetailContainer);

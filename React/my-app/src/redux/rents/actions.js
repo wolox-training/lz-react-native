@@ -1,10 +1,7 @@
 import { getRents } from "../../service/books";
-import {
-  getUser,
-  getWishlist,
-  addNewItemToWishlist
-} from "../../service/accounts";
+import { addNewItemToWishlist } from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
+import { CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
   ADD_WISHLIST_SUCCESS: "ADD_WISHLIST_SUCCESS",
@@ -13,8 +10,6 @@ export const actions = {
   LOADING: "LOADING",
   PROCESSING: "PROCESSING"
 };
-
-const FAILED = "Failed to connect";
 
 export const loading = status => {
   return dispatch => {
@@ -25,7 +20,7 @@ export const loading = status => {
   };
 };
 
-export const processing = status => {
+const processing = status => {
   return dispatch => {
     dispatch({
       type: actions.PROCESSING,
@@ -46,7 +41,7 @@ export const newIntemWishlist = bookId => {
           type: actions.ADD_WISHLIST_SUCCESS
         });
       } else {
-        throw new Error(FAILED);
+        throw new Error(CONNECTION_FAILURE);
       }
     } catch (e) {
       dispatch({
@@ -68,7 +63,7 @@ export const getBookStatus = bookId => {
           payload: { bookStatus: bookResponse.data }
         });
       } else {
-        throw new Error(FAILED);
+        throw new Error(CONNECTION_FAILURE);
       }
     } catch (e) {
       dispatch({

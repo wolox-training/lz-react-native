@@ -5,7 +5,9 @@ const initialState = {
   gallery: [],
   bookInfo: null,
   loading: true,
-  loadingGallery: true
+  loadingGallery: true,
+  commentList: [],
+  uploadingComment: false
 };
 
 function reducer(state = initialState, action) {
@@ -19,13 +21,21 @@ function reducer(state = initialState, action) {
         gallery: action.payload.bookList
       };
     case actions.GET_BOOK_INFO_SUCCESS:
-      return { ...state, bookInfo: action.payload.bookInfo };
+      return {
+        ...state,
+        bookInfo: action.payload.bookInfo,
+        commentList: action.payload.commentList
+      };
     case actions.RESET_BOOK_VIEW:
       return { ...state, bookInfo: null, loading: true };
     case actions.RESET_GALLERY_VIEW:
       return { ...state, bookList: [], gallery: [], loadingGallery: true };
     case actions.LOADING:
       return { ...state, loading: action.payload.loading };
+    case actions.UPLOADING_COMMENT:
+      return { ...state, uploadingComment: action.payload.uploadingComment };
+    case actions.NEW_COMMENT_SUCCESS:
+      return state;
     case actions.LOADING_GALLERY:
       return { ...state, loadingGallery: action.payload.loadingGallery };
     default:

@@ -1,21 +1,27 @@
 import React from "react";
 import "./styles.css";
 import profilePicture from "../../../../assets/photos/profilePicture.png";
-import { ArrayComments } from "../../../../config/comments";
 import NewComment from "../../../../components/New_Comment";
-import Comment from '../../../../components/Comment'
+import Comment from "../../../../components/Comment";
 
-const CommentBox = () => (
+const CommentBox = ({ onSubmit, comments, disabledComments }) => (
   <div className="comments">
-    <NewComment profileImage={profilePicture} />
-    {ArrayComments.map(comment => (
-      <Comment
-        profileImage={comment.profile_image_url}
-        profileName={comment.name}
-        date={comment.date}
-        comment={comment.text}
-      />
-    ))}
+    <NewComment
+      profileImage={profilePicture}
+      onSubmit={onSubmit}
+      disabledComments={disabledComments}
+    />
+    {comments
+      .slice(0, 4)
+      .map(comment => (
+        <Comment
+          key={comment.id}
+          profileImage={comment.user.image_url}
+          profileName={`${comment.user.first_name} ${comment.user.last_name}`}
+          date={comment.created_at}
+          comment={comment.content}
+        />
+      ))}
   </div>
 );
 

@@ -1,5 +1,5 @@
 import React from "react";
-import stylesCss from "./styles.css";
+import "./styles.css";
 import { PERFIL, CERRAR_SESION } from "./strings";
 
 const Dropdown = ({ show, logOut }) => (

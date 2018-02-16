@@ -1,5 +1,5 @@
 import React from "react";
-import stylesCss from "./styles.css";
+import "./styles.css";
 
 const ErrorMsg = ({ message }) =>
   message && <h1 className="error"> {message} </h1>;

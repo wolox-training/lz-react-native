@@ -1,16 +1,26 @@
-import { getBookGallery, getBookInfo } from "../../service/books";
+import {
+  getBookGallery,
+  getBookInfo,
+  getComments,
+  postComment
+} from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
+import { CONNECTION_FAILURE } from "../stringErrors";
 
 export const actions = {
+  COMMENT_FORMAT_INVALID: "COMMENT_FORMAT_INVALID",
+  CONNECTION_FAILURE: "CONNECTION_FAILURE",
+  FILTER_GALLERY: "FILTER_GALLERY",
   GET_BOOKS_SUCCESS: "GET_BOOKS_SUCCESS",
   GET_BOOKS_FAILURE: "GET_BOOKS_FAILURE",
   GET_BOOK_INFO_SUCCESS: "GET_BOOK_INFO_SUCCESS",
   GET_BOOKS_INFO_FAILURE: "GET_BOOK_INFO_FAILURE",
-  FILTER_GALLERY: "FILTER_GALLERY",
   LOADING: "LOADING",
+  LOADING_GALLERY: "LOADING_GALLERY",
+  NEW_COMMENT_SUCCESS: "NEW_COMMENT_SUCCESS",
   RESET_BOOK_VIEW: "RESET_BOOK_VIEW",
   RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW",
-  LOADING_GALLERY: "LOADING_GALLERY"
+  UPLOADING_COMMENT: "UPLOADING_COMMENT"
 };
 
 export const loading = status => {
@@ -56,6 +66,15 @@ export const getBookList = () => {
   };
 };
 
+export const uploadingComment = status => {
+  return dispatch => {
+    dispatch({
+      type: actions.UPLOADING_COMMENT,
+      payload: { uploadingComment: status }
+    });
+  };
+};
+
 export const resetBookView = () => {
   return {
     type: actions.RESET_BOOK_VIEW
@@ -68,25 +87,51 @@ export const resetGalleryView = () => {
   };
 };
 
+export const createNewComment = (bookId, body) => {
+  return async dispatch => {
+    try {
+      dispatch(uploadingComment(true));
+      const response = await postComment(bookId, body);
+      if (responseOK(response)) {
+        dispatch({
+          type: actions.NEW_COMMENT_SUCCESS
+        });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
+      });
+    }
+    dispatch(uploadingComment(false));
+  };
+};
+
 export const getBook = id => {
   return async dispatch => {
     try {
-      const response = await getBookInfo(id);
-      if (responseOK(response)) {
+      const bookResponse = await getBookInfo(id);
+      const commentResponse = await getComments(id);
+      if (responseOK(bookResponse) && responseOK(commentResponse)) {
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
-          payload: { bookInfo: response.data }
+          payload: {
+            bookInfo: bookResponse.data,
+            commentList: commentResponse.data
+          }
         });
       } else {
         dispatch({
           type: actions.GET_BOOK_INFO_FAILURE,
-          payload: { err: response }
+          payload: { err1: bookResponse, err2: commentResponse }
         });
       }
     } catch (e) {
       dispatch({
         type: actions.GET_BOOK_INFO_FAILURE,
-        payload: { error: e }
+        payload: { err1: e }
       });
     }
     dispatch(loading(false));
@@ -96,7 +141,7 @@ export const getBook = id => {
 export const filterGallery = (data, word, type) => {
   return async dispatch => {
     let gallery;
-    if (type != "null") {
+    if (type !== "null") {
       gallery = data.filter(book =>
         book[type].toLowerCase().includes(word.toLowerCase())
       );

@@ -24,13 +24,15 @@ const NavBar = ({
     </div>
     <div className="images_box">
       <img
+        alt="Notification bell"
         className="nav_image"
         src={notificationBell}
         onClick={onNotificationClick}
       />
       <Notification show={showNotification ? "show" : "unshow"} />
-      <img className="nav_image" src={newBook} />
+      <img alt="" className="nav_image" src={newBook} />
       <img
+        alt="profile"
         className="nav_image"
         src={profilePicture}
         onClick={onPictureClick}
