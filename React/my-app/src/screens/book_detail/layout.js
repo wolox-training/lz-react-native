@@ -3,8 +3,7 @@ import { RingLoader } from "react-spinners";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import bigDefaultImg from "../../assets/photos/bigDefault.png";
-// import { suggests } from "../../config/sugerencias.json";
-import sugerencias from "../../config/sugerencias.json";
+import suggests from "../../config/sugerencias.json";
 import NavBarContainer from "../../components/NavBar";
 import { SUGERENCIAS, COMENTARIOS, VOLVER } from "./strings.js";
 import DescriptionBox from "./components/Description_Box";
@@ -50,7 +49,7 @@ const BookDetail = ({
         </div>
         <hr className="barrier" />
         <h1 className="topic">{SUGERENCIAS}</h1>
-        <Gallery bookList={sugerencias} />
+        <Gallery bookList={suggests} />
         <hr className="barrier" />
         <h1 className="topic">{COMENTARIOS}</h1>
         <CommentBox
