@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import Link from "react-router-dom/Link";
+import defaultImg from "../../assets/photos/default.png";
 
 const Gallery = ({ bookList }) => (
   <div className="suggest">
@@ -8,12 +9,12 @@ const Gallery = ({ bookList }) => (
     {bookList.length ? (
       <div className="suggest_gallery">
         {bookList.slice(0, 4).map(element => (
-          <Link key={element.id} to={`/books/${element.book.id}`}>
+          <Link key={element.id} to={`/books/${element.id}`}>
             <img
               key={element.id}
-              alt={element.book.title}
+              alt={element.title}
               className="tiny_books"
-              src={element.book.image_url}
+              src={element.image_url || defaultImg}
             />
           </Link>
         ))}

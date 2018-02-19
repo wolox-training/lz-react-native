@@ -2,7 +2,8 @@ import {
   getBookGallery,
   getBookInfo,
   getComments,
-  postComment
+  postComment,
+  getSuggestions
 } from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
 import { CONNECTION_FAILURE } from "../stringErrors";
@@ -113,13 +114,16 @@ export const getBook = id => {
   return async dispatch => {
     try {
       const bookResponse = await getBookInfo(id);
+      const suggestResponse = await getSuggestions(id);
       const commentResponse = await getComments(id);
       if (responseOK(bookResponse) && responseOK(commentResponse)) {
+        debugger;
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
           payload: {
             bookInfo: bookResponse.data,
-            commentList: commentResponse.data
+            commentList: commentResponse.data,
+            suggestions: suggestResponse.data
           }
         });
       } else {

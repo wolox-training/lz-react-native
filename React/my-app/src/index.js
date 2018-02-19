@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./config/equalizer.css";
-import Router from "./components/Route/index";
+import Router from "./components/Route";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 
