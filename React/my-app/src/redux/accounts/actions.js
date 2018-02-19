@@ -4,7 +4,8 @@ import {
   getUser,
   getUserRents,
   getUserComments,
-  getUserWishlist
+  getUserWishlist,
+  getProfileInfo
 } from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
 import { INVALID_USER, MAIL_IN_USE, CONNECTION_FAILURE } from "../stringErrors";
@@ -28,7 +29,8 @@ export const registerUser = token => {
       if (responseOK(response)) {
         window.localStorage.userId = response.data.id;
         dispatch({
-          type: actions.REGISTER_SUCCESS
+          type: actions.REGISTER_SUCCESS,
+          payload: { loggedProfile: response.data }
         });
       } else {
         throw new Error(CONNECTION_FAILURE);
@@ -75,6 +77,7 @@ export const verifyUser = body => {
 export const getUserInfo = id => {
   return async dispatch => {
     try {
+      const profile = await getProfileInfo(id);
       const rents = await getUserRents(id);
       const wishes = await getUserWishlist(id);
       const comments = await getUserComments(id);
@@ -82,6 +85,7 @@ export const getUserInfo = id => {
         dispatch({
           type: actions.GET_INFO_SUCCESS,
           payload: {
+            profile: profile.data,
             rents: rents.data,
             wishlist: wishes.data,
             comments: comments.data

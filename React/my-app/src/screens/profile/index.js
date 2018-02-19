@@ -11,8 +11,7 @@ class ProfileContainer extends Component {
   };
 
   componentWillMount() {
-    const userId = this.props.match.params.id;
-    this.props.dispatch(getUserInfo(userId));
+    this.props.dispatch(getUserInfo(this.props.match.params.id));
   }
 
   componentWillUnmount() {
@@ -22,6 +21,7 @@ class ProfileContainer extends Component {
   render() {
     return (
       <Profile
+        profile={this.props.profile}
         loading={this.props.loading}
         rents={this.props.rents}
         wishList={this.props.wishlist}
@@ -32,6 +32,7 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = store => ({
+  profile: store.account.profile,
   loading: store.account.loading,
   rents: store.account.rents,
   wishlist: store.account.wishlist,

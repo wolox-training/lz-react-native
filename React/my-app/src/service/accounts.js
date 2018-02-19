@@ -13,6 +13,10 @@ export const getUser = token => {
   return api.get("/users/me");
 };
 
+export const getProfileInfo = id => {
+  return api.get(`/users/${id}`);
+};
+
 export const getUserRents = id => {
   return api.get(`/users/${id}/rents`);
 };

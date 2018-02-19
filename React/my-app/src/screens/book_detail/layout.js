@@ -20,7 +20,8 @@ const BookDetail = ({
   onClick,
   onSubmit,
   comments,
-  disabledComments
+  disabledComments,
+  profilePicture
 }) => (
   <div className="mainContainer">
     <NavBarContainer />
@@ -56,6 +57,7 @@ const BookDetail = ({
           onSubmit={onSubmit}
           comments={comments}
           disabledComments={disabledComments}
+          profilePicture={profilePicture}
         />
       </div>
     )}

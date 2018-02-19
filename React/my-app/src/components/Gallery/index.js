@@ -8,7 +8,7 @@ const Gallery = ({ bookList }) => (
     {bookList.length ? (
       <div className="suggest_gallery">
         {bookList.slice(0, 4).map(element => (
-          <Link to={`/books/${element.book.id}`}>
+          <Link key={element.id} to={`/books/${element.book.id}`}>
             <img
               key={element.id}
               alt={element.book.title}

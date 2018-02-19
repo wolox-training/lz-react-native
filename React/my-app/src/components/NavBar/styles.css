@@ -9,11 +9,13 @@
 }
 
 .logo_box {
-  margin-right: 1360px;
+  margin-right: 1300px;
 }
 
 .nav_image {
   margin-right: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .images_box {

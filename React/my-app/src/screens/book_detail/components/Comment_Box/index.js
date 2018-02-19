@@ -1,10 +1,14 @@
 import React from "react";
 import "./styles.css";
-import profilePicture from "../../../../assets/photos/profilePicture.png";
 import NewComment from "../../../../components/New_Comment";
 import Comment from "../../../../components/Comment";
 
-const CommentBox = ({ onSubmit, comments, disabledComments }) => (
+const CommentBox = ({
+  profilePicture,
+  onSubmit,
+  comments,
+  disabledComments
+}) => (
   <div className="comments">
     <NewComment
       profileImage={profilePicture}

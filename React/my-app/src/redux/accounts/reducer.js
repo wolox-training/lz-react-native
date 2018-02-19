@@ -1,6 +1,8 @@
 import { actions } from "./actions";
 
 const initialState = {
+  loggedProfile: null,
+  profile: null,
   rents: [],
   wishlist: [],
   comments: [],
@@ -24,10 +26,11 @@ function reducer(state = initialState, action) {
         loading: true
       };
     case actions.REGISTER_SUCCESS:
-      return state;
+      return { ...state, loggedProfile: action.payload.loggedProfile };
     case actions.GET_INFO_SUCCESS:
       return {
         ...state,
+        profile: action.payload.profile,
         rents: action.payload.rents,
         wishlist: action.payload.wishlist,
         comments: action.payload.comments
