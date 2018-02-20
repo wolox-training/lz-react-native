@@ -10,7 +10,7 @@ import {
 } from "../../redux/accounts/actions";
 
 class NavBarContainer extends Component {
-  state = { showDropdown: false, showNotification: false };
+  state = { showModal: false, showDropdown: false, showNotification: false };
 
   componentWillMount() {
     if (!this.props.loggedProfile) {
@@ -21,6 +21,12 @@ class NavBarContainer extends Component {
 
   markAsRead = () => {
     this.props.dispatch(markAllAsRead(this.props.loggedProfile));
+  };
+
+  toggleModal = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    });
   };
 
   handleOnClick = () => {
@@ -54,6 +60,8 @@ class NavBarContainer extends Component {
         onNotificationClick={this.handleOnNotification}
         showDropdown={this.state.showDropdown}
         showNotification={this.state.showNotification}
+        showModal={this.state.showModal}
+        newBookClick={this.toggleModal}
       />
     );
   }
