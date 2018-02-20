@@ -43,7 +43,7 @@ const Profile = ({ rents, wishList, comments, loading, profile }) => (
           {comments
             .slice(0, 4)
             .map(comment => (
-              <Comment key={comment.id} comment={comment} link={true} />
+              <Comment key={comment.id} comment={comment} link />
             ))}
         </div>
       </div>
