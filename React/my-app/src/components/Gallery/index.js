@@ -5,13 +5,11 @@ import defaultImg from "../../assets/photos/default.png";
 
 const Gallery = ({ bookList }) => (
   <div className="suggest">
-    {" "}
     {bookList.length ? (
       <div className="suggest_gallery">
         {bookList.slice(0, 4).map(element => (
           <Link key={element.id} to={`/books/${element.id}`}>
             <img
-              key={element.id}
               alt={element.title}
               className="tiny_books"
               src={element.image_url || defaultImg}
