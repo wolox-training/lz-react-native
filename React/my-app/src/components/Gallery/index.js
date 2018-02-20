@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import Link from "react-router-dom/Link";
 import defaultImg from "../../assets/photos/default.png";
+import { NO_HAY_LIBROS_CARGADOS } from "./strings.js";
 
 const Gallery = ({ bookList }) => (
   <div className="suggest">
@@ -18,7 +19,7 @@ const Gallery = ({ bookList }) => (
         ))}
       </div>
     ) : (
-      <h1 className="info_sign">{"No hay libros cargados"}</h1>
+      <h1 className="info_sign">{NO_HAY_LIBROS_CARGADOS}</h1>
     )}
   </div>
 );
