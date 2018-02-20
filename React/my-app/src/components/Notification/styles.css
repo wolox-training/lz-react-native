@@ -12,6 +12,17 @@
   right: 50px;
 }
 
+.mark_notif {
+  background: #00adee;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  height: 30px;
+  margin-bottom: 20px;
+  width: 190px;
+}
+
 .portrait {
   margin-right: 20px;
 }
@@ -27,6 +38,7 @@
   align-items: baseline;
   display: flex;
   flex-flow: column wrap;
+  margin-bottom: 30px;
 }
 
 .unshow_notification {

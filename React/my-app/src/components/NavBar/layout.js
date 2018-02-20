@@ -15,7 +15,9 @@ const NavBar = ({
   showDropdown,
   showNotification,
   onNotificationClick,
-  loggedProfile
+  loggedProfile,
+  notification,
+  onReadClick
 }) => (
   <div className="nav_box">
     <div className="logo_box">
@@ -30,7 +32,11 @@ const NavBar = ({
         src={notificationBell}
         onClick={onNotificationClick}
       />
-      <Notification show={showNotification ? "show" : "unshow"} />
+      <Notification
+        notification={notification}
+        markAsRead={onReadClick}
+        show={showNotification ? "show" : "unshow"}
+      />
       <img alt="" className="nav_image" src={newBook} />
       <img
         alt="profile"

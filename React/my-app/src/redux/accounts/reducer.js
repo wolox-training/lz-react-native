@@ -3,6 +3,7 @@ import { actions } from "./actions";
 const initialState = {
   loggedProfile: null,
   profile: null,
+  notification: [],
   rents: [],
   wishlist: [],
   comments: [],
@@ -34,6 +35,11 @@ function reducer(state = initialState, action) {
         rents: action.payload.rents,
         wishlist: action.payload.wishlist,
         comments: action.payload.comments
+      };
+    case actions.GET_NOTIFICATION_SUCCESS:
+      return {
+        ...state,
+        notification: action.payload.notification
       };
     case actions.LOADING_USER:
       return { ...state, loading: action.payload.loading };

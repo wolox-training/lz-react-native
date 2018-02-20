@@ -1,27 +1,19 @@
 import React from "react";
 import "./styles.css";
-import defaultImg from "../../assets/photos/default.png";
-import { TIEMPO, TITULO, AUTOR, DISPONIBILIDAD, FECHA } from "./strings";
+import { MARCAR_COMO_LEIDO } from "./strings";
 
-const Notification = ({ show }) => (
+const Notification = ({ show, notification, markAsRead }) => (
   <div className={`${show}_notification`}>
-    <a className="item">
-      <img alt="" src={defaultImg} className="portrait" />
-      <div className="notification">
-        <h1>{DISPONIBILIDAD}</h1>
-        <h1>{TITULO}</h1>
-        <h1>{AUTOR}</h1>
+    <button type="button" className="mark_notif" onClick={markAsRead}>
+      {MARCAR_COMO_LEIDO}
+    </button>
+    {notification.map(elem => (
+      <div key={elem.id} className="notification">
+        <h1>{elem.reason}</h1>
+        <h1>{elem.body}</h1>
+        <h1>{elem.created_at}</h1>
       </div>
-    </a>
-    <a className="item">
-      <img alt="" src={defaultImg} className="portrait" />
-      <div className="notification">
-        <h1>{TIEMPO}</h1>
-        <h1>{TITULO}</h1>
-        <h1>{AUTOR}</h1>
-        <h1>{FECHA}</h1>
-      </div>
-    </a>
+    ))}
   </div>
 );
 
