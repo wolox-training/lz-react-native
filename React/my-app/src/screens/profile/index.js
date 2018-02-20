@@ -10,7 +10,7 @@ class ProfileContainer extends Component {
     redirect: false
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(getUserInfo(this.props.match.params.id));
   }
 

@@ -35,10 +35,7 @@ const NavBar = ({
       <img
         alt="profile"
         className="nav_image"
-        src={
-          //{loggedProfile.image_url ||
-          defaultAvatar
-        }
+        src={loggedProfile.image_url || defaultAvatar}
         onClick={onPictureClick}
       />
       <DropdownContainer show={showDropdown ? "show" : "unshow"} />

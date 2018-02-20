@@ -12,7 +12,7 @@ import { NOTHING, NO_SE_ENCUENTRA, DEVOLVER_ANTES } from "./strings";
 class BookDetailContainer extends Component {
   state = { bookAvailable: false, disabled: false, text: NOTHING };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(getBook(this.props.match.params.id));
     this.props.dispatch(getBookStatus(this.props.match.params.id));
   }
