@@ -8,7 +8,7 @@ import { registerUser } from "../../redux/accounts/actions";
 class NavBarContainer extends Component {
   state = { showDropdown: false, showNotification: false };
 
-  componentWilMount() {
+  componentDidMount() {
     if (!this.props.loggedProfile) {
       this.props.dispatch(registerUser(window.localStorage.token));
     }

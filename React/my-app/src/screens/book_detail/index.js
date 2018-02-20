@@ -17,6 +17,10 @@ class BookDetailContainer extends Component {
     this.props.dispatch(getBookStatus(this.props.match.params.id));
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(resetBookView());
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       this.props.bookInfo &&
@@ -85,8 +89,6 @@ class BookDetailContainer extends Component {
 
   render() {
     const bookStatus = this.bookStatus();
-    debugger;
-    console.log(this.props.suggestions);
     return (
       <BookDetail
         book={this.props.bookInfo}

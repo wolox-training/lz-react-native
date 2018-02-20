@@ -22,7 +22,6 @@ function reducer(state = initialState, action) {
         gallery: action.payload.bookList
       };
     case actions.GET_BOOK_INFO_SUCCESS:
-      debugger;
       return {
         ...state,
         bookInfo: action.payload.bookInfo,

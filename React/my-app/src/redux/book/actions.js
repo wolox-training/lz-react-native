@@ -117,7 +117,6 @@ export const getBook = id => {
       const suggestResponse = await getSuggestions(id);
       const commentResponse = await getComments(id);
       if (responseOK(bookResponse) && responseOK(commentResponse)) {
-        debugger;
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
           payload: {
