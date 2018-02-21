@@ -9,13 +9,20 @@ import Logo from "../Logo";
 import DropdownContainer from "../Dropdown";
 import Notification from "../Notification";
 import defaultAvatar from "../../assets/photos/default-avatar.png";
+import NewBook from "../NewBook";
 
 const NavBar = ({
   onPictureClick,
   showDropdown,
   showNotification,
   onNotificationClick,
-  loggedProfile
+  loggedProfile,
+  notification,
+  onReadClick,
+  showModal,
+  newBookClick,
+  onSubmit,
+  error
 }) => (
   <div className="nav_box">
     <div className="logo_box">
@@ -30,13 +37,23 @@ const NavBar = ({
         src={notificationBell}
         onClick={onNotificationClick}
       />
-      <Notification show={showNotification ? "show" : "unshow"} />
-      <img alt="" className="nav_image" src={newBook} />
+      <Notification
+        notification={notification}
+        markAsRead={onReadClick}
+        show={showNotification ? "show" : "unshow"}
+      />
+      <img alt="" className="nav_image" src={newBook} onClick={newBookClick} />
       <img
         alt="profile"
         className="nav_image"
         src={loggedProfile.image_url || defaultAvatar}
         onClick={onPictureClick}
+      />
+      <NewBook
+        isOpen={showModal}
+        onClick={newBookClick}
+        onSubmit={onSubmit}
+        error={error}
       />
       <DropdownContainer show={showDropdown ? "show" : "unshow"} />
     </div>

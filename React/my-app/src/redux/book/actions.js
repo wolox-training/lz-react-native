@@ -2,7 +2,9 @@ import {
   getBookGallery,
   getBookInfo,
   getComments,
-  postComment
+  postComment,
+  getSuggestions,
+  newBookSuggestion
 } from "../../service/books";
 import { responseOK } from "../../utils/requestUtils";
 import { CONNECTION_FAILURE } from "../stringErrors";
@@ -20,7 +22,8 @@ export const actions = {
   NEW_COMMENT_SUCCESS: "NEW_COMMENT_SUCCESS",
   RESET_BOOK_VIEW: "RESET_BOOK_VIEW",
   RESET_GALLERY_VIEW: "RESET_GALLERY_VIEW",
-  UPLOADING_COMMENT: "UPLOADING_COMMENT"
+  UPLOADING_COMMENT: "UPLOADING_COMMENT",
+  NEW_BOOK_SUCCESS: "NEW_BOOK_SUCCESS"
 };
 
 export const loading = status => {
@@ -29,6 +32,28 @@ export const loading = status => {
       type: actions.LOADING,
       payload: { loading: status }
     });
+  };
+};
+
+export const addNewBook = (name, author, link) => {
+  return async dispatch => {
+    try {
+      const response = await newBookSuggestion({
+        book_suggestion: { title: name, author: author, link: link }
+      });
+      if (responseOK(response)) {
+        dispatch({
+          type: actions.NEW_BOOK_SUCCESS
+        });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
+      });
+    }
   };
 };
 
@@ -113,13 +138,15 @@ export const getBook = id => {
   return async dispatch => {
     try {
       const bookResponse = await getBookInfo(id);
+      const suggestResponse = await getSuggestions(id);
       const commentResponse = await getComments(id);
       if (responseOK(bookResponse) && responseOK(commentResponse)) {
         dispatch({
           type: actions.GET_BOOK_INFO_SUCCESS,
           payload: {
             bookInfo: bookResponse.data,
-            commentList: commentResponse.data
+            commentList: commentResponse.data,
+            suggestions: suggestResponse.data
           }
         });
       } else {

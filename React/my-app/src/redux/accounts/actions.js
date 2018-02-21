@@ -5,7 +5,9 @@ import {
   getUserRents,
   getUserComments,
   getUserWishlist,
-  getProfileInfo
+  getProfileInfo,
+  getProfileNotification,
+  markAsRead
 } from "../../service/accounts";
 import { responseOK } from "../../utils/requestUtils";
 import { INVALID_USER, MAIL_IN_USE, CONNECTION_FAILURE } from "../stringErrors";
@@ -19,7 +21,8 @@ export const actions = {
   NEW_USER_SUCCESS: "NEW_USER_SUCCESS",
   NEW_USER_FAILURE: "NEW_USER_FAILURE",
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
-  RESET_PROFILE_VIEW: "RESET_PROFILE_VIEW"
+  RESET_PROFILE_VIEW: "RESET_PROFILE_VIEW",
+  GET_NOTIFICATION_SUCCESS: "GET_NOTIFICATION_SUCCESS"
 };
 
 export const registerUser = token => {
@@ -50,6 +53,49 @@ export const loading = status => {
       type: actions.LOADING_USER,
       payload: { loading: status }
     });
+  };
+};
+
+export const getUserNotification = profile => {
+  return async dispatch => {
+    try {
+      const notification = await getProfileNotification(profile.id);
+      if (responseOK(notification)) {
+        dispatch({
+          type: actions.GET_NOTIFICATION_SUCCESS,
+          payload: {
+            notification: notification.data
+          }
+        });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
+      });
+    }
+  };
+};
+
+export const markAllAsRead = profile => {
+  return async dispatch => {
+    try {
+      const notification = await markAsRead(profile.id);
+      if (responseOK(notification)) {
+        dispatch({
+          type: actions.POST_NOTIFICATION_SUCCESS
+        });
+      } else {
+        throw new Error(CONNECTION_FAILURE);
+      }
+    } catch (e) {
+      dispatch({
+        type: actions.CONNECTION_FAILURE,
+        payload: { error: e }
+      });
+    }
   };
 };
 

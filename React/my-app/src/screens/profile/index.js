@@ -23,8 +23,8 @@ class ProfileContainer extends Component {
       <Profile
         profile={this.props.profile}
         loading={this.props.loading}
-        rents={this.props.rents}
-        wishList={this.props.wishlist}
+        rents={this.props.rents.map(x => x.book)}
+        wishList={this.props.wishlist.map(x => x.book)}
         comments={this.props.comments}
       />
     );
