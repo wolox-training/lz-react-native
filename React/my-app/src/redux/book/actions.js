@@ -42,7 +42,6 @@ export const addNewBook = (name, author, link) => {
         book_suggestion: { title: name, author: author, link: link }
       });
       if (responseOK(response)) {
-        debugger;
         dispatch({
           type: actions.NEW_BOOK_SUCCESS
         });
