@@ -13,6 +13,22 @@ export const getUser = token => {
   return api.get("/users/me");
 };
 
+export const getProfileInfo = id => {
+  return api.get(`/users/${id}`);
+};
+
+export const getUserRents = id => {
+  return api.get(`/users/${id}/rents`);
+};
+
+export const getUserComments = id => {
+  return api.get(`/users/${id}/comments`);
+};
+
+export const getUserWishlist = id => {
+  return api.get(`/users/${id}/wishes`);
+};
+
 export const addNewItemToWishlist = body => {
   return api.post(`/users/${window.localStorage.userId}/wishes`, body);
 };

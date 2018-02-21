@@ -12,7 +12,7 @@ import { NOTHING, NO_SE_ENCUENTRA, DEVOLVER_ANTES } from "./strings";
 class BookDetailContainer extends Component {
   state = { bookAvailable: false, disabled: false, text: NOTHING };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(getBook(this.props.match.params.id));
     this.props.dispatch(getBookStatus(this.props.match.params.id));
   }
@@ -89,12 +89,14 @@ class BookDetailContainer extends Component {
         disabledComments={this.props.uploadingComment}
         bookAvailable={bookStatus.bookAvailable}
         text={bookStatus.text}
+        profilePicture={this.props.profilePicture}
       />
     );
   }
 }
 
 const mapStateToProps = store => ({
+  profilePicture: store.account.loggedProfile.image_url,
   bookStatus: store.rents.bookStatus,
   bookInfo: store.book.bookInfo,
   comments: store.book.commentList,

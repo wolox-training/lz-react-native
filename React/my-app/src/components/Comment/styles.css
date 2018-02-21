@@ -4,6 +4,7 @@
   font-size: 14px;
   line-height: 19px;
   margin-bottom: 10px;
+  margin-right: 440px;
 }
 
 .comment_box {
@@ -17,4 +18,23 @@
   max-width: 679px;
   font-size: 14px;
   color: #999999;
+}
+
+.book_link {
+  font-weight: Bold;
+  text-decoration: underline;
+  font-size: 14px;
+  color: #00adee;
+  line-height: 19px;
+}
+
+.amount_box {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.header {
+  display: flex;
+  flex-flow: row;
 }

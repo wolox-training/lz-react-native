@@ -1,8 +1,12 @@
 import { actions } from "./actions";
 
 const initialState = {
-  token: null,
-  error: null
+  loggedProfile: null,
+  profile: null,
+  rents: [],
+  wishlist: [],
+  comments: [],
+  loading: true
 };
 
 function reducer(state = initialState, action) {
@@ -13,8 +17,26 @@ function reducer(state = initialState, action) {
       return { ...state, token: action.payload.token };
     case actions.CONNECTION_FAILURE:
       return { ...state, error: action.payload.error };
+    case actions.RESET_PROFILE_VIEW:
+      return {
+        ...state,
+        rents: [],
+        wishlist: [],
+        comments: [],
+        loading: true
+      };
     case actions.REGISTER_SUCCESS:
-      return state;
+      return { ...state, loggedProfile: action.payload.loggedProfile };
+    case actions.GET_INFO_SUCCESS:
+      return {
+        ...state,
+        profile: action.payload.profile,
+        rents: action.payload.rents,
+        wishlist: action.payload.wishlist,
+        comments: action.payload.comments
+      };
+    case actions.LOADING_USER:
+      return { ...state, loading: action.payload.loading };
     default:
       return state;
   }

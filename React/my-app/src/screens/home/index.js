@@ -10,7 +10,7 @@ import {
 class HomeContainer extends Component {
   state = { gallery: [], searchType: null };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(getBookList());
   }
 
