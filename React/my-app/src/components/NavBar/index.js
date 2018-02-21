@@ -8,9 +8,17 @@ import {
   getUserNotification,
   markAllAsRead
 } from "../../redux/accounts/actions";
+import { addNewBook } from "../../redux/book/actions";
+import { formComplete } from "../../utils/validations";
+import { CAMPO_INCOMPLETO } from "./strings";
 
 class NavBarContainer extends Component {
-  state = { showModal: false, showDropdown: false, showNotification: false };
+  state = {
+    showModal: false,
+    showDropdown: false,
+    showNotification: false,
+    error: null
+  };
 
   componentWillMount() {
     if (!this.props.loggedProfile) {
@@ -21,6 +29,19 @@ class NavBarContainer extends Component {
 
   markAsRead = () => {
     this.props.dispatch(markAllAsRead(this.props.loggedProfile));
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { name, author, link } = event.target;
+    if (formComplete([name.value, author.value, link.value])) {
+      this.props.dispatch(addNewBook(name.value, author.value, link.value));
+      this.setState({
+        showModal: false
+      });
+    } else {
+      this.setState({ error: CAMPO_INCOMPLETO });
+    }
   };
 
   toggleModal = () => {
@@ -53,6 +74,7 @@ class NavBarContainer extends Component {
   render() {
     return (
       <NavBar
+        onSubmit={this.handleSubmit}
         onReadClick={this.markAsRead}
         notification={this.props.notification}
         loggedProfile={this.props.loggedProfile || defaultAvatar}
@@ -62,6 +84,7 @@ class NavBarContainer extends Component {
         showNotification={this.state.showNotification}
         showModal={this.state.showModal}
         newBookClick={this.toggleModal}
+        error={this.state.error}
       />
     );
   }

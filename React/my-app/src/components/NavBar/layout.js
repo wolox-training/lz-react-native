@@ -20,7 +20,9 @@ const NavBar = ({
   notification,
   onReadClick,
   showModal,
-  newBookClick
+  newBookClick,
+  onSubmit,
+  error
 }) => (
   <div className="nav_box">
     <div className="logo_box">
@@ -47,7 +49,12 @@ const NavBar = ({
         src={loggedProfile.image_url || defaultAvatar}
         onClick={onPictureClick}
       />
-      <NewBook isOpen={showModal} />
+      <NewBook
+        isOpen={showModal}
+        onClick={newBookClick}
+        onSubmit={onSubmit}
+        error={error}
+      />
       <DropdownContainer show={showDropdown ? "show" : "unshow"} />
     </div>
   </div>

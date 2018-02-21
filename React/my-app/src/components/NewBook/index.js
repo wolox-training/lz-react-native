@@ -6,26 +6,33 @@ import {
   PRECIO,
   AÑO,
   EDITORIAL,
-  LINK,
   ACEPTAR,
-  CANCELAR
+  CANCELAR,
+  SUGERIR_LIBROS,
+  LINK
 } from "./strings";
 import Modal from "react-modal";
 import Input from "../Input";
+import newBookPng from "../../assets/photos/newBook.png";
 
-const NewBook = ({ isOpen, onSubmit, disabledComments }) => (
+const NewBook = ({ isOpen, onSubmit, onClick, error }) => (
   <div className="new_book_box">
-    <Modal isOpen={isOpen} onRequestClose={false}>
+    <Modal isOpen={isOpen} ariaHideApp={false}>
+      <div className="modal_title">
+        <img className="add_book" alt="" src={newBookPng} />
+        <h1 className="modal_text_title">{SUGERIR_LIBROS}</h1>
+      </div>
       <form className="sign_up_form" onSubmit={onSubmit}>
-        <Input title={NOMBRE} name="name" type="text" />
-        <Input title={AUTOR} name="surname" type="text" />
-        <Input title={PRECIO} name="email" type="email" />
-        <Input title={AÑO} name="password" type="Password" />
-        <Input title={EDITORIAL} name="confirm_password" type="Password" />
+        <Input title={NOMBRE} name="name" type="text" error={error} />
+        <Input title={AUTOR} name="author" type="text" error={error} />
+        <Input title={PRECIO} name="price" type="number" />
+        <Input title={AÑO} name="year" type="number" />
+        <Input title={EDITORIAL} name="editorial" type="text" />
+        <Input title={LINK} name="link" type="text" error={error} />
         <div className="decision_box">
-          {/* <Link className="cancel" to="/login">
+          <button className="cancel_button" onClick={onClick}>
             {CANCELAR}
-          </Link> */}
+          </button>
           <button className="accept" type="submit">
             {ACEPTAR}
           </button>

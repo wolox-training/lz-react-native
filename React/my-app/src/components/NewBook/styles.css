@@ -1,1 +1,58 @@
+.modal_title {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 20px;
+  align-items: center;
+}
 
+.modal_text_title {
+  font-weight: Bold;
+  font-size: 20px;
+  color: #4a4a4a;
+  line-height: 19px;
+}
+
+.new_book_box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.add_book {
+  width: 47px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.sign_up_form {
+  align-items: center;
+  color: #4a4a4a;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.accept {
+  background: #00adee;
+  border-radius: 4px;
+  color: #fff;
+  height: 38px;
+  width: 175px;
+}
+
+.cancel_button {
+  background: #cccccc;
+  border-radius: 4px;
+  color: #fff;
+  height: 38px;
+  width: 175px;
+  margin-right: 50px;
+}
+
+.decision_box {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}

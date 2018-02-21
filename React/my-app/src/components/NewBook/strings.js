@@ -6,3 +6,4 @@ export const EDITORIAL = "Editorial";
 export const LINK = "Link";
 export const ACEPTAR = "Aceptar";
 export const CANCELAR = "Cancelar";
+export const SUGERIR_LIBROS = "Sugerir Libros";

@@ -38,6 +38,8 @@ function reducer(state = initialState, action) {
       return { ...state, uploadingComment: action.payload.uploadingComment };
     case actions.NEW_COMMENT_SUCCESS:
       return state;
+    case actions.NEW_BOOK_SUCCESS:
+      return state;
     case actions.LOADING_GALLERY:
       return { ...state, loadingGallery: action.payload.loadingGallery };
     default:

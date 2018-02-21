@@ -23,3 +23,7 @@ export const getComments = id => {
 export const postComment = (id, body) => {
   return api.post(`/books/${id}/comments`, body);
 };
+
+export const newBookSuggestion = body => {
+  return api.post(`/book_suggestions`, body);
+};
