@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import Link from "react-router-dom/Link";
+import defaultImg from "../../assets/photos/default.png";
 import { NO_HAY_LIBROS_CARGADOS } from "./strings.js";
 
 const Gallery = ({ bookList }) => (
@@ -8,11 +9,11 @@ const Gallery = ({ bookList }) => (
     {bookList.length ? (
       <div className="suggest_gallery">
         {bookList.slice(0, 4).map(element => (
-          <Link key={element.id} to={`/books/${element.book.id}`}>
+          <Link key={element.id} to={`/books/${element.id}`}>
             <img
-              alt={element.book.title}
+              alt={element.title}
               className="tiny_books"
-              src={element.book.image_url}
+              src={element.image_url || defaultImg}
             />
           </Link>
         ))}
