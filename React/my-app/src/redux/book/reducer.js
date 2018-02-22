@@ -7,6 +7,7 @@ const initialState = {
   loading: true,
   loadingGallery: true,
   commentList: [],
+  suggestions: [],
   uploadingComment: false
 };
 
@@ -24,7 +25,8 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         bookInfo: action.payload.bookInfo,
-        commentList: action.payload.commentList
+        commentList: action.payload.commentList,
+        suggestions: action.payload.suggestions
       };
     case actions.RESET_BOOK_VIEW:
       return { ...state, bookInfo: null, loading: true };

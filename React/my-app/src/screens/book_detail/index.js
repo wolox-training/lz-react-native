@@ -21,6 +21,17 @@ class BookDetailContainer extends Component {
     this.props.dispatch(resetBookView());
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.bookInfo &&
+      this.props.bookInfo.id !== Number(nextProps.match.params.id)
+    ) {
+      this.props.dispatch(resetBookView());
+      this.props.dispatch(getBook(nextProps.match.params.id));
+      this.props.dispatch(getBookStatus(nextProps.match.params.id));
+    }
+  }
+
   bookStatus() {
     if (this.bookAvailable(this.props.bookStatus)) {
       return {
@@ -85,6 +96,7 @@ class BookDetailContainer extends Component {
         onClick={this.state.bookAvailable ? this.rent : this.addToWishlist}
         onSubmit={this.newComment}
         comments={this.props.comments}
+        suggestions={this.props.suggestions}
         disabled={bookStatus.disabled || this.props.processing}
         disabledComments={this.props.uploadingComment}
         bookAvailable={bookStatus.bookAvailable}
@@ -98,6 +110,7 @@ class BookDetailContainer extends Component {
 const mapStateToProps = store => ({
   profilePicture: store.account.loggedProfile.image_url,
   bookStatus: store.rents.bookStatus,
+  suggestions: store.book.suggestions,
   bookInfo: store.book.bookInfo,
   comments: store.book.commentList,
   loading: store.book.loading,

@@ -17,6 +17,14 @@ export const getProfileInfo = id => {
   return api.get(`/users/${id}`);
 };
 
+export const getProfileNotification = id => {
+  return api.get(`/users/${id}/notifications`);
+};
+
+export const markAsRead = id => {
+  return api.post(`/users/${id}/notifications/read_all`);
+};
+
 export const getUserRents = id => {
   return api.get(`/users/${id}/rents`);
 };
