@@ -6,15 +6,18 @@ var globalCounter = 3;
 const todoList = [
   {
     id: 1,
-    task: 'Homework'
+    task: 'Homework',
+    checked: false
   },
   {
     id: 2,
-    task: 'Study'
+    task: 'Study',
+    checked: false
   },
   {
     id: 3,
-    task: 'Work'
+    task: 'Work',
+    checked: false
   }
 ]
 
@@ -35,6 +38,16 @@ class TodoContainer extends Component {
     this.setState(prevState => ({ todoList: [...prevState.todoList, newTask] }))
   }
 
+  handleDeleteAll = () => {
+    this.setState({ todoList: [] })
+  }
+
+  checkElem = id => {
+    console.log(id);
+    const newList = this.state.todoList.map(elem => elem.id === id ? {...elem, checked: !elem.checked} : elem);
+    this.setState({ todoList: newList });
+  }
+
   render() {
     return (
     <TodoLayout
@@ -42,6 +55,8 @@ class TodoContainer extends Component {
       data={this.state.todoList}
       handleNew={this.addNewTask}
       setNewText={this.setNewText}
+      checkElem={this.checkElem}
+      handleDeleteAll={this.handleDeleteAll}
       />)
   }
 }
