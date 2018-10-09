@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput, Image } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from './styles';
+import check from '../../assets/check.jpg'
+import checkbox from '../../assets/checkbox.png'
 
-function TodoLayout({ handleDelete, data, handleNew, setNewText, checkElem, handleDeleteAll }) {
+function TodoLayout({ handleDelete, data, handleNew, setNewText, checkElem, handleDeleteAll, handleGoToBooks }) {
     return (
       <View style={styles.container}>
         <Text style={styles.task}>Add new task</Text>
@@ -16,10 +18,16 @@ function TodoLayout({ handleDelete, data, handleNew, setNewText, checkElem, hand
           <CheckBox 
             checked={element.checked}
             onPress={() => checkElem(element.id) }
+            checkedIcon={<Image source={check} />}
+            uncheckedIcon={<Image source={checkbox} />}
           />
         </View>
         )}
         <Button title="Delete All" onPress={handleDeleteAll} />
+        <Button
+          title="Go to Details"
+          onPress={handleGoToBooks}
+        />
       </View>
     );
 }
