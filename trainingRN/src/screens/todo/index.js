@@ -53,21 +53,20 @@ class TodoContainer extends Component {
 
 
   checkElem = id => {
-    console.log(id);
-    const newList = this.state.todoList.map(elem => elem.id === id ? {...elem, checked: !elem.checked} : elem);
+    const newList = this.state.todoList.map(elem => elem.id === id ? { ...elem, checked: !elem.checked } : elem);
     this.setState({ todoList: newList });
   }
 
   render() {
     return (
     <TodoLayout
-      handleDelete={this.handleDelete}
+      onDelete={this.handleDelete}
       data={this.state.todoList}
       handleNew={this.addNewTask}
       setNewText={this.setNewText}
       checkElem={this.checkElem}
-      handleDeleteAll={this.handleDeleteAll}
-      handleGoToBooks={this.handleGoToBooks}
+      onGoToBooks={this.handleGoToBooks}
+      onDeleteAll={this.handleDeleteAll}
       />)
   }
 }

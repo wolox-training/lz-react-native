@@ -1,17 +1,18 @@
 import { StyleSheet} from 'react-native';
+import colors from '../../constants/colors'
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: colors.aliceBlue,
     padding: 20
   },
   taskBox: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-around',
+    alignItems: 'baseline'
   },
   task: {
     fontSize: 20,
@@ -19,9 +20,13 @@ export default StyleSheet.create({
     margin: 10,
   },
   textInput: {
+    flex: 1,
     borderStyle: 'solid',
     borderRadius: 20,
     borderWidth: 1,
-    minWidth: 200
+    minWidth: 200,
+    maxHeight: 50
   }
 });
+
+export default styles;
