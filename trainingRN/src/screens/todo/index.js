@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TodoLayout from './layout';
-import { BOOK_LIST } from '../../constants/routes'; 
+import routes from '../../constants/routes'; 
+import { HOME } from '../../constants/routes'; 
 
 var globalCounter = 3;
 
@@ -24,7 +25,7 @@ const todoList = [
 
 class TodoContainer extends Component {
   static navigationOptions = {
-    headerTitle: 'Home'
+    headerTitle: HOME
   };
   
   state={ todoList: todoList, text: '' }
@@ -48,7 +49,7 @@ class TodoContainer extends Component {
   }
 
   handleGoToBooks = () => {
-    this.props.navigation.navigate(BOOK_LIST)
+    this.props.navigation.navigate(routes.BOOK_LIST)
   }
 
 

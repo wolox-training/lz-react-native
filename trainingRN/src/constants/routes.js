@@ -1,2 +1,4 @@
-export const HOME = 'Home';
-export const BOOK_LIST = 'BookList' 
+export default {
+ HOME: 'Home',
+ BOOK_LIST: 'BookList'
+};
