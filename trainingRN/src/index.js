@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { createStackNavigator } from 'react-navigation';
-import Todo from './screens/todo';
-import BookList from './screens/bookList';
+import Todo from './screens/Todo';
+import BookList from './screens/BookList';
 import routes from './constants/routes';
 
 const RootStack = createStackNavigator(
@@ -14,7 +14,7 @@ const RootStack = createStackNavigator(
   }
 );
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return <RootStack />;
   }
