@@ -1,17 +1,16 @@
-import React, {Component} from 'react';
-import { Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 
-import { BOOK_LIST} from '../../constants/constant';
+import routes from '../../constants/routes';
 
 class BookList extends Component {
   static navigationOptions = {
-    title: BOOK_LIST,
+    title: routes.BOOK_LIST
   };
+
   render() {
-    return (
-    <View />
-    )
+    return <View />;
   }
 }
 
-export default BookList
+export default BookList;
