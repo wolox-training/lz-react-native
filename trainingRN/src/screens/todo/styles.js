@@ -1,5 +1,5 @@
-import { StyleSheet} from 'react-native';
-import colors from '../../constants/colors'
+import { StyleSheet } from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,15 +9,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.aliceBlue,
     padding: 20
   },
+  task: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  },
   taskBox: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'baseline'
-  },
-  task: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
   textInput: {
     flex: 1,

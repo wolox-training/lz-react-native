@@ -1,30 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import Task from '../../components/Task';
 
-import { ADD, DELETE_ALL, ADD_NEW_TASK, X } from '../../constants/constant';
+import { ADD, DELETE_ALL, ADD_NEW_TASK } from '../../constants/strings';
 import styles from './styles';
 
 function TodoLayout({ onDelete, data, handleNew, setNewText, checkElem, onDeleteAll }) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.task}>{ADD_NEW_TASK}</Text>
-        <TextInput style={styles.textInput} onChangeText={text => setNewText(text)}/>
-        <Button title={ADD} onPress={handleNew}/>
-        {data.map(element => 
-        <View style={styles.taskBox} key={element.key}>
-          <Text style={styles.task}>{element.task}</Text>
-          <Button title={X} onPress={() => onDelete(element.id)}/>
-          <CheckBox 
-            checked={element.checked}
-            onPress={() => checkElem(element.id) }
-          />
-        </View>
-        )}
-        <Button title={DELETE_ALL} onPress={onDeleteAll} />
-      </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text style={styles.task}>{ADD_NEW_TASK}</Text>
+      <TextInput style={styles.textInput} onChangeText={text => setNewText(text)} />
+      <Button title={ADD} onPress={handleNew} />
+      {data.map(element => (
+        <Task key={element.key} element={element} onCheck={checkElem} onDelete={onDelete} />
+      ))}
+      <Button title={DELETE_ALL} onPress={onDeleteAll} />
+    </View>
+  );
 }
-
 
 export default TodoLayout;
