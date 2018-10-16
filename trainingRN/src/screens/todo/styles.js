@@ -1,11 +1,12 @@
 import { StyleSheet} from 'react-native';
+import colors from '../../constants/colors'
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: colors.aliceBlue,
     padding: 20
   },
   taskBox: {
@@ -25,3 +26,5 @@ export default StyleSheet.create({
     minWidth: 200
   }
 });
+
+export default styles;
