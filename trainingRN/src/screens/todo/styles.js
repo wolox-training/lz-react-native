@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   },
   taskBox: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-around',
+    alignItems: 'baseline'
   },
   task: {
     fontSize: 20,
@@ -20,10 +20,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   textInput: {
+    flex: 1,
     borderStyle: 'solid',
     borderRadius: 20,
     borderWidth: 1,
-    minWidth: 200
+    minWidth: 200,
+    maxHeight: 50
   }
 });
 
