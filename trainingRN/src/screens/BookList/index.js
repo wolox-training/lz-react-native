@@ -2,7 +2,6 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import Book from '../../components/Book';
-
 import books from '../../constants/books';
 
 function BookList() {
