@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 
 import defaultCover from '../../assets/default_cover.jpg';
 
-import { BOOK_DETAILS } from '../../constants/routes';
+import { BOOK_DETAILS } from '../../constants/strings';
 
 import styles from './styles';
 
