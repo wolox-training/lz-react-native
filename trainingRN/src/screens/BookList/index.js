@@ -5,8 +5,10 @@ import Book from '../../components/Book';
 
 import books from '../../constants/books';
 
-function BookList() {
-  return <FlatList data={books} renderItem={({ item }) => <Book {...item} />} />;
+function BookList({ navigation }) {
+  return (
+    <FlatList data={books} renderItem={({ item }) => <Book {...item} navigate={navigation.navigate} />} />
+  );
 }
 
 export default BookList;
