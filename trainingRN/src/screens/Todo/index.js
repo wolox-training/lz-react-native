@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoLayout from './layout';
+import routes from '../../constants/routes';
 
 let globalCounter = 3;
 
@@ -22,6 +23,10 @@ const todoList = [
 ];
 
 class TodoContainer extends Component {
+  static navigationOptions = {
+    headerTitle: routes.HOME
+  };
+
   state = { todoList, text: '' };
 
   setNewText = text => {
@@ -42,6 +47,10 @@ class TodoContainer extends Component {
     this.setState({ todoList: [] });
   };
 
+  handleGoToBooks = () => {
+    this.props.navigation.navigate(routes.BOOK_LIST);
+  };
+
   checkElem = id => {
     this.setState(prevState => ({
       todoList: prevState.todoList.map(elem => (elem.id === id ? { ...elem, checked: !elem.checked } : elem))
@@ -56,6 +65,7 @@ class TodoContainer extends Component {
         handleNew={this.addNewTask}
         setNewText={this.setNewText}
         checkElem={this.checkElem}
+        onGoToBooks={this.handleGoToBooks}
         onDeleteAll={this.handleDeleteAll}
       />
     );

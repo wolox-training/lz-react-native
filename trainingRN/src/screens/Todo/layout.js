@@ -2,10 +2,10 @@ import React from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
 import Task from '../../components/Task';
 
-import { ADD, DELETE_ALL, ADD_NEW_TASK } from '../../constants/strings';
+import { ADD, DELETE_ALL, ADD_NEW_TASK, GO_TO_DETAILS } from '../../constants/strings';
 import styles from './styles';
 
-function TodoLayout({ onDelete, data, handleNew, setNewText, checkElem, onDeleteAll }) {
+function TodoLayout({ onDelete, data, handleNew, setNewText, checkElem, onDeleteAll, onGoToBooks }) {
   return (
     <View style={styles.container}>
       <Text style={styles.task}>{ADD_NEW_TASK}</Text>
@@ -15,6 +15,7 @@ function TodoLayout({ onDelete, data, handleNew, setNewText, checkElem, onDelete
         <Task key={element.key} element={element} onCheck={checkElem} onDelete={onDelete} />
       ))}
       <Button title={DELETE_ALL} onPress={onDeleteAll} />
+      <Button title={GO_TO_DETAILS} onPress={onGoToBooks} />
     </View>
   );
 }
