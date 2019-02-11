@@ -1,19 +1,24 @@
 import React from 'react';
-import { Text, Image, View } from 'react-native';
+import { Text, Image, TouchableOpacity, View } from 'react-native';
 
+import routes from '../../constants/routes';
 import styles from './styles';
 
 import defaultCover from '../../assets/default_cover.jpg';
 
-function Book({ id, image_url, title, author }) {
+function Book({ id, image_url, title, author, navigate }) {
   return (
-    <View style={styles.book} key={id}>
+    <TouchableOpacity
+      style={styles.book}
+      key={id}
+      onPress={() => navigate(routes.BOOK_DETAILS, { book: { title, author, image_url } })}
+    >
       <Image style={styles.image} source={image_url ? { uri: image_url } : defaultCover} />
       <View style={styles.text}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.author}>{author}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
