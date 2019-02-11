@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { FlatList } from 'react-native';
 
-import routes from '../../constants/routes';
+import Book from '../../components/Book';
+import books from '../../constants/books';
 
-class BookList extends Component {
-  static navigationOptions = {
-    title: routes.BOOK_LIST
-  };
-
-  render() {
-    return <View />;
-  }
+function BookList({ navigation }) {
+  return (
+    <FlatList data={books} renderItem={({ item }) => <Book {...item} navigate={navigation.navigate} />} />
+  );
 }
 
 export default BookList;

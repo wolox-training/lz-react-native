@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Todo from './screens/Todo';
 import BookList from './screens/BookList';
+import BookDetails from './screens/BookDetails';
 import routes from './constants/routes';
+import { APP_NAME } from './constants/strings';
+
+const TabNavigator = createBottomTabNavigator({
+  [routes.HOME]: Todo,
+  [routes.BOOK_LIST]: BookList
+});
 
 const RootStack = createStackNavigator(
   {
-    [routes.HOME]: Todo,
-    [routes.BOOK_LIST]: BookList
+    [routes.HOME]: {
+      screen: TabNavigator,
+      navigationOptions: {
+        title: APP_NAME
+      }
+    },
+    [routes.BOOK_DETAILS]: BookDetails
   },
   {
     initialRouteName: routes.HOME
